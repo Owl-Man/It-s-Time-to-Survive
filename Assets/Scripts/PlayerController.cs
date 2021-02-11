@@ -17,23 +17,30 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVelocity;
     private Animator animator;
 
+    //private PostProcessVolume post_process_volume;
+    //private Bloom bloom;
+
     public Image[] Lives;
     public Sprite fullLive;
     public Sprite emptyLive;
 
     public int health;
     public int numberOfLives;
-    
-    private void Awake() 
-    {
-        Application.targetFrameRate = 60;
-    }
+
+    public Button PickUpButton;
+    public bool MayItemPickUp;
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+
+        //post_process_volume = GetComponent<PostProcessVolume>();
+        //post_process_volume.profile.TryGetSettings(out bloom);
+
         gun.SetActive(true);
     }
 
@@ -94,5 +101,32 @@ public class PlayerController : MonoBehaviour
         {
             //StartCoroutine(DiePlayer());
         }
+
+        if (health < 0) 
+        {
+            health = 0;
+        }
+    }
+
+    public void OnPickUpButtonClick() 
+    {
+        MayItemPickUp = true;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        PickUpButton.interactable = false;
+
+        if (other.CompareTag("Apple") && MayItemPickUp == true)
+        {
+            InventorySystem.AddItem("Apple");
+            MayItemPickUp = false;
+            Destroy(other.gameObject, 0.1f);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        PickUpButton.interactable = true;
     }
 }

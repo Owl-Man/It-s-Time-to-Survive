@@ -16,4 +16,4 @@ MonoBehaviour:
   description: It is a yellow banana
   heal: 1
   satiety: 15
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: de6e4d58ddb19daaea90a10a0642128c, type: 3}

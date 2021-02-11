@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryDisplay : MonoBehaviour
+public class ItemDisplay : MonoBehaviour
 {
 	public Food food;
 
@@ -13,15 +13,16 @@ public class InventoryDisplay : MonoBehaviour
 	public Text satiety;
 
 	public Image spriteItem;
+	public Image descriptionSpriteItem;
 
-	private void Start() 
+	private void Update() 
 	{
 		name.text = food.name;
 		description.text = food.description;
-		heal.text = food.heal.ToString();
-		satiety.text = food.satiety.ToString();
+		heal.text = "RevivalLifes: " + food.heal.ToString();
+		satiety.text = "Satiety: " + food.satiety.ToString();
 
 		spriteItem.sprite = food.sprite;
-
+		descriptionSpriteItem.sprite = food.sprite;
 	}
 }
