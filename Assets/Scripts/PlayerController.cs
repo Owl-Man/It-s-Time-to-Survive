@@ -108,25 +108,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnPickUpButtonClick() 
-    {
-        MayItemPickUp = true;
-    }
+    //public void OnPickUpButtonClick() 
+    //{
+    //    MayItemPickUp = true;
+    //}
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        PickUpButton.interactable = false;
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    PickUpButton.interactable = false;
 
-        if (other.CompareTag("Apple") && MayItemPickUp == true)
-        {
-            InventorySystem.AddItem("Apple");
-            MayItemPickUp = false;
-            Destroy(other.gameObject, 0.1f);
-        }
-    }
+    //    if (other.CompareTag("Apple") && MayItemPickUp == true)
+    //    {
+    //        InventorySystem.AddItem("Apple");
+    //        MayItemPickUp = false;
+    //        Destroy(other.gameObject, 0.1f);
+    //    }
+    //}
 
-    private void OnTriggerExit2D(Collider2D other) 
-    {
-        PickUpButton.interactable = true;
-    }
+    //private void OnTriggerExit2D(Collider2D other) 
+    //{
+    //    PickUpButton.interactable = true;
+    //}
 }
