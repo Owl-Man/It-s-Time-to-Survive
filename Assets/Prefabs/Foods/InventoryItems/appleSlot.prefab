@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 5255702823261486249}
   - component: {fileID: 3494073936025035892}
   - component: {fileID: 7610652423925933709}
+  - component: {fileID: 4050197435866453521}
+  - component: {fileID: 720313070394033573}
   m_Layer: 5
   m_Name: appleSlot
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &2352070402425948296
 RectTransform:
@@ -60,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -89,3 +91,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 5867866242033428557, guid: a65fc80fd10007dc18aba947391548f7, type: 3}
+--- !u!114 &4050197435866453521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432160714749325777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e0a62522c1957e9bbdcf9c9aca8129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 11400000, guid: cf72438caf728f667a5aae1600fc2e3d, type: 2}
+--- !u!114 &720313070394033573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432160714749325777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31a04946151349c882d245c08f62b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0

@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 6968590849644069497}
   - component: {fileID: 1039228616115798386}
   - component: {fileID: 4590092041410015534}
+  - component: {fileID: -4070582931110923588}
+  - component: {fileID: 328349354793774449}
   m_Layer: 5
   m_Name: bananaSlot
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!224 &7696889568956378858
 RectTransform:
@@ -60,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -89,3 +91,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 3642284791161112758, guid: c8e2b27b4765dd15c83e3cff74ecdc2d, type: 3}
+--- !u!114 &-4070582931110923588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270314265063920456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e0a62522c1957e9bbdcf9c9aca8129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 11400000, guid: d4480222252ad8ad5b0ebac2e37425d6, type: 2}
+--- !u!114 &328349354793774449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270314265063920456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31a04946151349c882d245c08f62b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0

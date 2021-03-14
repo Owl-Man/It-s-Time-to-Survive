@@ -24,11 +24,15 @@ public class PlayerController : MonoBehaviour
     public Sprite fullLive;
     public Sprite emptyLive;
 
+    public Image[] Satiety;
+    public Sprite fullSatiety;
+    public Sprite emptySatiety;
+
     public int health;
     public int numberOfLives;
 
-    public Button PickUpButton;
-    public bool MayItemPickUp;
+    public int satiety;
+    public int numberOfSatiety;
 
     private void Start()
     {
@@ -72,6 +76,8 @@ public class PlayerController : MonoBehaviour
         moveInput = new Vector2(joystick.Horizontal, joystick.Vertical);
         moveVelocity = moveInput.normalized * speed;
 
+//<-----------------------------------------HEALTH-------------------------------------->
+
         if (health > numberOfLives)
         {
             health = numberOfLives;
@@ -106,27 +112,48 @@ public class PlayerController : MonoBehaviour
         {
             health = 0;
         }
+//<------------------------------SATIETY----------------------->
+
+        if (satiety > numberOfSatiety) 
+        {
+            satiety = numberOfSatiety;
+        }
+
+        for (int i = 0; i < Satiety.Length; i++)
+        {
+            if (i < satiety)
+            {
+                Satiety[i].sprite = fullSatiety;
+            }
+            else
+            {
+                Satiety[i].sprite = emptySatiety;
+            }
+            if (i < numberOfSatiety)
+            {
+                Satiety[i].enabled = true;
+            }
+            else
+            {
+                Satiety[i].enabled = false;
+            }
+        }
+
+        if (satiety <= 0) 
+        {
+            StartCoroutine(SatietyDying());
+        }
+
+        if (satiety < 0) 
+        {
+            satiety = 0;
+        }
     }
 
-    //public void OnPickUpButtonClick() 
-    //{
-    //    MayItemPickUp = true;
-    //}
 
-    //private void OnTriggerStay2D(Collider2D other)
-    //{
-    //    PickUpButton.interactable = false;
-
-    //    if (other.CompareTag("Apple") && MayItemPickUp == true)
-    //    {
-    //        InventorySystem.AddItem("Apple");
-    //        MayItemPickUp = false;
-    //        Destroy(other.gameObject, 0.1f);
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D other) 
-    //{
-    //    PickUpButton.interactable = true;
-    //}
+    IEnumerator SatietyDying()
+    {
+        yield return new WaitForSeconds(3.5f);
+        health--;
+    }
 }

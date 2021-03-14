@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-	public InventorySystem inventory;
-	public GameObject slotButton;
+	private InventorySystem inventory;
+	public GameObject slotButton; // item in slot
+
+	private void Start() 
+	{
+		inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+	}
 
 	private void OnTriggerEnter2D(Collider2D other) 
 	{
@@ -16,7 +21,11 @@ public class PickUp : MonoBehaviour
 				if (inventory.isFull[i] == false) 
 				{
 					inventory.isFull[i] = true;
-					Instantiate(slotButton, inventory.slots[i].transform);
+
+					GameObject PickUpedItem = Instantiate(slotButton, inventory.slots[i].transform);
+					
+					PickUpedItem.GetComponent<Item>().id = i;
+
 					Destroy(gameObject);
 					break;
 				}

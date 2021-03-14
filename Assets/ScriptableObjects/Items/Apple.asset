@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Apple
   description: Very tasty
   heal: 1
-  satiety: 10
+  satiety: 1
   sprite: {fileID: 21300000, guid: d040399934464ec87b29c5560e6ca1c0, type: 3}
