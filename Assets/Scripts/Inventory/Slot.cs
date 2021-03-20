@@ -14,6 +14,8 @@ public class Slot : MonoBehaviour
 
 	public GameObject UseSlotHighLightning;
 
+	public GameObject Child;
+
 	private void Start() 
 	{
 		inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
@@ -34,16 +36,15 @@ public class Slot : MonoBehaviour
 		foreach (Transform child in transform) 
 		{
 			child.GetComponent<Spawn>().SpawnDroppedItem();
+			UnSelectSlot();
 			GameObject.Destroy(child.gameObject);
 		}
 	}
 
 	public void OnSlotUseButtonClick() 
 	{
-		if (isSlotUse == false) 
+		if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) 
 		{
-			UseSlotHighLightning.SetActive(true);
-
 			foreach (Transform child in transform) 
 		    {
 			    if (child.CompareTag("Food")) 
@@ -51,18 +52,21 @@ public class Slot : MonoBehaviour
 			      	FoodUseButton.SetActive(true);
 			    }
 
-			    child.GetComponent<Item>().id = -1;
+			    child.GetComponent<Item>().isItemSelected = true;
 		    }
 
-		    isSlotUse = true;
+		    SelectSlot();
 
 		    return;
 		}
 
+		if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) 
+		{
+			inventory.TransportItemToOtherSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
+		}
+
 		if (isSlotUse == true) 
 		{
-			UseSlotHighLightning.SetActive(false);
-
 			foreach (Transform child in transform) 
 		    {
 			    if (child.CompareTag("Food")) 
@@ -70,10 +74,10 @@ public class Slot : MonoBehaviour
 			      	FoodUseButton.SetActive(false);
 			    }
 
-			    child.GetComponent<Item>().id = i;
+			    child.GetComponent<Item>().isItemSelected = false;
 		    }
 
-		    isSlotUse = false;
+		    UnSelectSlot();
 		}
 	}
 
@@ -81,15 +85,36 @@ public class Slot : MonoBehaviour
 	{
 		foreach (Transform child in transform) 
 		{
-			if (child.GetComponent<Item>().id == -1) 
+			if (child.GetComponent<Item>().isItemSelected == true)
 			{
 				child.GetComponent<UseFood>().EatFood();
-				UseSlotHighLightning.SetActive(false);
-		        isSlotUse = false;
-		        FoodUseButton.SetActive(false);
-
+				UnSelectSlot();
 		        Destroy(child.gameObject);
 			}
+		}
+	}
+
+	public void UnSelectSlot() 
+	{
+		UseSlotHighLightning.SetActive(false);
+		isSlotUse = false;
+		FoodUseButton.SetActive(false);
+		PlayerPrefs.SetInt("isAnySlotUsed", 0);
+	}
+
+	public void SelectSlot() 
+	{
+		UseSlotHighLightning.SetActive(true);
+		isSlotUse = true;
+		PlayerPrefs.SetInt("isAnySlotUsed", 1);
+		PlayerPrefs.SetInt("IdSlotThatUsed", i);
+	}
+
+	public void GetChild() 
+	{
+		foreach (Transform child in transform) 
+		{
+			Child = child.gameObject;
 		}
 	}
 }
