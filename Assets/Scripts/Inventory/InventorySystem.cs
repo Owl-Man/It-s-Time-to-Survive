@@ -15,24 +15,33 @@ public class InventorySystem : MonoBehaviour
 	private GameObject SlotTo;
 	private GameObject SlotToChild;
 
+	private Slot slotFromScript;
+	private Slot slotToScript;
+
 	public void TransportItemToOtherSlot(int IdSlotFrom, int IdSlotTo) //Перемещение обьекта из одного слота в другой
 	{
 		try 
 		{
-			slots[IdSlotFrom].GetComponent<Slot>().GetChild();
-			SlotFrom = slots[IdSlotFrom].GetComponent<Slot>().Child; // Получаем ссылку на обьект в слоте, которую надо переместить
+			slotFromScript = slots[IdSlotFrom].GetComponent<Slot>();
+			slotToScript = slots[IdSlotTo].GetComponent<Slot>();
 
-			slots[IdSlotFrom].GetComponent<Slot>().UnSelectSlot();
+			slotFromScript.GetChild();
+			SlotFrom = slotFromScript.Child; // Получаем ссылку на обьект в слоте, которую надо переместить
 
-		    SlotTo = slots[IdSlotTo].gameObject;
+			slotFromScript.UnSelectSlot();
+			slotFromScript.isSlotHaveItem = false;
 
-    	    Instantiate(SlotFrom, SlotTo.transform);
+			isFull[IdSlotFrom] = false;
 
-    	    SlotTo.GetComponent<Slot>().GetChild();
+		    SlotTo = slots[IdSlotTo];
 
-    	    SlotToChild = SlotTo.GetComponent<Slot>().Child;// Получаем ссылку на созданный обьект в новом слоте
+    	    SlotToChild = Instantiate(SlotFrom, SlotTo.transform); // Получаем ссылку на созданный обьект в новом слоте
 
-    	    SlotToChild.GetComponent<Item>().id = SlotTo.GetComponent<Slot>().i; //Меняем id обьекта на новый, нового слота
+    	    SlotToChild.GetComponent<Item>().id = slotToScript.i; //Меняем id обьекта на новый, нового слота
+
+    	    slotToScript.isSlotHaveItem = true;
+
+    	    isFull[IdSlotTo] = true;
 
     	    Destroy(SlotFrom.gameObject); //Удаляем старый обьект в старом слоте
 		}

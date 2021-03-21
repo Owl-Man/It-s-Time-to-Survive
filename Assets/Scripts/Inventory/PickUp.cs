@@ -26,6 +26,10 @@ public class PickUp : MonoBehaviour
 					
 					PickUpedItem.GetComponent<Item>().id = i;
 
+					GameObject slot = inventory.slots[i];
+
+					slot.GetComponent<Slot>().isSlotHaveItem = true;
+
 					Destroy(gameObject);
 					break;
 				}

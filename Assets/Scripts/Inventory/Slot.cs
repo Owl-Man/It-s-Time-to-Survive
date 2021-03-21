@@ -5,10 +5,11 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
 	private InventorySystem inventory;
+	private ButtonsController buttons_controller;
 
 	public int i;
 
-	public bool isSlotUse;
+	public bool isSlotUse = false;
 
 	public GameObject FoodUseButton;
 
@@ -16,11 +17,12 @@ public class Slot : MonoBehaviour
 
 	public GameObject Child;
 
+	public bool isSlotHaveItem = false; // for transport SlotTo
+
 	private void Start() 
 	{
 		inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
-
-		isSlotUse = false;
+		buttons_controller = GameObject.FindGameObjectWithTag("ButtonsController").GetComponent<ButtonsController>();
 	}
 
 	private void Update() 
@@ -36,7 +38,14 @@ public class Slot : MonoBehaviour
 		foreach (Transform child in transform) 
 		{
 			child.GetComponent<Spawn>().SpawnDroppedItem();
-			UnSelectSlot();
+			
+			if (PlayerPrefs.GetInt("IdSlotThatUsed") == i) 
+			{
+				UnSelectSlot();
+			}
+
+			isSlotHaveItem = false;
+			inventory.isFull[i] = false;
 			GameObject.Destroy(child.gameObject);
 		}
 	}
@@ -62,7 +71,15 @@ public class Slot : MonoBehaviour
 
 		if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) 
 		{
-			inventory.TransportItemToOtherSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
+			foreach (Transform child in transform) 
+			{
+				isSlotHaveItem = true;
+			}
+
+			if (isSlotHaveItem == false) 
+			{
+				inventory.TransportItemToOtherSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
+			}
 		}
 
 		if (isSlotUse == true) 
@@ -100,6 +117,7 @@ public class Slot : MonoBehaviour
 		isSlotUse = false;
 		FoodUseButton.SetActive(false);
 		PlayerPrefs.SetInt("isAnySlotUsed", 0);
+		buttons_controller.OnBackForDescriptionPanelButtonClick();
 	}
 
 	public void SelectSlot() 
@@ -108,6 +126,7 @@ public class Slot : MonoBehaviour
 		isSlotUse = true;
 		PlayerPrefs.SetInt("isAnySlotUsed", 1);
 		PlayerPrefs.SetInt("IdSlotThatUsed", i);
+		buttons_controller.OnItemButtonClick();
 	}
 
 	public void GetChild() 

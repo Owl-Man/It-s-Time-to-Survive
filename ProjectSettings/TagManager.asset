@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - UseFoodButton
+  - ButtonsController
   layers:
   - Default
   - TransparentFX
