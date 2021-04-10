@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     
     public Joystick joystick;
-    public GameObject gun;
 
     private Rigidbody2D rb;
-    SpriteRenderer sprite;
+    private SpriteRenderer sprite;
+    
+    private InventorySystem inventory;
+    private WeaponItem weaponScript;
+    private Slot slotScript;
+
     private Vector2 moveInput;
     private Vector2 moveVelocity;
     private Animator animator;
@@ -34,6 +39,8 @@ public class PlayerController : MonoBehaviour
     public int satiety;
     public int numberOfSatiety;
 
+    public Image attackButtonSprite;
+
     private void Start()
     {
         Application.targetFrameRate = 60;
@@ -41,11 +48,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        inventory = GetComponent<InventorySystem>();
 
         //post_process_volume = GetComponent<PostProcessVolume>();
         //post_process_volume.profile.TryGetSettings(out bloom);
-
-        gun.SetActive(true);
     }
 
     private void FixedUpdate()
@@ -55,20 +61,26 @@ public class PlayerController : MonoBehaviour
         if (moveInput.x == 0)
         {
             animator.SetBool("isRun", false);
-            gun.SetActive(true);
         }
         else if (moveInput.x > 0)
         {
             animator.SetBool("isRun", true);
-            gun.SetActive(false);
             sprite.flipX = false;
         }
         else if (moveInput.x < 0) 
         {
             animator.SetBool("isRun", true);
-            gun.SetActive(false);
             sprite.flipX = true;
         }
+    }
+
+    public void BringWeapon() 
+    {
+        slotScript = inventory.slots[PlayerPrefs.GetInt("IdSlotThatUsed")].GetComponent<Slot>();
+        slotScript.GetChild();
+        weaponScript = slotScript.Child.GetComponent<WeaponItem>();
+
+        attackButtonSprite.sprite = weaponScript.weapon.sprite;
     }
 
     private void Update()

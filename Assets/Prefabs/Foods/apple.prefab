@@ -18,7 +18,7 @@ GameObject:
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3242222231123261141
 Transform:
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,5 +144,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f240b4274bc7b93b9ee44907ff7e035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
   slotButton: {fileID: 432160714749325777, guid: ea10da48c5f7275758350b67f13b8f9d, type: 3}

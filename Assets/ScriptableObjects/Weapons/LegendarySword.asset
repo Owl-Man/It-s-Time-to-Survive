@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df641dc7b3427b68288142deef59b232, type: 3}
+  m_Name: LegendarySword
+  m_EditorClassIdentifier: 
+  name: Legendery Sword
+  description: The sword is made of polymerized fullerite - the hardest material
+    in the world
+  damage: 10
+  sprite: {fileID: 21300000, guid: 69d42004420a0e041b3ca0764431dded, type: 3}

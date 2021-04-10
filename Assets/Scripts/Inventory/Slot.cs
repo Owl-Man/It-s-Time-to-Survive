@@ -5,16 +5,16 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
 	private InventorySystem inventory;
+	private PlayerController player;
 	private ButtonsController buttons_controller;
 
 	public int i;
 
 	public bool isSlotUse = false;
 
-	public GameObject FoodUseButton;
-
 	public GameObject UseSlotHighLightning;
 
+	[HideInInspector]
 	public GameObject Child;
 
 	public bool isSlotHaveItem = false; // for transport SlotTo
@@ -22,6 +22,7 @@ public class Slot : MonoBehaviour
 	private void Start() 
 	{
 		inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventorySystem>();
+		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 		buttons_controller = GameObject.FindGameObjectWithTag("ButtonsController").GetComponent<ButtonsController>();
 	}
 
@@ -52,43 +53,58 @@ public class Slot : MonoBehaviour
 
 	public void OnSlotUseButtonClick() 
 	{
-		if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) 
+		if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) //Если слот до этого не был выделен
 		{
+			SelectSlot();
+
 			foreach (Transform child in transform) 
 		    {
 			    if (child.CompareTag("Food")) 
 			    {
-			      	FoodUseButton.SetActive(true);
+			      	inventory.FoodUseButton.SetActive(true);
+			      	inventory.InsertDescriptionFieldsFood(child.gameObject); //Передача описания обьекта в панель
+			    }
+			    if (child.CompareTag("Weapon")) 
+			    {
+			    	inventory.AttackButton.SetActive(true);
+			    	player.BringWeapon();
+			    	inventory.InsertDescriptionFieldsWeapon(child.gameObject); //Передача описания обьекта в панель
 			    }
 
 			    child.GetComponent<Item>().isItemSelected = true;
 		    }
 
-		    SelectSlot();
-
 		    return;
 		}
 
-		if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) 
+		if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) //Если выделен другой слот
 		{
 			foreach (Transform child in transform) 
 			{
 				isSlotHaveItem = true;
 			}
 
-			if (isSlotHaveItem == false) 
+			if (isSlotHaveItem == true) 
+			{
+				inventory.TransportItemToOtherSlotBoth(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
+			}
+			else
 			{
 				inventory.TransportItemToOtherSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
 			}
 		}
 
-		if (isSlotUse == true) 
+		if (isSlotUse == true) //Если слот был до этого выделен
 		{
 			foreach (Transform child in transform) 
 		    {
 			    if (child.CompareTag("Food")) 
 			    {
-			      	FoodUseButton.SetActive(false);
+			      	inventory.FoodUseButton.SetActive(false);
+			    }
+			    if (child.CompareTag("Weapon")) 
+			    {
+			    	inventory.AttackButton.SetActive(false);
 			    }
 
 			    child.GetComponent<Item>().isItemSelected = false;
@@ -115,7 +131,8 @@ public class Slot : MonoBehaviour
 	{
 		UseSlotHighLightning.SetActive(false);
 		isSlotUse = false;
-		FoodUseButton.SetActive(false);
+		inventory.FoodUseButton.SetActive(false);
+		inventory.AttackButton.SetActive(true);
 		PlayerPrefs.SetInt("isAnySlotUsed", 0);
 		buttons_controller.OnBackForDescriptionPanelButtonClick();
 	}
@@ -129,7 +146,7 @@ public class Slot : MonoBehaviour
 		buttons_controller.OnItemButtonClick();
 	}
 
-	public void GetChild() 
+	public void GetChild() //for globaling child gameobject
 	{
 		foreach (Transform child in transform) 
 		{
