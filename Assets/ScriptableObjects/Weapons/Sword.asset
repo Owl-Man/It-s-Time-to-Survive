@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Sword
   description: A reliable ally in any battle
   damage: 2
+  rare: Common
   sprite: {fileID: 21300000, guid: f8a5cddab1a35f16eba325fc791256c7, type: 3}

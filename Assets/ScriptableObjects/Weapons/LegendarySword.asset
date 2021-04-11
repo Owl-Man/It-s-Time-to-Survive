@@ -16,4 +16,5 @@ MonoBehaviour:
   description: The sword is made of polymerized fullerite - the hardest material
     in the world
   damage: 10
+  rare: Legendary
   sprite: {fileID: 21300000, guid: 69d42004420a0e041b3ca0764431dded, type: 3}

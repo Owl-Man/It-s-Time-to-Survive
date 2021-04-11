@@ -76,11 +76,41 @@ public class PlayerController : MonoBehaviour
 
     public void BringWeapon() 
     {
+        inventory.AttackButton.SetActive(true);
         slotScript = inventory.slots[PlayerPrefs.GetInt("IdSlotThatUsed")].GetComponent<Slot>();
         slotScript.GetChild();
         weaponScript = slotScript.Child.GetComponent<WeaponItem>();
 
         attackButtonSprite.sprite = weaponScript.weapon.sprite;
+
+        if (slotScript.Child.CompareTag("Weapon"))
+        {
+            animator.SetBool("isSwordEquip", true);
+            animator.SetBool("isBowEquip", false);
+        }
+
+        if (slotScript.Child.CompareTag("Bow"))
+        {
+            animator.SetBool("isBowEquip", true);
+            animator.SetBool("isSwordEquip", false);
+        }
+    }
+
+    public void UnBringWeapon()
+    {
+        inventory.AttackButton.SetActive(false);
+
+        if (slotScript.Child.CompareTag("Weapon"))
+        {
+            animator.SetBool("isSwordEquip", false);
+            animator.SetBool("isBowEquip", false);
+        }
+
+        if (slotScript.Child.CompareTag("Bow"))
+        {
+            animator.SetBool("isBowEquip", false);
+            animator.SetBool("isSwordEquip", false);
+        }
     }
 
     private void Update()

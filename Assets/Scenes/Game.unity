@@ -713,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 7
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 254815873}
@@ -2254,6 +2255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 0
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 58498595}
@@ -6374,6 +6376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 15
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 1633844394}
@@ -7177,6 +7180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 14
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 1742418521}
@@ -20287,6 +20291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 2
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 2094248976}
@@ -21882,6 +21887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 6
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 821163872}
@@ -24103,6 +24109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 8
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 431135505}
@@ -24278,6 +24285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 3
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 1167666051}
@@ -27536,6 +27544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 11
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 30247514}
@@ -28101,7 +28110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.49803922, g: 0.8392157, b: 0.99215686, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -32230,6 +32239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 13
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 224441741}
@@ -32410,7 +32420,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07165635, y: -0.05609691}
+  m_Offset: {x: 0.071656466, y: -0.06382644}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -32421,7 +32431,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8030317, y: 2.8035328}
+  m_Size: {x: 1.493851, y: 2.5407293}
   m_EdgeRadius: 0
 --- !u!70 &1422099968
 CapsuleCollider2D:
@@ -32496,7 +32506,7 @@ MonoBehaviour:
   name: {fileID: 1218094032}
   description: {fileID: 603261918}
   healOrDamage: {fileID: 13127998}
-  satiety: {fileID: 938256575}
+  satietyOrRare: {fileID: 938256575}
 --- !u!114 &1422099971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34863,6 +34873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 9
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 707518278}
@@ -35775,6 +35786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 1
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 2020502305}
@@ -36917,6 +36929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 5
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 2118708941}
@@ -38010,6 +38023,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 12
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 1581564611}
@@ -42211,6 +42225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 4
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 355121066}
@@ -44171,6 +44186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d41b5949f58456109474087bc7c2a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   i: 10
   isSlotUse: 0
   UseSlotHighLightning: {fileID: 38013084}

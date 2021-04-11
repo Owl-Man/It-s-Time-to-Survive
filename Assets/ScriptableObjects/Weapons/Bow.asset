@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Bow
   description: 'A primitive but effective weapon '
   damage: 2
+  rare: Common
   sprite: {fileID: 21300000, guid: 32c323a2d32b9e661a2e7ce3a5cef7d0, type: 3}

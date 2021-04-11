@@ -29,6 +29,7 @@ public class PickUp : MonoBehaviour
 					GameObject slot = inventory.slots[i];
 
 					slot.GetComponent<Slot>().isSlotHaveItem = true;
+					slot.GetComponent<Slot>().CheckForFake();
 
 					Destroy(gameObject);
 					break;

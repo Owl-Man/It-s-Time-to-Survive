@@ -9,6 +9,7 @@ public class Weapon : ScriptableObject
 	public new string name;
 	public string description;
 	public int damage;
+	public string rare;
 	
 	public Sprite sprite;
 }

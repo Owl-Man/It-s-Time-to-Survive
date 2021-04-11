@@ -15,4 +15,5 @@ MonoBehaviour:
   name: Reinforced Bow
   description: Reinforced bow and arrows, a serious weapon in combat
   damage: 4
+  rare: Rare
   sprite: {fileID: 21300000, guid: 390d8c4a5c1bd475ab2efb150551d04b, type: 3}
