@@ -37,11 +37,11 @@ public class Slot : MonoBehaviour
 			
 			if (PlayerPrefs.GetInt("IdSlotThatUsed") == i) 
 			{
-				UnSelectSlot();
+				ChangeSlotUsingState(false);
 
 				if (child.CompareTag("Weapon") || child.CompareTag("Bow")) 
 				{
-				    player.UnBringWeapon();
+				    player.BringWeaponState(false);
 				}
 			}
 
@@ -55,9 +55,13 @@ public class Slot : MonoBehaviour
 	{
 		if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) //Если слот до этого не был выделен
 		{
-			SlotUse();
+			ChangeSlotUsingState(true);
 
 		    return;
+		}
+		else if (isSlotUse == true)
+		{
+			ChangeSlotUsingState(false);
 		}
 
 		if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) //Если выделен другой слот
@@ -69,57 +73,38 @@ public class Slot : MonoBehaviour
 
 			if (isSlotHaveItem == true) 
 			{
-				inventory.UnSelectSlot(PlayerPrefs.GetInt("IdSlotThatUsed")); //Отменяет выделение слота, который был выделн
-				SlotUse(); //Выделяет этот слот
+				inventory.isSelectSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), false); //Отменяет выделение слота, который был выделен
+				ChangeSlotUsingState(true); //Выделяет этот слот
 			}
 			else
 			{
 				inventory.TransportItemToOtherSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
 			}
 		}
-
-		if (isSlotUse == true) //Если слот был до этого выделен
-		{
-			foreach (Transform child in transform) 
-			{
-				if (child.CompareTag("Food")) 
-				{
-			    	inventory.FoodUseButton.SetActive(false);
-				}
-
-				if (child.CompareTag("Weapon") || child.CompareTag("Bow")) 
-				{
-				    inventory.AttackButton.SetActive(false);
-				    player.UnBringWeapon();
-				}
-
-				child.GetComponent<Item>().isItemSelected = false;
-
-		 	    UnSelectSlot();
-			}
-		}
 	}
 
-	public void SlotUse()
+	public void ChangeSlotUsingState(bool state)
 	{
 		foreach (Transform child in transform) 
 		{
-			SelectSlot();
+			isSelectSlot(state);
 
 			if (child.CompareTag("Food")) 
 			{
-				inventory.FoodUseButton.SetActive(true);
-				inventory.InsertDescriptionFieldsFood(child.gameObject); //Передача описания обьекта в панель типа "еда"
+				inventory.FoodUseButton.SetActive(state);
+
+				if (state == true) inventory.InsertDescriptionFieldsFood(child.gameObject); //Передача описания обьекта в панель типа "еда"
 			}
 
 			if (child.CompareTag("Weapon") || child.CompareTag("Bow")) 
 			{
-				inventory.AttackButton.SetActive(true);
-				player.BringWeapon();
-				inventory.InsertDescriptionFieldsWeapon(child.gameObject); //Передача описания обьекта в панель типа "оружие"
+				inventory.AttackButton.SetActive(state);
+				player.BringWeaponState(state);
+
+				if (state == true) inventory.InsertDescriptionFieldsWeapon(child.gameObject); //Передача описания обьекта в панель типа "оружие"
 			}
 
-			child.GetComponent<Item>().isItemSelected = true;
+			child.GetComponent<Item>().isItemSelected = state;
 		}
 	}
 
@@ -130,28 +115,29 @@ public class Slot : MonoBehaviour
 		if (Child.GetComponent<Item>().isItemSelected == true)
 		{
 			Child.GetComponent<UseFood>().EatFood();
-			UnSelectSlot();
+			ChangeSlotUsingState(false);
 		    Destroy(Child.gameObject);
 		}
 	}
 
-	public void UnSelectSlot() 
+	public void isSelectSlot(bool state) 
 	{
-		UseSlotHighLightning.SetActive(false);
-		isSlotUse = false;
-		inventory.FoodUseButton.SetActive(false);
-		inventory.AttackButton.SetActive(true);
-		PlayerPrefs.SetInt("isAnySlotUsed", 0);
-		buttons_controller.OnBackForDescriptionPanelButtonClick();
-	}
+		UseSlotHighLightning.SetActive(state);
+		isSlotUse = state;
 
-	public void SelectSlot() 
-	{
-		UseSlotHighLightning.SetActive(true);
-		isSlotUse = true;
-		PlayerPrefs.SetInt("isAnySlotUsed", 1);
-		PlayerPrefs.SetInt("IdSlotThatUsed", i);
-		buttons_controller.OnItemButtonClick();
+		if (state == true)
+		{
+			PlayerPrefs.SetInt("isAnySlotUsed", 1);
+			PlayerPrefs.SetInt("IdSlotThatUsed", i);
+		}
+		else 
+		{
+			PlayerPrefs.SetInt("isAnySlotUsed", 0);
+			inventory.FoodUseButton.SetActive(false);
+			inventory.AttackButton.SetActive(false);
+		}
+
+		buttons_controller.IsOnItemButtonClick(state);
 	}
 
 	public void GetChild() //for get and globaling child gameobject

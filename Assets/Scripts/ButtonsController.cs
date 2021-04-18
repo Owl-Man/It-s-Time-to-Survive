@@ -17,13 +17,8 @@ public class ButtonsController : MonoBehaviour
 		InventoryPanel.SetActive(false);
 	}
 
-	public void OnItemButtonClick() 
+	public void IsOnItemButtonClick(bool state) 
 	{
-		DescriptionItemPanel.SetActive(true);
-	}
-
-	public void OnBackForDescriptionPanelButtonClick() 
-	{
-		DescriptionItemPanel.SetActive(false);
+		DescriptionItemPanel.SetActive(state);
 	}
 }

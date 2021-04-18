@@ -74,42 +74,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void BringWeapon() 
+    public void BringWeaponState(bool state) 
     {
-        inventory.AttackButton.SetActive(true);
-        slotScript = inventory.slots[PlayerPrefs.GetInt("IdSlotThatUsed")].GetComponent<Slot>();
-        slotScript.GetChild();
-        weaponScript = slotScript.Child.GetComponent<WeaponItem>();
+        if (state == true) 
+        {
+            inventory.AttackButton.SetActive(true);
+            slotScript = inventory.slots[PlayerPrefs.GetInt("IdSlotThatUsed")].GetComponent<Slot>();
+            slotScript.GetChild();
+            weaponScript = slotScript.Child.GetComponent<WeaponItem>();
 
-        attackButtonSprite.sprite = weaponScript.weapon.sprite;
+            attackButtonSprite.sprite = weaponScript.weapon.sprite;
+        }
+        else 
+        {
+            inventory.AttackButton.SetActive(false);
+
+            animator.SetBool("isSwordEquip", false);
+            animator.SetBool("isBowEquip", false);
+
+            return;
+        }
 
         if (slotScript.Child.CompareTag("Weapon"))
         {
-            animator.SetBool("isSwordEquip", true);
-            animator.SetBool("isBowEquip", false);
+            animator.SetBool("isSwordEquip", state);
+            animator.SetBool("isBowEquip", !state);
         }
 
         if (slotScript.Child.CompareTag("Bow"))
         {
-            animator.SetBool("isBowEquip", true);
-            animator.SetBool("isSwordEquip", false);
-        }
-    }
-
-    public void UnBringWeapon()
-    {
-        inventory.AttackButton.SetActive(false);
-
-        if (slotScript.Child.CompareTag("Weapon"))
-        {
-            animator.SetBool("isSwordEquip", false);
-            animator.SetBool("isBowEquip", false);
-        }
-
-        if (slotScript.Child.CompareTag("Bow"))
-        {
-            animator.SetBool("isBowEquip", false);
-            animator.SetBool("isSwordEquip", false);
+            animator.SetBool("isBowEquip", state);
+            animator.SetBool("isSwordEquip", !state);
         }
     }
 

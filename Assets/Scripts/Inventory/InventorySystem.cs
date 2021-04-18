@@ -57,20 +57,26 @@ public class InventorySystem : MonoBehaviour
 		satietyOrRare.text = "Satiety: " + food.satiety.ToString();
 	}
 
-	public void UnSelectSlot(int id)
+	public void isSelectSlot(int id, bool state) //Global selecting or unselecting any slot
 	{
 		slot = slots[id].GetComponent<Slot>();
-		slot.UnSelectSlot();
-		slot.isSlotHaveItem = false;
+		slot.ChangeSlotUsingState(state);
 
 		slot.GetChild();
 
 		if (slot.Child.CompareTag("Weapon")) 
 		{
-			slot.player.UnBringWeapon();
+			slot.player.BringWeaponState(state);
 		}
+	}
 
-		isFull[id] = false;
+	public void ChangeHaveItemState(int id, bool state) 
+	{
+		slots[id].GetComponent<Slot>();
+
+		slot.isSlotHaveItem = state;
+
+		isFull[id] = state;
 	}
 
 	public void TransportItemToOtherSlot(int IdSlotFrom, int IdSlotTo) //Перемещение обьекта из одного слота в другой
@@ -83,16 +89,8 @@ public class InventorySystem : MonoBehaviour
 			slotFromScript.GetChild();
 			SlotFromChild = slotFromScript.Child; // Получаем ссылку на обьект в слоте, которую надо переместить
 
-			slotFromScript.UnSelectSlot();
-
-			if (SlotFromChild.CompareTag("Weapon")) 
-			{
-				slotFromScript.player.UnBringWeapon();
-			}
-
-			slotFromScript.isSlotHaveItem = false;
-
-			isFull[IdSlotFrom] = false;
+			isSelectSlot(IdSlotFrom, false);
+			ChangeHaveItemState(IdSlotFrom, false);
 
 		    SlotTo = slots[IdSlotTo];
 
@@ -102,9 +100,8 @@ public class InventorySystem : MonoBehaviour
 
     	    SlotToChild.GetComponent<Item>().id = slotToScript.i; //Меняем id обьекта на новый, нового слота
 
-    	    slotToScript.isSlotHaveItem = true;
-
-    	    isFull[IdSlotTo] = true;
+    	    isSelectSlot(IdSlotTo, true);
+    	    ChangeHaveItemState(IdSlotTo, true);
 
     	    Destroy(SlotFromChild.gameObject); //Удаляем старый обьект в старом слоте
 		}
