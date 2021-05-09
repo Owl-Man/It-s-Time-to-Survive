@@ -10,7 +10,7 @@ public class InventorySystem : MonoBehaviour
 
 	public bool[] isFull;
 	public GameObject[] slots;
-
+	public Slot[] slotScripts; //SLOT COMPONENT CASHED IN CONTAINER
 	public GameObject FoodUseButton;
 	public GameObject AttackButton;
 
@@ -59,38 +59,38 @@ public class InventorySystem : MonoBehaviour
 
 	public void isSelectSlot(int id, bool state) //Global selecting or unselecting any slot
 	{
-		slot = slots[id].GetComponent<Slot>();
-		slot.ChangeSlotUsingState(state);
+		slot = slotScripts[id];
 
-		slot.GetChild();
-
-		if (slot.Child.CompareTag("Weapon")) 
-		{
-			slot.player.BringWeaponState(state);
-		}
+		slot.MainChangeSlotUsingState(state);
 	}
 
 	public void ChangeHaveItemState(int id, bool state) 
 	{
-		slots[id].GetComponent<Slot>();
+		slot = slotScripts[id];
 
 		slot.isSlotHaveItem = state;
 
 		isFull[id] = state;
 	}
 
+	public void AddOrDicreaseItems(int id, int count) => slotScripts[id].CountOfItems += count;
+
 	public void TransportItemToOtherSlot(int IdSlotFrom, int IdSlotTo) //Перемещение обьекта из одного слота в другой
 	{
 		try 
 		{
-			slotFromScript = slots[IdSlotFrom].GetComponent<Slot>();
-			slotToScript = slots[IdSlotTo].GetComponent<Slot>();
+			slotFromScript = slotScripts[IdSlotFrom];
+			slotToScript = slotScripts[IdSlotTo];
 
 			slotFromScript.GetChild();
 			SlotFromChild = slotFromScript.Child; // Получаем ссылку на обьект в слоте, которую надо переместить
 
 			isSelectSlot(IdSlotFrom, false);
 			ChangeHaveItemState(IdSlotFrom, false);
+
+			int CountOfItemsSlotFrom = slotScripts[IdSlotFrom].CountOfItems;
+
+			AddOrDicreaseItems(IdSlotFrom, -CountOfItemsSlotFrom);
 
 		    SlotTo = slots[IdSlotTo];
 
@@ -102,6 +102,8 @@ public class InventorySystem : MonoBehaviour
 
     	    isSelectSlot(IdSlotTo, true);
     	    ChangeHaveItemState(IdSlotTo, true);
+
+			AddOrDicreaseItems(IdSlotTo, CountOfItemsSlotFrom);
 
     	    Destroy(SlotFromChild.gameObject); //Удаляем старый обьект в старом слоте
 		}

@@ -1,21 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class UseFood : MonoBehaviour
+public class UseFood : LinkManager
 {
 	public Food food;
-	private PlayerController player;
+	private Indicators indicators;
 
-	private void Start() 
-	{
-		player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-	}
+	private void Start() => indicators = ManagerIndicators;
 
 	public void EatFood() 
 	{
-		player.health += food.heal;
-		player.satiety += food.satiety;
+		indicators.health += food.heal;
+		indicators.satiety += food.satiety;
 
 		Debug.Log("Eaten, +" + food.heal + " hearth, +" + food.satiety + " satiety");
 	}

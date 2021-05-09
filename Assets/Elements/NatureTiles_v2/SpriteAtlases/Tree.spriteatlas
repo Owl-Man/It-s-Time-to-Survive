@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Tree
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 565952e7e3f685443ae701bb54d78e30, type: 3}
+    - {fileID: 2800000, guid: c5db9941db6535334ba84873125fa6fa, type: 3}
+    - {fileID: 2800000, guid: 7244d2bfb8c916aa484dccda0f60b349, type: 3}
+    - {fileID: 2800000, guid: c2466a507d52583a79da62865aa26642, type: 3}
+    - {fileID: 2800000, guid: 10da7d2111996f89d87d3e5c6def5c0d, type: 3}
+    - {fileID: 2800000, guid: a6ef5df709ed7c35a9631488a0a5d877, type: 3}
+    - {fileID: 2800000, guid: f3cdb77ae15a52ac6afa15b4c41f1165, type: 3}
+    - {fileID: 2800000, guid: 59542ff20281818ca96b6fe099db4b7d, type: 3}
+    - {fileID: 2800000, guid: 71497da6578560269807ff9da1645dba, type: 3}
+    - {fileID: 2800000, guid: b58047d707231ed2db67abf06440e5e0, type: 3}
+    - {fileID: 2800000, guid: dcec0c676189f8fd9be7b4ccce950743, type: 3}
+    - {fileID: 2800000, guid: 90f46b441a02a57e58433707e9cba76c, type: 3}
+    - {fileID: 2800000, guid: f5d62403edc1b260281d31fe27e1e9cf, type: 3}
+    - {fileID: 2800000, guid: b2cb59fdbe68601888ecee0f9a33f8cf, type: 3}
+    - {fileID: 2800000, guid: 7fcb98e83124d0b34b7571db4c920883, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c2466a507d52583a79da62865aa26642, type: 3}
+  - {fileID: 21300000, guid: 10da7d2111996f89d87d3e5c6def5c0d, type: 3}
+  - {fileID: 21300000, guid: c5db9941db6535334ba84873125fa6fa, type: 3}
+  - {fileID: 21300000, guid: 59542ff20281818ca96b6fe099db4b7d, type: 3}
+  - {fileID: 21300000, guid: f5d62403edc1b260281d31fe27e1e9cf, type: 3}
+  - {fileID: 21300000, guid: 90f46b441a02a57e58433707e9cba76c, type: 3}
+  - {fileID: 21300000, guid: 71497da6578560269807ff9da1645dba, type: 3}
+  - {fileID: 21300000, guid: dcec0c676189f8fd9be7b4ccce950743, type: 3}
+  - {fileID: 21300000, guid: b58047d707231ed2db67abf06440e5e0, type: 3}
+  - {fileID: 21300000, guid: 565952e7e3f685443ae701bb54d78e30, type: 3}
+  - {fileID: 21300000, guid: a6ef5df709ed7c35a9631488a0a5d877, type: 3}
+  - {fileID: 21300000, guid: 7fcb98e83124d0b34b7571db4c920883, type: 3}
+  - {fileID: 21300000, guid: f3cdb77ae15a52ac6afa15b4c41f1165, type: 3}
+  - {fileID: 21300000, guid: b2cb59fdbe68601888ecee0f9a33f8cf, type: 3}
+  - {fileID: 21300000, guid: 7244d2bfb8c916aa484dccda0f60b349, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - tree96x96transparentanimated3
+  - tree96x96transparentanimated4
+  - tree96x96transparentanimated1
+  - tree96x96transparentanimated7
+  - tree96x96transparentanimated12
+  - tree96x96transparentanimated11
+  - tree96x96transparentanimated8
+  - tree96x96transparentanimated10
+  - tree96x96transparentanimated9
+  - tree96x96transparent
+  - tree96x96transparentanimated5
+  - tree96x96transparentanimated14
+  - tree96x96transparentanimated6
+  - tree96x96transparentanimated13
+  - tree96x96transparentanimated2
+  m_RenderDataMap: {}
+  m_Tag: Tree
+  m_IsVariant: 0

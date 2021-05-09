@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawn : MonoBehaviour
+public class Spawn : LinkManager
 {
     public GameObject item;
     private Transform player;
 
-    private void Start()
-    {
-    	player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    private void Start() => player = ManagerPlayerObject.transform;
 
     public void SpawnDroppedItem() 
     {

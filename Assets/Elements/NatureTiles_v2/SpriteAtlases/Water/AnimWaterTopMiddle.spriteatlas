@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AnimWaterTopMiddle
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: bc3fdb3b860515110ab1aa55a470b494, type: 3}
+    - {fileID: 2800000, guid: 551f70a54596ce0778b45162534d6605, type: 3}
+    - {fileID: 2800000, guid: 53a0e8539136b362aad5efaac33ff5cc, type: 3}
+    - {fileID: 2800000, guid: 02795c98aae0b147e8a145c2baac1af1, type: 3}
+    - {fileID: 2800000, guid: 8e2287ab3550ab610a9e2ba9f8c975b8, type: 3}
+    - {fileID: 2800000, guid: f608340f9a3951632a185eb3571d16c0, type: 3}
+    - {fileID: 2800000, guid: e686dc0e5072fda7da7562d6509cecf6, type: 3}
+    - {fileID: 2800000, guid: a825bc4e916afa76ebe0b68379e64f12, type: 3}
+    - {fileID: 2800000, guid: 127351f94b5d095868328e5ea796ae76, type: 3}
+    - {fileID: 2800000, guid: 30684351dd64d7e89ad390b851a096a9, type: 3}
+    - {fileID: 2800000, guid: 5c38cdb2dc363ff4fadf3dd8227783f5, type: 3}
+    - {fileID: 2800000, guid: ba515309b61ec044086542651cab93ac, type: 3}
+    - {fileID: 2800000, guid: 0667992f1e6ddb1d08c0f55a81547b2a, type: 3}
+    - {fileID: 2800000, guid: 85d04ab931ac194ad8be5f9feeee271e, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 30684351dd64d7e89ad390b851a096a9, type: 3}
+  - {fileID: 21300000, guid: 5c38cdb2dc363ff4fadf3dd8227783f5, type: 3}
+  - {fileID: 21300000, guid: 53a0e8539136b362aad5efaac33ff5cc, type: 3}
+  - {fileID: 21300000, guid: 551f70a54596ce0778b45162534d6605, type: 3}
+  - {fileID: 21300000, guid: 02795c98aae0b147e8a145c2baac1af1, type: 3}
+  - {fileID: 21300000, guid: ba515309b61ec044086542651cab93ac, type: 3}
+  - {fileID: 21300000, guid: 85d04ab931ac194ad8be5f9feeee271e, type: 3}
+  - {fileID: 21300000, guid: 127351f94b5d095868328e5ea796ae76, type: 3}
+  - {fileID: 21300000, guid: bc3fdb3b860515110ab1aa55a470b494, type: 3}
+  - {fileID: 21300000, guid: 8e2287ab3550ab610a9e2ba9f8c975b8, type: 3}
+  - {fileID: 21300000, guid: e686dc0e5072fda7da7562d6509cecf6, type: 3}
+  - {fileID: 21300000, guid: a825bc4e916afa76ebe0b68379e64f12, type: 3}
+  - {fileID: 21300000, guid: f608340f9a3951632a185eb3571d16c0, type: 3}
+  - {fileID: 21300000, guid: 0667992f1e6ddb1d08c0f55a81547b2a, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - rivertop64x64transparentanimated10
+  - rivertop64x64transparentanimated11
+  - rivertop64x64transparentanimated3
+  - rivertop64x64transparentanimated2
+  - rivertop64x64transparentanimated4
+  - rivertop64x64transparentanimated12
+  - rivertop64x64transparentanimated14
+  - rivertop64x64transparentanimated9
+  - rivertop64x64transparentanimated1
+  - rivertop64x64transparentanimated5
+  - rivertop64x64transparentanimated7
+  - rivertop64x64transparentanimated8
+  - rivertop64x64transparentanimated6
+  - rivertop64x64transparentanimated13
+  m_RenderDataMap: {}
+  m_Tag: AnimWaterTopMiddle
+  m_IsVariant: 0
