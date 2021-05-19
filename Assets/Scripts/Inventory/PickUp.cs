@@ -1,40 +1,53 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 public class PickUp : LinkManager
 {
     private InventorySystem inventory;
     public GameObject slotButton; // item in slot
-    
 
     private GameObject child;
+
+    private Item item;
+
+    private bool isPickedUp = false;
 
     private void Start() => inventory = ManagerInventory;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isPickedUp == false)
         {
+            isPickedUp = true;
+            
             for (int i = 0; i < inventory.slots.Length; i++)
             {
                 inventory.slotScripts[i].GetChild();
                 child = inventory.slotScripts[i].Child;
 
-				if (child != null && slotButton.GetComponent<Item>().item == child.GetComponent<Item>().item) 
+                if (child != null)
+                    item = child.GetComponent<Item>();
+
+				if (child != null && slotButton.GetComponent<Item>().item == item.item
+                && inventory.slotScripts[i].CountOfItems + 1 <= item.MaxStackCountInSlot) 
 				{
-					inventory.slotScripts[i].CountOfItems++;
-                    
+                    AddItem(i);
                     break;
 				}
+                else if (item != null && inventory.slotScripts[i].CountOfItems + 1 > item.MaxStackCountInSlot)
+                {
+                    i++;
+                }
 
                 if (inventory.isFull[i] == false)
                 {
-					AddItem(i);
+					AddItemMain(i);
                     break;
                 }
             }
         }
     }
 
-    private void AddItem(int i)
+    private void AddItemMain(int i)
     {
         inventory.isFull[i] = true;
 
@@ -46,7 +59,14 @@ public class PickUp : LinkManager
 
         inventory.slotScripts[i].isSlotHaveItem = true;
 
-        inventory.slotScripts[i].CountOfItems++;
+        AddItem(i);
+    }
+
+    private void AddItem(int i) 
+    {
+        inventory.ChangeItemsCount(i, 1);
+
+        inventory.slotScripts[i].UpdateItemsCountField();
 
         Destroy(gameObject);
     }

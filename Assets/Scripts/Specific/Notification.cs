@@ -11,35 +11,23 @@ public class Notification : MonoBehaviour
 
     private void Start() 
     {
-        if (PlayerPrefs.GetInt("isChannelCreated") != 1) 
-        {
-            CreateNotificationChannel();
-        }
+        if (PlayerPrefs.GetInt("isChannelCreated") != 1) CreateNotificationChannel();
     }
 
     void OnApplicationPause (bool pauseStatus) 
     {
         ispaused = pauseStatus;
 
-        if (ispaused == true) 
-        {
-            TrySendNotification();
-        }
+        if (ispaused == true) TrySendNotification();
     }
 
-    void OnApplicationQuit ()
-    {
-        TrySendNotification();
-    }
+    void OnApplicationQuit () => TrySendNotification();
 
     public void TrySendNotification()
     {
         int isSending = UnityEngine.Random.Range(1, 6); //Шанс отправки уведомления
 
-        if (isSending == 1) 
-        {
-            SendNotification();
-        }
+        if (isSending == 1) SendNotification();
     }
 
     public void CreateNotificationChannel() 

@@ -110,6 +110,7 @@ MonoBehaviour:
   id: 0
   isItemSelected: 0
   item: Bow
+  MaxStackCountInSlot: 1
 --- !u!114 &6734371813705602711
 MonoBehaviour:
   m_ObjectHideFlags: 0

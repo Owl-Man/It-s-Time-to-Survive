@@ -4,9 +4,9 @@ using System.Collections;
 
 public class SceneTransition : MonoBehaviour 
 {
-    public string scene;
+    [SerializeField] private string scene;
 
-    public GameObject TransitionButton;
+    [SerializeField] private GameObject TransitionButton;
     
     private void OnTriggerEnter2D(Collider2D other) => TransitionButton.SetActive(true);
     

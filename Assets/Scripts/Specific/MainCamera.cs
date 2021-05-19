@@ -20,6 +20,7 @@ public class MainCamera : MonoBehaviour
         offset = new Vector2(Mathf.Abs(offset.x), offset.y);
         FindPlayer(isLeft);
     }
+
     void Update()
     {
         if (player)
@@ -47,6 +48,7 @@ public class MainCamera : MonoBehaviour
             Vector3 currentPosition = Vector3.Lerp(transform.position, target, dumping * Time.deltaTime);
             transform.position = currentPosition;
         }
+        
         transform.position = new Vector3
             (
             Mathf.Clamp(transform.position.x, leftLimit, rightLimit),
@@ -59,12 +61,8 @@ public class MainCamera : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lastX = Mathf.RoundToInt(player.position.x);
         if (playerIsLeft)
-        {
             transform.position = new Vector3(player.position.x - offset.x, player.position.y - offset.y, transform.position.z);
-        }
         else
-        {
             transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
-        }
     }
 }

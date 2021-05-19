@@ -1,27 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slot : LinkManager
 {
     private InventorySystem inventory;
-
-    [HideInInspector]
-    public PlayerController player;
-
+    [HideInInspector] public PlayerController player;
     private ButtonsController buttons_controller;
 
     public int i;
-
     public int CountOfItems = 0;
 
+    [Header("Slot states")]
     public bool isSlotUse = false;
     public bool isSlotChest;
+    public bool isSlotHaveItem = false; // for transport SlotTo
 
+    [Header("Other")]
     public GameObject UseSlotHighLightning;
 
-    [HideInInspector]
-    public GameObject Child;
+    [HideInInspector] public GameObject Child;
 
-    public bool isSlotHaveItem = false; // for transport SlotTo
+    public Text ItemsCountField;
+
 
     private void Start()
     {
@@ -30,7 +30,11 @@ public class Slot : LinkManager
         inventory = ManagerInventory;
 
         buttons_controller = inventory.buttonsCntrl;
+
+        UpdateItemsCountField();
     }
+
+    public void UpdateItemsCountField() => ItemsCountField.text = CountOfItems.ToString();
 
     public void DropItem() //Выброс предмета из инвентаря и спавн обьекта на рандомной точке, рядом с персонажем
     {
@@ -38,19 +42,12 @@ public class Slot : LinkManager
         {
             child.GetComponent<Spawn>().SpawnDroppedItem();
 
-            if (PlayerPrefs.GetInt("IdSlotThatUsed") == i)
-            {
-                MainChangeSlotUsingState(false);
-
-                if (child.CompareTag("Weapon") || child.CompareTag("Bow"))
-                {
-                    player.BringWeaponState(false);
-                }
-            }
+            if (PlayerPrefs.GetInt("IdSlotThatUsed") == i) MainChangeSlotUsingState(false);
 
             isSlotHaveItem = false;
             inventory.isFull[i] = false;
-            GameObject.Destroy(child.gameObject);
+
+            RemoveItems(1);
         }
     }
 
@@ -86,15 +83,15 @@ public class Slot : LinkManager
         }
     }
 
-    public void MainChangeSlotUsingState(bool state) /* <-----<-----<----<-- MAIN CHANGER SLOT USING STATE -<-----<-----<----<----<*/
+    public void MainChangeSlotUsingState(bool state) // <-----<-----<----<-- MAIN SYSTEM CHANGER SLOT USING STATE
     {
         GetChild();
-        
+
         isSelectSlot(state);
 
         if (Child == null) return;
 
-		BringItemState(state);
+        BringItemState(state);
 
         Child.GetComponent<Item>().isItemSelected = state;
     }
@@ -104,7 +101,7 @@ public class Slot : LinkManager
         if (isSlotChest == true) state = false;
 
         GetChild();
-        
+
         if (Child.CompareTag("Food"))
         {
             inventory.FoodUseButton.SetActive(state);
@@ -120,19 +117,6 @@ public class Slot : LinkManager
             if (state == true) inventory.InsertDescriptionFieldsWeapon(Child.gameObject); //Передача описания обьекта в панель типа "оружие"
         }
     }
-
-    public void OnFoodUseButtonClick()
-    {
-        GetChild();
-
-        if (Child.GetComponent<Item>().isItemSelected == true)
-        {
-            Child.GetComponent<UseFood>().EatFood();
-            MainChangeSlotUsingState(false);
-            Destroy(Child.gameObject);
-        }
-    }
-
     private void isSelectSlot(bool state) //Выделение слота
     {
         UseSlotHighLightning.SetActive(state);
@@ -152,6 +136,35 @@ public class Slot : LinkManager
 
         buttons_controller.IsOnItemButtonClick(state);
     }
+
+    public void OnFoodUseButtonClick()
+    {
+        GetChild();
+
+        if (Child.GetComponent<Item>().isItemSelected == true)
+        {
+            Child.GetComponent<UseFood>().EatFood();
+            MainChangeSlotUsingState(false);
+
+            RemoveItems(1);
+        }
+    }
+
+    private void RemoveItems(int count)
+    {
+        CountOfItems -= count;
+        UpdateItemsCountField();
+
+        foreach (Transform child in transform)
+        {
+            if (CountOfItems == 0)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+
+    }
+
 
     public void GetChild() //for get and globaling child gameobject
     {

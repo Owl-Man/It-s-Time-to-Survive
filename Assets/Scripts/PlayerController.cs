@@ -1,24 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header ("Values")]
     public float speed;
-    
+    public float reloadAttacking;
+    private int AttackCombo = 1;
+    private bool isAttacking;
+    private Vector2 moveInput;
+    private Vector2 moveVelocity;
+
+    public GameObject attackHitBox;
+    [HideInInspector] public WeaponItem weaponScript;
+    private Slot slotScript;
+    public Image attackButtonSprite;
+
+    [Header("Other")]
+    public Animator animator;
     public Joystick joystick;
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
     public InventorySystem inventory;
-    
-    private WeaponItem weaponScript;
-    private Slot slotScript;
 
-    private Vector2 moveInput;
-    private Vector2 moveVelocity;
-    public Animator animator;
-
-    public Image attackButtonSprite;
 
     private void Update()
     {
@@ -43,6 +49,27 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRun", true);
             sprite.flipX = true;
         }
+    }
+
+    public void OnAttackButtonClick()
+    {
+        if (isAttacking == true) return;
+        else isAttacking = true;
+
+        StartCoroutine(Attacking());
+    }
+
+    private IEnumerator Attacking() 
+    {
+        if (AttackCombo <= 5) animator.Play("SwordAttack" + AttackCombo);
+        else AttackCombo = 1;
+
+        attackHitBox.SetActive(true);
+        yield return new WaitForSeconds(reloadAttacking);
+        AttackCombo++;
+        animator.Play("Swordidle");
+        attackHitBox.SetActive(false);
+        isAttacking = false;
     }
 
     public void BringWeaponState(bool state) 

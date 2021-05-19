@@ -110,6 +110,7 @@ MonoBehaviour:
   id: 0
   isItemSelected: 0
   item: Legendary Sword
+  MaxStackCountInSlot: 1
 --- !u!114 &4772210498700844765
 MonoBehaviour:
   m_ObjectHideFlags: 0

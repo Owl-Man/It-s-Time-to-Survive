@@ -110,6 +110,7 @@ MonoBehaviour:
   id: 0
   isItemSelected: 0
   item: Reinforced Sword
+  MaxStackCountInSlot: 1
 --- !u!114 &6894625613397643751
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -110,6 +110,7 @@ MonoBehaviour:
   id: 0
   isItemSelected: 0
   item: Sword
+  MaxStackCountInSlot: 1
 --- !u!114 &7396956366329734827
 MonoBehaviour:
   m_ObjectHideFlags: 0

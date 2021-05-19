@@ -127,3 +127,4 @@ MonoBehaviour:
   id: 0
   isItemSelected: 0
   item: Apple
+  MaxStackCountInSlot: 30

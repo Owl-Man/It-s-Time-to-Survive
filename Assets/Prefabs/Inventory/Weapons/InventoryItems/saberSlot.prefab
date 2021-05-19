@@ -110,6 +110,7 @@ MonoBehaviour:
   id: 0
   isItemSelected: 0
   item: Saber
+  MaxStackCountInSlot: 1
 --- !u!114 &425930848206557835
 MonoBehaviour:
   m_ObjectHideFlags: 0

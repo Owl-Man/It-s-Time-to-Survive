@@ -73,7 +73,7 @@ public class InventorySystem : MonoBehaviour
 		isFull[id] = state;
 	}
 
-	public void AddOrDicreaseItems(int id, int count) => slotScripts[id].CountOfItems += count;
+	public void ChangeItemsCount(int id, int count) => slotScripts[id].CountOfItems += count;
 
 	public void TransportItemToOtherSlot(int IdSlotFrom, int IdSlotTo) //Перемещение обьекта из одного слота в другой
 	{
@@ -90,7 +90,9 @@ public class InventorySystem : MonoBehaviour
 
 			int CountOfItemsSlotFrom = slotScripts[IdSlotFrom].CountOfItems;
 
-			AddOrDicreaseItems(IdSlotFrom, -CountOfItemsSlotFrom);
+			ChangeItemsCount(IdSlotFrom, -CountOfItemsSlotFrom);
+
+			slotScripts[IdSlotFrom].UpdateItemsCountField();
 
 		    SlotTo = slots[IdSlotTo];
 
@@ -103,12 +105,15 @@ public class InventorySystem : MonoBehaviour
     	    isSelectSlot(IdSlotTo, true);
     	    ChangeHaveItemState(IdSlotTo, true);
 
-			AddOrDicreaseItems(IdSlotTo, CountOfItemsSlotFrom);
+			ChangeItemsCount(IdSlotTo, CountOfItemsSlotFrom);
+
+			slotScripts[IdSlotTo].UpdateItemsCountField();
 
     	    Destroy(SlotFromChild.gameObject); //Удаляем старый обьект в старом слоте
 		}
 		catch(Exception ex) 
 		{
+			Debug.Log(ex);
 			//nothing in slot, bruh moment
 		}
 	}

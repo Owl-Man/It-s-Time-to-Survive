@@ -8,6 +8,7 @@ TagManager:
   - ButtonsController
   - Weapon
   - Bow
+  - WeaponHitBox
   layers:
   - Default
   - TransparentFX
