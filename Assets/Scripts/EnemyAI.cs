@@ -154,7 +154,7 @@ public class EnemyAI : LinkManager
     {
         animator.Play(DeathAnimationKey);
         collider.enabled = false;
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.8f);
         Dron.SetActive(false);
     }
 }

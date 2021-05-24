@@ -9,6 +9,8 @@ public class Notification : MonoBehaviour
 
     int timeForNotification;
 
+    public string GameName, NotificationTitle, NotificationText;
+
     private void Start() 
     {
         if (PlayerPrefs.GetInt("isChannelCreated") != 1) CreateNotificationChannel();
@@ -37,7 +39,7 @@ public class Notification : MonoBehaviour
         var channel = new AndroidNotificationChannel()
         {
             Id = "channel_id",
-            Name = "It's time to survive",
+            Name = GameName,
             Importance = Importance.High,
             Description = "Generic notifications",
         };
@@ -48,8 +50,8 @@ public class Notification : MonoBehaviour
     public void SendNotification() 
     {
         var notification = new AndroidNotification();
-        notification.Title = "Время выживать!";
-        notification.Text = "И конечно же уничтожать врагов!";
+        notification.Title = NotificationTitle;
+        notification.Text = NotificationText;
         notification.LargeIcon = "icon_0";
         notification.SmallIcon = "icon_1";
         timeForNotification = UnityEngine.Random.Range(550, 2600);
