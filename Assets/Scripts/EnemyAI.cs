@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EnemyAI : LinkManager
 {
+    [Header ("Values")]
     public int Damage = 1;
     public int health = 1;
     private float timeBtwAttack;
@@ -26,11 +27,13 @@ public class EnemyAI : LinkManager
     PlayerController playerController;
     Indicators indicators;
 
-    bool chill, angry, goback = false;
+    [Header ("AnimationKeys")]
     public string DeathAnimationKey;
     public string HitAnimationKey;
     public string AttackAnimationKey;
     public string IdleAnimationKey;
+
+    bool chill, angry, goback = false;
 
     void Start()
     {
