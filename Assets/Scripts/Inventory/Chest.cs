@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Chest : LinkManager
+public class Chest : MonoBehaviour
 {
-	private InventorySystem inventory;
+	public InventorySystem inventory;
+
 	public GameObject ChestPanel;
 
 	public GameObject[] ChestContainer;
-
-	private void Start() => inventory = ManagerInventory;
 
 	private void OnTriggerEnter2D(Collider2D other) 
 	{

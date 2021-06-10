@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Collections;
 
-public class Slot : LinkManager
+public class Slot : MonoBehaviour
 {
+    private PlayerController player;
     private InventorySystem inventory;
-    [HideInInspector] public PlayerController player;
     private ButtonsController buttons_controller;
 
     public int i;
@@ -17,6 +19,7 @@ public class Slot : LinkManager
 
     [Header("Other")]
     public GameObject UseSlotHighLightning;
+    public LinkManager link;
 
     [HideInInspector] public GameObject Child;
 
@@ -25,9 +28,9 @@ public class Slot : LinkManager
 
     private void Start()
     {
-        player = ManagerPlayerCntrl;
+        player = link.playerController;
 
-        inventory = ManagerInventory;
+        inventory = player.inventory;
 
         buttons_controller = inventory.buttonsCntrl;
 
@@ -51,7 +54,7 @@ public class Slot : LinkManager
         }
     }
 
-    public void OnSlotUseButtonClick()  //Нажатие на кнопку слота
+    void OnSlotUseButtonClick()  //Нажатие на кнопку слота
     {
         if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) //Если слот до этого не был выделен
         {
@@ -141,10 +144,11 @@ public class Slot : LinkManager
     {
         GetChild();
 
-        if (Child.GetComponent<Item>().isItemSelected == true)
+        if (Child != null && Child.GetComponent<Item>().isItemSelected == true)
         {
-            Child.GetComponent<UseFood>().EatFood();
             MainChangeSlotUsingState(false);
+
+            Child.GetComponent<UseFood>().EatFood();
 
             RemoveItems(1);
         }

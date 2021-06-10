@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - Bow
   - WeaponHitBox
+  - LinkManager
   layers:
   - Default
   - TransparentFX

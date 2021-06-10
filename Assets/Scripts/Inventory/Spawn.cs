@@ -1,11 +1,13 @@
 using UnityEngine;
 
-public class Spawn : LinkManager
+public class Spawn : MonoBehaviour
 {
     public GameObject item;
+
+    public LinkManager links;
     private Transform player;
 
-    private void Start() => player = ManagerPlayerObject.transform;
+    private void Start() => player = links.PlayerObject.transform;
 
     public void SpawnDroppedItem()
     {

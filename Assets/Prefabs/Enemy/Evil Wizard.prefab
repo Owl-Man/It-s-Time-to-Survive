@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6873831309034574181}
   - component: {fileID: 6873831309034574182}
-  - component: {fileID: 6873831309034574183}
   - component: {fileID: 6873831309034574104}
   - component: {fileID: 6873831309034574105}
   - component: {fileID: 6873831309034574106}
   - component: {fileID: 6873831309034574180}
+  - component: {fileID: 1720556893961137511}
   m_Layer: 0
   m_Name: Evil Wizard
   m_TagString: Untagged
@@ -88,36 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6873831309034574183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6873831309034574107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f092ce675cb5295acd31b01bdc8382, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ManagerPlayerObject: {fileID: 0}
-  ManagerPlayerCntrl: {fileID: 0}
-  ManagerInventory: {fileID: 0}
-  ManagerIndicators: {fileID: 0}
-  Damage: 1
-  health: 2
-  startTimeBtwAttack: 5
-  rayDistance: 1.5
-  stoppingDistance: 5
-  speed: 4
-  positionOfPatrol: 5
-  point: {fileID: 0}
-  collider: {fileID: 6873831309034574105}
-  Dron: {fileID: 6873831309034574107}
-  DeathAnimationKey: Death
-  HitAnimationKey: WizardHurt
-  AttackAnimationKey: Attack
-  IdleAnimationKey: idle
 --- !u!50 &6873831309034574104
 Rigidbody2D:
   serializedVersion: 4
@@ -210,3 +180,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1720556893961137511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873831309034574107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45aa2ad5594b654fa9d8165f4ac981b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ManagerPlayerObject: {fileID: 0}
+  ManagerPlayerCntrl: {fileID: 0}
+  ManagerInventory: {fileID: 0}
+  ManagerIndicators: {fileID: 0}
+  ManagerValues: {fileID: 0}
+  ManagerRedMoon: {fileID: 0}
+  Damage: 1
+  health: 2
+  startTimeBtwAttack: 5
+  rayDistance: 1.5
+  stoppingDistance: 5
+  speed: 4
+  positionOfPatrol: 5
+  point: {fileID: 0}
+  collider: {fileID: 0}
+  Dron: {fileID: 0}
+  DeathAnimationKey: Death
+  HitAnimationKey: WizardHurt
+  AttackAnimationKey: Attack
+  IdleAnimationKey: idle

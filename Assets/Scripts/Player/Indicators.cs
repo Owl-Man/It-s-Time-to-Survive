@@ -21,6 +21,14 @@ public class Indicators : MonoBehaviour
 
     public float HungeringSpeed;
 
+    public Animator animator;
+
+    public GameObject GameOverPanel;
+
+    private bool isSatietyDying;
+
+    private void Start() => StartCoroutine(Hungering());
+
     private void Update()
     {
         HealhDiagnostic();
@@ -56,7 +64,7 @@ public class Indicators : MonoBehaviour
 
         if (health <= 0)
         {
-            //StartCoroutine(DiePlayer());
+            StartCoroutine(DiePlayer());
         }
 
         if (health < 0) 
@@ -92,9 +100,15 @@ public class Indicators : MonoBehaviour
             }
         }
 
-        if (satiety <= 0) 
+        if (satiety <= 0 && isSatietyDying == false) 
         {
+            isSatietyDying = true;
             StartCoroutine(SatietyDying());
+        }
+        else if (satiety > 0)
+        {
+            isSatietyDying = false;
+            StopCoroutine(SatietyDying());
         }
 
         if (satiety < 0) 
@@ -107,11 +121,21 @@ public class Indicators : MonoBehaviour
     {
         yield return new WaitForSeconds(3.5f);
         health--;
+        StartCoroutine(SatietyDying());
     }
 
     IEnumerator Hungering() 
     {
         yield return new WaitForSeconds(HungeringSpeed);
         satiety--;
+        StartCoroutine(Hungering());
+    }
+
+    IEnumerator DiePlayer() 
+    {
+        animator.SetBool("isDead", true);
+        yield return new WaitForSeconds(1);
+        GameOverPanel.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

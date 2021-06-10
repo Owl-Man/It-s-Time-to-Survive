@@ -145,4 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f240b4274bc7b93b9ee44907ff7e035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  links: {fileID: 0}
   slotButton: {fileID: 432160714749325777, guid: ea10da48c5f7275758350b67f13b8f9d, type: 3}

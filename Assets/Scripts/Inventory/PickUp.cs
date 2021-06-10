@@ -1,7 +1,11 @@
 using UnityEngine;
-public class PickUp : LinkManager
+
+public class PickUp : MonoBehaviour
 {
+    public LinkManager links;
+
     private InventorySystem inventory;
+
     public GameObject slotButton; // item in slot
 
     private GameObject child;
@@ -10,7 +14,7 @@ public class PickUp : LinkManager
 
     private bool isPickedUp = false;
 
-    private void Start() => inventory = ManagerInventory;
+    private void Start() => inventory = links.inventory;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -51,6 +55,10 @@ public class PickUp : LinkManager
         inventory.isFull[i] = true;
 
         GameObject PickUpedItem = Instantiate(slotButton, inventory.slots[i].transform);
+
+        PickUpedItem.GetComponent<Spawn>().links = links;
+
+        if (PickUpedItem.CompareTag("Food")) PickUpedItem.GetComponent<UseFood>().links = links;
 
         PickUpedItem.GetComponent<Item>().id = i;
 

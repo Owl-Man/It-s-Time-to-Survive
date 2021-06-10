@@ -1,11 +1,15 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using System;
+using System.Collections;
 
-public class GlobalLightControlller : MonoBehaviour 
+public class GlobalLightControlller : MonoBehaviour
 {
     public Light2D light;
+    public Values values;
     public float timeDayComing;
+
+    public GameObject[] AdditionalLights;
 
     public float DefaultNightTime;
     public float DefaultDayTime;
@@ -15,14 +19,17 @@ public class GlobalLightControlller : MonoBehaviour
 
     private bool isDay = true;
 
-    private void Start() 
+    private void Start()
     {
         DayTime = DefaultDayTime;
         NightTime = DefaultNightTime;
+        
+        AdditionalLightsUpdate();
 
         StartCoroutine(LightController());
     }
-    IEnumerator LightController() 
+
+    IEnumerator LightController()
     {
         yield return new WaitForSeconds(timeDayComing);
 
@@ -30,14 +37,13 @@ public class GlobalLightControlller : MonoBehaviour
         {
             light.intensity -= cof;
             DayTime = DefaultDayTime;
-        }    
-            
+        }
+
 
         if (light.intensity <= 0.15f && NightTime != 0) NightTime--; //Ночь наступила, ждет пока пройдет
 
 
-        if (light.intensity <= 0.15f && NightTime == 0) isDay = false; //Ночь прошла, переключает режим на переход в день
-
+        if (light.intensity <= 0.15f && NightTime == 0) isDay = false; //Ночь прошла, переключает режим на переход в ден
 
         if (light.intensity < 0.9f && isDay == false) // Увеличивается свет, наступает день
         {
@@ -45,11 +51,31 @@ public class GlobalLightControlller : MonoBehaviour
             NightTime = DefaultNightTime;
         }
 
-        if (light.intensity <= 0.15f && DayTime != 0) DayTime--; //Наступил день, ждет пока пройдет
+        AdditionalLightsUpdate();
 
+        if (light.intensity <= 0.15f && DayTime != 0) //Наступил день, ждет пока пройдет
+        {
+            DayTime--;
+            values.ChangeDaysValue(1);
+        }
 
         if (light.intensity >= 0.9f && isDay == false && DayTime == 0) isDay = true; //День прошел, переключает режим на переход в ночь
 
         StartCoroutine(LightController());
+    }
+
+    private void AdditionalLightsUpdate()
+    {
+        if (light.intensity <= 0.7) SetAllAdditionalLightsState(true);
+
+        if (light.intensity > 0.7) SetAllAdditionalLightsState(false);
+    }
+
+    private void SetAllAdditionalLightsState(bool state)
+    {
+        for (int i = 0; i < AdditionalLights.Length; i++)
+        {
+            AdditionalLights[i].SetActive(state);
+        }
     }
 }

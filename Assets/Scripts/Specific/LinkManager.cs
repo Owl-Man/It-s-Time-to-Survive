@@ -1,19 +1,17 @@
 using UnityEngine;
 
-public abstract class LinkManager : MonoBehaviour 
+public class LinkManager : MonoBehaviour 
 {
-    [HideInInspector] public GameObject ManagerPlayerObject;
+    public GameObject PlayerObject;
 
-    [HideInInspector] public PlayerController ManagerPlayerCntrl;
-    [HideInInspector] public InventorySystem ManagerInventory;
+    public PlayerController playerController;
+    public InventorySystem inventory;
 
-    [HideInInspector] public Indicators ManagerIndicators;
+    public Indicators indicators;
+    
+    public Values values;
 
-    private void Awake() 
-    {
-        ManagerPlayerObject = GameObject.FindGameObjectWithTag("Player");
-        ManagerPlayerCntrl = ManagerPlayerObject.GetComponent<PlayerController>();
-        ManagerInventory = ManagerPlayerObject.GetComponent<InventorySystem>();
-        ManagerIndicators = ManagerPlayerObject.GetComponent<Indicators>();
-    }
+    public RedMoonWave redMoonWave;
+
+    public GameObject FireBurningPlayer;
 }

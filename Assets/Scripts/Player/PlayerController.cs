@@ -6,6 +6,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
     [Header ("Values")]
+    
     public float speed;
     public float reloadAttacking;
     private int AttackCombo = 1;
@@ -14,23 +15,27 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVelocity;
 
     public GameObject attackHitBox;
+
     [HideInInspector] public WeaponItem weaponScript;
+
     private Slot slotScript;
+
     public Image attackButtonSprite;
 
     [Header("Other")]
+
     public Animator animator;
     public Joystick joystick;
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
     public InventorySystem inventory;
 
-
     private void Update()
     {
         moveInput = new Vector2(joystick.Horizontal, joystick.Vertical);
         moveVelocity = moveInput.normalized * speed;
     }
+
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
@@ -53,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttackButtonClick()
     {
+        if (animator.GetBool("isDead") == true) return;
+
         if (isAttacking == true) return;
         else isAttacking = true;
 
@@ -74,6 +81,8 @@ public class PlayerController : MonoBehaviour
 
     public void BringWeaponState(bool state) 
     {
+        if (animator.GetBool("isDead") == true) return;
+        
         if (state == true) 
         {
             inventory.AttackButton.SetActive(true);

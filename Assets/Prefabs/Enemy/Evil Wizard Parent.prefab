@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3488133762897368725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.397995, y: -0.72435737, z: 148.96469}
+  m_LocalPosition: {x: -17.35, y: -0.72435737, z: 148.96469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6750184038666304455}
@@ -69,6 +69,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6750184038666304455}
     m_Modifications:
+    - target: {fileID: 1720556893961137511, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 3488133763657520616}
+    - target: {fileID: 1720556893961137511, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+      propertyPath: point
+      value: 
+      objectReference: {fileID: 3488133762897368724}
+    - target: {fileID: 1720556893961137511, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720556893961137511, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 3488133763657520534}
+    - target: {fileID: 1720556893961137511, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 3488133763657520532}
+    - target: {fileID: 1720556893961137511, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 3488133763657520617}
     - target: {fileID: 6873831309034574107, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
       propertyPath: m_Name
       value: Evil Wizard
@@ -126,5 +150,25 @@ PrefabInstance:
 --- !u!4 &3488133763657520533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6873831309034574181, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+  m_PrefabInstance: {fileID: 8001935587679175920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &3488133763657520534 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6873831309034574182, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+  m_PrefabInstance: {fileID: 8001935587679175920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &3488133763657520616 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6873831309034574104, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+  m_PrefabInstance: {fileID: 8001935587679175920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &3488133763657520617 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6873831309034574105, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
+  m_PrefabInstance: {fileID: 8001935587679175920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3488133763657520532 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6873831309034574180, guid: 3917e04d0bc21570cac0e800e2bf34a6, type: 3}
   m_PrefabInstance: {fileID: 8001935587679175920}
   m_PrefabAsset: {fileID: 0}

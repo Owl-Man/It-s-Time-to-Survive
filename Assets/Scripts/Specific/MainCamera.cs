@@ -26,6 +26,7 @@ public class MainCamera : MonoBehaviour
         if (player)
         {
             int currentX = Mathf.RoundToInt(player.position.x);
+
             if (currentX > lastX)
             {
                 isLeft = false;
@@ -34,32 +35,34 @@ public class MainCamera : MonoBehaviour
             {
                 isLeft = true;
             }
+
             lastX = Mathf.RoundToInt(player.position.x);
 
             Vector3 target;
-            if (isLeft)
-            {
-                target = new Vector3(player.position.x - offset.x, player.position.y + offset.y, transform.position.z);
-            }
-            else
-            {
-                target = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
-            }
+
+            if (isLeft) target = new Vector3(player.position.x - offset.x, player.position.y + offset.y, transform.position.z);
+
+            else target = new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
+
             Vector3 currentPosition = Vector3.Lerp(transform.position, target, dumping * Time.deltaTime);
+
             transform.position = currentPosition;
         }
         
         transform.position = new Vector3
-            (
+        (
             Mathf.Clamp(transform.position.x, leftLimit, rightLimit),
             Mathf.Clamp(transform.position.y, bottomLimit, upperLimit),
             transform.position.z
-            );
+        );
     }
+    
     public void FindPlayer(bool playerIsLeft)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
         lastX = Mathf.RoundToInt(player.position.x);
+
         if (playerIsLeft)
             transform.position = new Vector3(player.position.x - offset.x, player.position.y - offset.y, transform.position.z);
         else
