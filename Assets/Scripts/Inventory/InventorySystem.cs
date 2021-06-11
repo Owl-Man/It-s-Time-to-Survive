@@ -10,10 +10,12 @@ public class InventorySystem : MonoBehaviour
 
     public bool[] isFull;
     public GameObject[] slots;
-    public Slot[] slotScripts; //SLOT COMPONENT CASHED IN CONTAINER
+    public Slot[] slotScripts; //SLOT COMPONENTS CASHED IN CONTAINER
+
     public GameObject FoodUseButton;
     public GameObject AttackButton;
 
+    public LinkManager links;
     public ButtonsController buttonsCntrl;
 
     private Weapon weapon;
@@ -39,6 +41,11 @@ public class InventorySystem : MonoBehaviour
 
     private int IdSlotFrom;
     private int IdSlotTo;
+
+    private void Awake() 
+    {
+        PlayerPrefs.SetInt("isAnySlotUsed", 0);
+    }
 
     public void InsertDescriptionFieldsWeapon(GameObject child) //Передача описания обьекта в панель типа "оружие"
     {
@@ -76,6 +83,34 @@ public class InventorySystem : MonoBehaviour
         isFull[id] = state;
     }
 
+    public void AddItemMain(int i, GameObject item, GameObject obj)
+    {
+        isFull[i] = true;
+
+        GameObject PickUpedItem = Instantiate(item, slots[i].transform);
+
+        PickUpedItem.GetComponent<Spawn>().links = links;
+
+        if (PickUpedItem.CompareTag("Food")) PickUpedItem.GetComponent<UseFood>().links = links;
+
+        PickUpedItem.GetComponent<Item>().id = i;
+
+        slotScripts[i].GetChild();
+
+        slotScripts[i].isSlotHaveItem = true;
+
+        AddItem(i, obj);
+    }
+
+    public void AddItem(int i, GameObject obj) 
+    {
+        ChangeItemsCount(i, 1);
+
+        slotScripts[i].UpdateItemsCountField();
+
+        Destroy(obj);
+    }
+
     public void ChangeItemsCount(int id, int count) => slotScripts[id].CountOfItems += count;
 
     public void TransportItemToOtherSlot(int IdSlotFrom, int IdSlotTo) //Перемещение обьекта из одного слота в другой 
@@ -91,9 +126,6 @@ public class InventorySystem : MonoBehaviour
 
             isSelectSlot(IdSlotFrom, false);
             ChangeHaveItemState(IdSlotFrom, false);
-
-            isSelectSlot(IdSlotTo, true);
-            ChangeHaveItemState(IdSlotTo, true);
 
             SlotTo = slots[IdSlotTo];
 
@@ -112,6 +144,9 @@ public class InventorySystem : MonoBehaviour
             ChangeItemsCount(IdSlotTo, CountOfItemsSlotFrom);
 
             slotScripts[IdSlotTo].UpdateItemsCountField();
+
+            isSelectSlot(IdSlotTo, true);
+            ChangeHaveItemState(IdSlotTo, true);
 
             Destroy(SlotFromChild.gameObject); //Удаляем старый обьект в старом слоте
         }

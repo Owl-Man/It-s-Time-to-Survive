@@ -33,7 +33,7 @@ public class PickUp : MonoBehaviour
 				if (child != null && slotButton.GetComponent<Item>().item == item.item
                 && inventory.slotScripts[i].CountOfItems + 1 <= item.MaxStackCountInSlot) 
 				{
-                    AddItem(i);
+                    inventory.AddItem(i, gameObject);
                     break;
 				}
                 else if (item != null && inventory.slotScripts[i].CountOfItems + 1 > item.MaxStackCountInSlot)
@@ -43,38 +43,10 @@ public class PickUp : MonoBehaviour
 
                 if (inventory.isFull[i] == false)
                 {
-					AddItemMain(i);
+					inventory.AddItemMain(i, slotButton, gameObject);
                     break;
                 }
             }
         }
-    }
-
-    private void AddItemMain(int i)
-    {
-        inventory.isFull[i] = true;
-
-        GameObject PickUpedItem = Instantiate(slotButton, inventory.slots[i].transform);
-
-        PickUpedItem.GetComponent<Spawn>().links = links;
-
-        if (PickUpedItem.CompareTag("Food")) PickUpedItem.GetComponent<UseFood>().links = links;
-
-        PickUpedItem.GetComponent<Item>().id = i;
-
-        inventory.slotScripts[i].GetChild();
-
-        inventory.slotScripts[i].isSlotHaveItem = true;
-
-        AddItem(i);
-    }
-
-    private void AddItem(int i) 
-    {
-        inventory.ChangeItemsCount(i, 1);
-
-        inventory.slotScripts[i].UpdateItemsCountField();
-
-        Destroy(gameObject);
     }
 }

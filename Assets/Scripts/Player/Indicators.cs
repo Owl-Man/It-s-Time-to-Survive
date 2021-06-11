@@ -24,18 +24,23 @@ public class Indicators : MonoBehaviour
     public Animator animator;
 
     public GameObject GameOverPanel;
+    public GameObject Pockets;
 
     private bool isSatietyDying;
 
-    private void Start() => StartCoroutine(Hungering());
-
-    private void Update()
+    private void Start() 
     {
-        HealhDiagnostic();
+        UpdateAllValues();
+        StartCoroutine(Hungering());
+    }
+
+    public void UpdateAllValues()
+    {
+        HealthDiagnostic();
         SatietyDiagnostic();
     }
 
-    private void HealhDiagnostic() 
+    public void HealthDiagnostic() 
     {
         if (health > numberOfLives)
         {
@@ -73,7 +78,7 @@ public class Indicators : MonoBehaviour
         }
     }
 
-    private void SatietyDiagnostic() 
+    public void SatietyDiagnostic() 
     {
         if (satiety > numberOfSatiety) 
         {
@@ -121,6 +126,7 @@ public class Indicators : MonoBehaviour
     {
         yield return new WaitForSeconds(3.5f);
         health--;
+        HealthDiagnostic();
         StartCoroutine(SatietyDying());
     }
 
@@ -128,6 +134,7 @@ public class Indicators : MonoBehaviour
     {
         yield return new WaitForSeconds(HungeringSpeed);
         satiety--;
+        SatietyDiagnostic();
         StartCoroutine(Hungering());
     }
 
@@ -136,6 +143,7 @@ public class Indicators : MonoBehaviour
         animator.SetBool("isDead", true);
         yield return new WaitForSeconds(1);
         GameOverPanel.SetActive(true);
+        Pockets.SetActive(false);
         gameObject.SetActive(false);
     }
 }

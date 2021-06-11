@@ -29,19 +29,21 @@ public class Values : MonoBehaviour
 
         UpdateKillsValues();
         UpdateDaysValues();
-        UpdateLevelValues();
+        UpdateValuesOfLevel();
     }
 
     public void ChangesKillsValue(int count)
     {
         Kills += count;
         UpdateKillsValues();
+        PlayerPrefs.SetInt("Kills", Kills);
     }
 
     public void ChangeDaysValue(int count) 
     {
         Days += count;
         UpdateDaysValues();
+        PlayerPrefs.SetInt("Days", Days);
         CheckForRedMoonDay();
     }
 
@@ -51,39 +53,30 @@ public class Values : MonoBehaviour
         UpdateLevelValues();
     }
 
-    private void UpdateKillsValues() 
-    {
-        KillsText.text = Kills.ToString();
-        PlayerPrefs.SetInt("Kills", Kills);
-    }
+    private void UpdateKillsValues() => KillsText.text = Kills.ToString();
 
-    private void UpdateDaysValues()
-    {
-        DaysText.text = Days.ToString();
-        PlayerPrefs.SetInt("Days", Days);
-    }
+    private void UpdateDaysValues() => DaysText.text = Days.ToString();
 
-    private void UpdateLevelValues() 
+    private void UpdateLevelValues() //Обновляет общие значения уровней
     {
-        Debug.Log("EXP " + EXP);
-        Debug.Log("Level " + Level);
-
         if (EXP >= 100) 
         {
             Level++;
             EXP -= 100;
 
-            LevelText.text = Level.ToString();
             PlayerPrefs.SetInt("Level", Level);
 
             UpdateLevelValues();
         }
 
         PlayerPrefs.SetInt("EXP", EXP);
-        LevelBar.fillAmount = EXP / 100;
+        UpdateValuesOfLevel();
+    }
 
-        Debug.Log("EXP " + EXP);
-        Debug.Log("Level " + Level);
+    private void UpdateValuesOfLevel() //Обновляет значение в UI
+    {
+        LevelBar.fillAmount = EXP / 100;
+        LevelText.text = Level.ToString();
     }
 
     private void CheckForRedMoonDay() 

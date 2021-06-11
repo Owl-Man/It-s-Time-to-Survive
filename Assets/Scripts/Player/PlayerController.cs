@@ -30,14 +30,11 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sprite;
     public InventorySystem inventory;
 
-    private void Update()
+    private void FixedUpdate()
     {
         moveInput = new Vector2(joystick.Horizontal, joystick.Vertical);
         moveVelocity = moveInput.normalized * speed;
-    }
 
-    private void FixedUpdate()
-    {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
 
         if (moveInput.x == 0)

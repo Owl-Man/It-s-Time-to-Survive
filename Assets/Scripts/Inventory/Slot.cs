@@ -30,7 +30,7 @@ public class Slot : MonoBehaviour
     {
         player = link.playerController;
 
-        inventory = player.inventory;
+        inventory = link.inventory;
 
         buttons_controller = inventory.buttonsCntrl;
 
@@ -59,7 +59,6 @@ public class Slot : MonoBehaviour
         if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) //Если слот до этого не был выделен
         {
             MainChangeSlotUsingState(true);
-
             return;
         }
         else if (isSlotUse == true)

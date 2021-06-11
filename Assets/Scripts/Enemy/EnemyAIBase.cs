@@ -12,6 +12,8 @@ public abstract class EnemyAIBase : MonoBehaviour
 
     private bool isDying;
 
+    public GameObject EnemyObject;
+
     public float rayDistance = 1.5f;
     public float stoppingDistance;
     public float speed;
@@ -151,6 +153,7 @@ public abstract class EnemyAIBase : MonoBehaviour
     public virtual void AttackPlayer() //Нанесение урона
     {
         indicators.health -= Damage;
+        indicators.HealthDiagnostic();
 
         if (AttackAnimationKey != "none") animator.Play(AttackAnimationKey);
 
@@ -182,6 +185,9 @@ public abstract class EnemyAIBase : MonoBehaviour
         values.ChangesKillsValue(1);
         values.ChangeEXPValue(50);
         yield return new WaitForSeconds(0.8f);
-        Destroy(gameObject);
+        BeforeDie();
+        Destroy(EnemyObject);
     }
+
+    public abstract void BeforeDie();
 }

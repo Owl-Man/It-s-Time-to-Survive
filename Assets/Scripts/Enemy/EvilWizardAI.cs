@@ -12,4 +12,6 @@ public class EvilWizardAI : EnemyAIBase
 		base.AttackPlayer();
 		Fire.SetActive(true);
 	}
+
+	public override void BeforeDie() => Fire.SetActive(false);
 }

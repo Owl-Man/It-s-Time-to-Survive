@@ -12,6 +12,7 @@ public class UseFood : MonoBehaviour
 	{
 		indicators.health += food.heal;
 		indicators.satiety += food.satiety;
+		indicators.UpdateAllValues();
 
 		Debug.Log("Eaten, +" + food.heal + " hearth, +" + food.satiety + " satiety");
 	}
