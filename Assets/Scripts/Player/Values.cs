@@ -11,7 +11,7 @@ public class Values : MonoBehaviour
     public int Kills;
     public int Days;
     public int Level;
-    public int EXP;
+    public float EXP;
     
     public Image LevelBar;
 
@@ -25,7 +25,7 @@ public class Values : MonoBehaviour
         Kills = PlayerPrefs.GetInt("Kills");
         Days = PlayerPrefs.GetInt("Days");
         Level = PlayerPrefs.GetInt("Level");
-        EXP = PlayerPrefs.GetInt("EXP");
+        EXP = PlayerPrefs.GetFloat("EXP");
 
         UpdateKillsValues();
         UpdateDaysValues();
@@ -47,7 +47,7 @@ public class Values : MonoBehaviour
         CheckForRedMoonDay();
     }
 
-    public void ChangeEXPValue(int count) 
+    public void ChangeEXPValue(float count) 
     {
         EXP += count;
         UpdateLevelValues();
@@ -69,13 +69,13 @@ public class Values : MonoBehaviour
             UpdateLevelValues();
         }
 
-        PlayerPrefs.SetInt("EXP", EXP);
+        PlayerPrefs.SetFloat("EXP", EXP);
         UpdateValuesOfLevel();
     }
 
     private void UpdateValuesOfLevel() //Обновляет значение в UI
     {
-        LevelBar.fillAmount = EXP / 100;
+        LevelBar.fillAmount = EXP / 100f;
         LevelText.text = Level.ToString();
     }
 

@@ -21,6 +21,8 @@ public class FirstEnter : MonoBehaviour
         PlayerPrefs.SetInt("Days", 1);
         PlayerPrefs.SetInt("Level", 1);
         PlayerPrefs.SetInt("EXP", 0);
+        PlayerPrefs.SetInt("FPS", 60);
+        PlayerPrefs.SetInt("Music", 1);
 
         PlayerPrefs.SetInt("isntAfterIntroEnter", 1);
     }

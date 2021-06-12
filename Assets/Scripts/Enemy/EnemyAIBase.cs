@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAIBase : MonoBehaviour
+public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
 {
     [Header("Values")]
     public int Damage = 1;
@@ -32,7 +32,7 @@ public abstract class EnemyAIBase : MonoBehaviour
 
     private PlayerController playerController;
     private Indicators indicators;
-    private Values values;
+    [HideInInspector] public Values values;
 
     [Header("AnimationKeys")]
     public string DeathAnimationKey;
@@ -183,11 +183,13 @@ public abstract class EnemyAIBase : MonoBehaviour
         animator.Play(DeathAnimationKey);
         collider.enabled = false;
         values.ChangesKillsValue(1);
-        values.ChangeEXPValue(50);
+        ChangeEXPValue();
         yield return new WaitForSeconds(0.8f);
         BeforeDie();
         Destroy(EnemyObject);
     }
 
     public abstract void BeforeDie();
+
+    public abstract void ChangeEXPValue();
 }

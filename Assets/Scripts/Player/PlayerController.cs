@@ -22,8 +22,7 @@ public class PlayerController : MonoBehaviour
 
     public Image attackButtonSprite;
 
-    [Header("Other")]
-
+    [Header("References")]
     public Animator animator;
     public Joystick joystick;
     public Rigidbody2D rb;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
-    [SerializeField] private int fps;
+    private void Awake() => UpdateFPS();
 
-    private void Awake() => Application.targetFrameRate = fps;
+    public void UpdateFPS() => Application.targetFrameRate = PlayerPrefs.GetInt("FPS");
 }

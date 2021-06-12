@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EvilWizardAI : EnemyAIBase
+public class EvilWizardAI : EnemyAIBase, IEnemyAI
 {
 	private GameObject Fire;
 
@@ -14,4 +14,6 @@ public class EvilWizardAI : EnemyAIBase
 	}
 
 	public override void BeforeDie() => Fire.SetActive(false);
+
+	public override void ChangeEXPValue() => values.ChangeEXPValue(25f);
 }
