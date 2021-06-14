@@ -15,6 +15,8 @@ public class Spawn : MonoBehaviour
         float randY = UnityEngine.Random.Range(2f, 3.2f);
 
         Vector2 playerPos = new Vector2(player.position.x + randX, player.position.y + randY);
-        Instantiate(item, playerPos, Quaternion.identity);
+        GameObject SpawnedItem = Instantiate(item, playerPos, Quaternion.identity);
+
+        SpawnedItem.GetComponent<PickUp>().links = links;
     }
 }

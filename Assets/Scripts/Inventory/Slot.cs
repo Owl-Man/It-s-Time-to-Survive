@@ -68,10 +68,11 @@ public class Slot : MonoBehaviour
 
         if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) //Если выделен другой слот
         {
-            foreach (Transform child in transform)
-            {
-                isSlotHaveItem = true;
-            }
+            GetChild();
+
+            if (Child != null) isSlotHaveItem = true;
+
+            else isSlotHaveItem = false;
 
             if (isSlotHaveItem == true)
             {
@@ -141,15 +142,16 @@ public class Slot : MonoBehaviour
 
     public void OnFoodUseButtonClick()
     {
-        GetChild();
-
-        if (Child != null && Child.GetComponent<Item>().isItemSelected == true)
+        foreach (Transform child in transform)
         {
-            MainChangeSlotUsingState(false);
+            if (child.GetComponent<Item>().isItemSelected == true)
+            {
+                MainChangeSlotUsingState(false);
 
-            Child.GetComponent<UseFood>().EatFood();
+                child.GetComponent<UseFood>().EatFood();
 
-            RemoveItems(1);
+                RemoveItems(1);
+            }
         }
     }
 
@@ -162,6 +164,7 @@ public class Slot : MonoBehaviour
         {
             if (CountOfItems == 0)
             {
+                inventory.isFull[i] = false;
                 GameObject.Destroy(child.gameObject);
             }
         }

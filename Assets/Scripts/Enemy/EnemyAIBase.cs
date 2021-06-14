@@ -155,7 +155,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
         indicators.health -= Damage;
         indicators.HealthDiagnostic();
 
-        if (AttackAnimationKey != "none") animator.Play(AttackAnimationKey);
+        if (AttackAnimationKey != "") animator.Play(AttackAnimationKey);
 
         timeBtwAttack = startTimeBtwAttack;
     }
@@ -164,7 +164,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     {
         if (other.CompareTag("Player"))
         {
-            if (AttackAnimationKey != "none") animator.Play(IdleAnimationKey);
+            if (AttackAnimationKey != "") animator.Play(IdleAnimationKey);
         }
     }
 
@@ -172,7 +172,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     {
         if (other.CompareTag("WeaponHitBox"))
         {
-            animator.Play(HitAnimationKey);
+            if (HitAnimationKey != "") animator.Play(HitAnimationKey);
             health -= playerController.weaponScript.weapon.damage;
         }
     }
@@ -180,7 +180,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     IEnumerator Dead()
     {
         isDying = true;
-        animator.Play(DeathAnimationKey);
+        if (DeathAnimationKey != "") animator.Play(DeathAnimationKey);
         collider.enabled = false;
         values.ChangesKillsValue(1);
         ChangeEXPValue();
@@ -189,7 +189,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
         Destroy(EnemyObject);
     }
 
-    public abstract void BeforeDie();
+    public virtual void BeforeDie() {}
 
     public abstract void ChangeEXPValue();
 }

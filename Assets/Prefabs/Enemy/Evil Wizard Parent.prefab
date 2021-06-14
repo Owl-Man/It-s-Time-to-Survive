@@ -138,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 8
   m_Sprite: {fileID: 4723107735738678597, guid: 6fc66c021eec74942b4e71a3fde4dc04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -254,9 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45aa2ad5594b654fa9d8165f4ac981b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
-  health: 3
-  startTimeBtwAttack: 5
+  Damage: 3
+  health: 4
+  startTimeBtwAttack: 4
   EnemyObject: {fileID: 16002058992910223}
   rayDistance: 1.5
   stoppingDistance: 5
@@ -269,6 +269,7 @@ MonoBehaviour:
   sprite: {fileID: 3488133763657520534}
   rb: {fileID: 3488133763657520616}
   links: {fileID: 0}
+  values: {fileID: 0}
   DeathAnimationKey: Death
   HitAnimationKey: WizardHurt
   AttackAnimationKey: Attack
