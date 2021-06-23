@@ -21,26 +21,30 @@ public class PickUp : MonoBehaviour
         if (other.CompareTag("Player") && isPickedUp == false)
         {
             isPickedUp = true;
-            
-            for (int i = 0; i < inventory.slots.Length; i++)
+
+            //Прокрутка для нахождения уже существующего предмета такого же типа и не превыщающим макс кол-во в одном слоте
+
+            for (int a = 0; a < inventory.slots.Length; a++)
             {
-                inventory.slotScripts[i].GetChild();
-                child = inventory.slotScripts[i].Child;
+                inventory.slotScripts[a].GetChild();
+                child = inventory.slotScripts[a].Child;
 
                 if (child != null)
                     item = child.GetComponent<Item>();
 
-				if (child != null && slotButton.GetComponent<Item>().item == item.item
-                && inventory.slotScripts[i].CountOfItems + 1 <= item.MaxStackCountInSlot) 
-				{
-                    inventory.AddItem(i, gameObject);
-                    break;
-				}
-                else if (item != null && inventory.slotScripts[i].CountOfItems + 1 > item.MaxStackCountInSlot)
+                if (child != null && slotButton.GetComponent<Item>().item == item.item
+                && inventory.slotScripts[a].CountOfItems + 1 <= item.MaxStackCountInSlot) 
                 {
-                    i++;
+                    inventory.AddItem(a, gameObject);
+                    return;
+                    break;
                 }
-
+            }
+            
+            //Если такого не было найдено, то предмет заберется в ближайщий свободный слот
+            
+            for (int i = 0; i < inventory.slots.Length; i++)
+            {
                 if (inventory.isFull[i] == false)
                 {
 					inventory.AddItemMain(i, slotButton, gameObject);

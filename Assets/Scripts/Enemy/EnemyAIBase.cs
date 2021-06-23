@@ -5,14 +5,19 @@ using UnityEngine;
 public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
 {
     [Header("Values")]
-    public int Damage = 1;
+
+    public int damage = 1;
     public int health = 1;
     private float timeBtwAttack;
     public float startTimeBtwAttack;
 
-    private bool isDying;
+    [SerializeField] public bool isDying;
+    public bool SpriteFlipBool;
 
     public GameObject EnemyObject;
+
+    public GameObject AngryEmotion;
+    public GameObject LoseTargetEmotion;
 
     public float rayDistance = 1.5f;
     public float stoppingDistance;
@@ -21,6 +26,8 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     public Transform point;
     bool movingRight;
 
+    [Header("Components")]
+
     public BoxCollider2D collider;
 
     public Animator animator;
@@ -28,13 +35,20 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     public SpriteRenderer sprite;
     public Rigidbody2D rb;
 
-    [HideInInspector] public LinkManager links;
+    [Header("References")]
+
+    public LinkManager links;
 
     private PlayerController playerController;
     private Indicators indicators;
+    private BloodScript bloodCntrl;
+
+    public Enemy EnemyData;
+
     [HideInInspector] public Values values;
 
     [Header("AnimationKeys")]
+
     public string DeathAnimationKey;
     public string HitAnimationKey;
     public string AttackAnimationKey;
@@ -44,13 +58,19 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
 
     private void Awake()
     {
-        links = GameObject.FindGameObjectWithTag("LinkManager").GetComponent<LinkManager>();
-        
+        if (links == null) links = GameObject.FindGameObjectWithTag("LinkManager").GetComponent<LinkManager>();
+
         player = links.PlayerObject.transform;
         playerController = links.playerController;
 
         indicators = links.indicators;
         values = links.values;
+
+        bloodCntrl = links.bloodCntrl;
+
+        damage = EnemyData.damage;
+        health = EnemyData.health;
+        startTimeBtwAttack = EnemyData.attackSpeed;
 
         Physics2D.queriesStartInColliders = false;
         collider.enabled = true;
@@ -58,29 +78,32 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
+        if (isDying == false) 
         {
-            chill = true;
+            if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
+            {
+                chill = true;
+            }
+            if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
+            {
+                Angrying();
+            }
+            if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            {
+                goback = true;
+                angry = false;
+            }
+        
+            if (PlayerPrefs.GetInt("isRedMoonDay") == 1) Angrying();
+        
+            if (chill) Chill();
+        
+            else if (angry) Angry();
+        
+            else if (goback) GoBack();
+        
+            if (health <= 0 && isDying == false) StartCoroutine(Dead());
         }
-        if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
-        {
-            Angrying();
-        }
-        if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
-        {
-            goback = true;
-            angry = false;
-        }
-
-        if (PlayerPrefs.GetInt("isRedMoonDay") == 1) Angrying();
-
-        if (chill) Chill();
-
-        else if (angry) Angry();
-
-        else if (goback) GoBack();
-
-        if (health <= 0 && isDying == false) StartCoroutine(Dead());
     }
 
     private void Angrying()
@@ -88,10 +111,16 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
         angry = true;
         goback = false;
         chill = false;
+
+        AngryEmotion.SetActive(true);
+        LoseTargetEmotion.SetActive(false);
     }
 
     private void Chill()
     {
+        LoseTargetEmotion.SetActive(false);
+        AngryEmotion.SetActive(false);
+
         if (transform.position.x > point.position.x + positionOfPatrol)
         {
             movingRight = false;
@@ -103,12 +132,12 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
         if (movingRight)
         {
             transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
-            sprite.flipX = false;
+            sprite.flipX = SpriteFlipBool;
         }
         else
         {
             transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
-            sprite.flipX = true;
+            sprite.flipX = !SpriteFlipBool;
         }
     }
 
@@ -125,14 +154,17 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
         transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
         speed = 4;
 
+        LoseTargetEmotion.SetActive(true);
+        AngryEmotion.SetActive(false);
+
         SpriteFlipUpdate();
     }
 
     private void SpriteFlipUpdate()
     {
-        if (movingRight) sprite.flipX = false;
+        if (movingRight) sprite.flipX = SpriteFlipBool;
 
-        else sprite.flipX = true;
+        else sprite.flipX = !SpriteFlipBool;
     }
 
     private void OnTriggerStay2D(Collider2D other) //Попытка атаки
@@ -152,7 +184,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
 
     public virtual void AttackPlayer() //Нанесение урона
     {
-        indicators.health -= Damage;
+        indicators.health -= damage;
         indicators.HealthDiagnostic();
 
         if (AttackAnimationKey != "") animator.Play(AttackAnimationKey);
@@ -180,16 +212,26 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     IEnumerator Dead()
     {
         isDying = true;
+
         if (DeathAnimationKey != "") animator.Play(DeathAnimationKey);
+
         collider.enabled = false;
+
         values.ChangesKillsValue(1);
+
         ChangeEXPValue();
+
+        AngryEmotion.SetActive(false);
+        LoseTargetEmotion.SetActive(false);
+
+        if (bloodCntrl != null) bloodCntrl.InstantiateBlood(transform);
+
         yield return new WaitForSeconds(0.8f);
         BeforeDie();
         Destroy(EnemyObject);
     }
-
-    public virtual void BeforeDie() {}
+    
+    public virtual void BeforeDie() { }
 
     public abstract void ChangeEXPValue();
 }

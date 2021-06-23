@@ -66,28 +66,28 @@ public class Menu : MonoBehaviour
 
     public void On120FPSButtonClick() => UpdateFPS(120, 3);
 
-    public void OnMusicOnButtonClick() => MusicOff();
+    public void OnMusicOnButtonClick() => MusicOn();
 
-    public void OnMusicOffButtonClick() => MusicOn();
+    public void OnMusicOffButtonClick() => MusicOff();
 
     private void MusicOn() 
     {
-        PlayerPrefs.SetInt("Music", 1);
+        PlayerPrefs.SetInt("Music", 0);
 
         MusicOnButton.SetActive(false);
         MusicOffButton.SetActive(true);
 
-        Music.UpdateMusicState(true);
+        Music.UpdateMusicState(false);
     }
 
     private void MusicOff() 
     {
-        PlayerPrefs.SetInt("Music", 0);
+        PlayerPrefs.SetInt("Music", 1);
 
         MusicOnButton.SetActive(true);
         MusicOffButton.SetActive(false);
 
-        Music.UpdateMusicState(false);
+        Music.UpdateMusicState(true);
     }
 
     private void UpdateFPS(int fps, int id) 
@@ -107,8 +107,8 @@ public class Menu : MonoBehaviour
 
     public void OnResetButtonClick() 
     {
+        PlayerPrefs.SetInt("isntFirstEnter", 0);
         PlayerPrefs.SetInt("isntAfterIntroEnter", 0);
-        PlayerPrefs.GetInt("isntFirstEnter", 0);
 
         SceneManager.LoadScene("Menu");
     }

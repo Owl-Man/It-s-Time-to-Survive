@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 692041378740429257}
   - component: {fileID: 138204669048316242}
   - component: {fileID: 5860487273367318101}
-  - component: {fileID: 669399950367823408}
   m_Layer: 0
   m_Name: stul
   m_TagString: Untagged
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 8049390764843757194, guid: bda038d77f943dddeb192fca8195bde5, type: 3}
+  m_Sprite: {fileID: 6328844188968150716, guid: bda038d77f943dddeb192fca8195bde5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,24 +110,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13783516, y: 0.30431873}
   m_EdgeRadius: 0
---- !u!50 &669399950367823408
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4008902536878721918}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 100
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4

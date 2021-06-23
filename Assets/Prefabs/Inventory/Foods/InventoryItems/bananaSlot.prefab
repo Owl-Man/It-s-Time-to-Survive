@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de6e4d58ddb19daaea90a10a0642128c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8649b17de34e178e3a8294c767a06948, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,11 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e24a39e1d8f1996a55911bafc45bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManagerPlayerObject: {fileID: 0}
-  ManagerPlayerCntrl: {fileID: 0}
-  ManagerInventory: {fileID: 0}
-  ManagerIndicators: {fileID: 0}
   item: {fileID: 3642284791161112758, guid: c8e2b27b4765dd15c83e3cff74ecdc2d, type: 3}
+  links: {fileID: 0}
 --- !u!114 &-4070582931110923588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,10 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e0a62522c1957e9bbdcf9c9aca8129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManagerPlayerObject: {fileID: 0}
-  ManagerPlayerCntrl: {fileID: 0}
-  ManagerInventory: {fileID: 0}
-  ManagerIndicators: {fileID: 0}
+  links: {fileID: 0}
   food: {fileID: 11400000, guid: d4480222252ad8ad5b0ebac2e37425d6, type: 2}
 --- !u!114 &328349354793774449
 MonoBehaviour:

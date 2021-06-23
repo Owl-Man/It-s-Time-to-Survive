@@ -23,11 +23,15 @@ public class PlayerController : MonoBehaviour
     public Image attackButtonSprite;
 
     [Header("References")]
+
     public Animator animator;
     public Joystick joystick;
     public Rigidbody2D rb;
     public SpriteRenderer sprite;
     public InventorySystem inventory;
+
+    public BoxCollider2D rightHit;
+    public BoxCollider2D leftHit;
 
     private void FixedUpdate()
     {
@@ -44,11 +48,17 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRun", true);
             sprite.flipX = false;
+
+            rightHit.enabled = true;
+            leftHit.enabled = false;
         }
         else if (moveInput.x < 0) 
         {
             animator.SetBool("isRun", true);
             sprite.flipX = true;
+
+            rightHit.enabled = false;
+            leftHit.enabled = true;
         }
     }
 
@@ -57,7 +67,7 @@ public class PlayerController : MonoBehaviour
         if (animator.GetBool("isDead") == true) return;
 
         if (isAttacking == true) return;
-        else isAttacking = true;
+        else isAttacking = true;    
 
         StartCoroutine(Attacking());
     }

@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 69d42004420a0e041b3ca0764431dded, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3e5ded438aca9439a9e421917027fb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,11 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e24a39e1d8f1996a55911bafc45bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManagerPlayerObject: {fileID: 0}
-  ManagerPlayerCntrl: {fileID: 0}
-  ManagerInventory: {fileID: 0}
-  ManagerIndicators: {fileID: 0}
   item: {fileID: 5099535644906169784, guid: ab18f2950088b3d3e862e848141a4415, type: 3}
+  links: {fileID: 0}
 --- !u!114 &5098632751127735755
 MonoBehaviour:
   m_ObjectHideFlags: 0

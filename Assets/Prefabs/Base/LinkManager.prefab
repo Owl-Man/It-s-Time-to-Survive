@@ -50,3 +50,5 @@ MonoBehaviour:
   values: {fileID: 0}
   redMoonWave: {fileID: 0}
   FireBurningPlayer: {fileID: 0}
+  DarkMagicPlayer: {fileID: 0}
+  bloodCntrl: {fileID: 0}

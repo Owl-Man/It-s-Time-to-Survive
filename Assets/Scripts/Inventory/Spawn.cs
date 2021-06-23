@@ -7,10 +7,10 @@ public class Spawn : MonoBehaviour
     public LinkManager links;
     private Transform player;
 
-    private void Start() => player = links.PlayerObject.transform;
-
     public void SpawnDroppedItem()
     {
+        player = links.PlayerObject.transform;
+
         float randX = UnityEngine.Random.Range(-2.7f, 2.7f);
         float randY = UnityEngine.Random.Range(2f, 3.2f);
 
