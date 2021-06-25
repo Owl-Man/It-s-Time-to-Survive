@@ -22,7 +22,5 @@ public class LinkManager : MonoBehaviour
 
     public BloodScript bloodCntrl;
 
-    public GameObject MessagePanel;
-
-    public Text MessageText;
+    public MessageSystem messageSystem;
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ArchonAI : MagicanAIBase, IEnemyAI, IMagicanEnemyAI
+public class ArchonAI : MagicanAIBase, IMagicanEnemyAI, IBossEnemy
 {
     public BossFightSystem bossFight;
 
@@ -12,6 +12,4 @@ public class ArchonAI : MagicanAIBase, IEnemyAI, IMagicanEnemyAI
         Magic.SetActive(false);
         if (bossFight != null) bossFight.Victory();
     }
-
-    public override void ChangeEXPValue() => values.ChangeEXPValue(30f);
 }

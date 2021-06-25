@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
+public abstract class EnemyAIBase : MonoBehaviour
 {
     [Header("Values")]
 
@@ -10,6 +10,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     public int health = 1;
     private float timeBtwAttack;
     public float startTimeBtwAttack;
+    public float GiveEXP;
 
     [SerializeField] public bool isDying;
     public bool SpriteFlipBool;
@@ -71,6 +72,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
         damage = EnemyData.damage;
         health = EnemyData.health;
         startTimeBtwAttack = EnemyData.attackSpeed;
+        GiveEXP = EnemyData.EXP;
 
         Physics2D.queriesStartInColliders = false;
         collider.enabled = true;
@@ -219,7 +221,7 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
 
         values.ChangesKillsValue(1);
 
-        ChangeEXPValue();
+        values.ChangeEXPValue(GiveEXP);
 
         AngryEmotion.SetActive(false);
         LoseTargetEmotion.SetActive(false);
@@ -232,6 +234,4 @@ public abstract class EnemyAIBase : MonoBehaviour, IEnemyAI
     }
     
     public virtual void BeforeDie() { }
-
-    public abstract void ChangeEXPValue();
 }

@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class BossFightSystem : MonoBehaviour
 {
-    public GameObject DoorLocker;
+    [SerializeField] private GameObject DoorLocker;
 
-    public LinkManager links;
+    [SerializeField] private MessageSystem messageSystem;
 
     public void Victory() 
     {
         if (DoorLocker != null) DoorLocker.SetActive(false);
 
-        if (links != null) 
-        {
-            links.MessagePanel.SetActive(true);
-            links.MessageText.text = "Archon dead, you win";
-        }
+        if (messageSystem != null) messageSystem.SendMessage("Archon dead, you win", 2f);
 
         Debug.Log("Win");
     }

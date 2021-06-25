@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -2671460228953875570
-    second: Overworld_0
+    second: Overworld_
   - first:
       213: -2689026045669087484
     second: Overworld_1
@@ -166,7 +166,7 @@ TextureImporter:
     second: Overworld_53
   - first:
       213: -4697379989729154493
-    second: Overworld_54
+    second: Overworld_
   - first:
       213: -3213966730498734611
     second: Overworld_55
@@ -472,11 +472,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Overworld_0
+      name: Overworld_54
       rect:
         serializedVersion: 2
-        x: 0
-        y: 560
+        x: 16
+        y: 496
         width: 16
         height: 16
       alignment: 0
@@ -1606,7 +1606,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Overworld_54
+      name: Overworld_
       rect:
         serializedVersion: 2
         x: 0
@@ -1971,7 +1971,7 @@ TextureImporter:
         width: 48
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class MagicanAIBase : EnemyAIBase, IEnemyAI, IMagicanEnemyAI
+public abstract class MagicanAIBase : EnemyAIBase, IMagicanEnemyAI
 {
     [HideInInspector] public GameObject Magic;
 

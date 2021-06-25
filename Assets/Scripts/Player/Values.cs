@@ -17,7 +17,6 @@ public class Values : MonoBehaviour
 
     public RedMoonWave RedMoon;
 
-
     private void Start() => SyncValues();
 
     private void SyncValues() 
@@ -42,6 +41,7 @@ public class Values : MonoBehaviour
     public void ChangeDaysValue(int count) 
     {
         Days += count;
+        PlayerPrefs.SetInt("DaysToRedMoon", PlayerPrefs.GetInt("DaysToRedMoon") - count);
         UpdateDaysValues();
         PlayerPrefs.SetInt("Days", Days);
         CheckForRedMoonDay();
@@ -81,7 +81,7 @@ public class Values : MonoBehaviour
 
     private void CheckForRedMoonDay() 
     {
-        if (PlayerPrefs.GetInt("DaysToRedMoon") == 0) //Начало красной луны
+        if (PlayerPrefs.GetInt("DaysToRedMoon") == 1) //Начало красной луны
         {
             RedMoon.RedMoonStart();
             DaysText.color = Color.red;

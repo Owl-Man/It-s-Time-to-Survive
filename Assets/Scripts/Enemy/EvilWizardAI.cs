@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class EvilWizardAI : MagicanAIBase, IEnemyAI, IMagicanEnemyAI
+public class EvilWizardAI : MagicanAIBase, IMagicanEnemyAI
 {
 	private void Start() => Magic = links.FireBurningPlayer;
-
-	public override void ChangeEXPValue() => values.ChangeEXPValue(25f);
 }

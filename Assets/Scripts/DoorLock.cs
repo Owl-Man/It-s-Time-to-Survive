@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class DoorLock : MonoBehaviour
 {
-    public GameObject DoorLocker;
+    [SerializeField] private GameObject DoorLocker;
 
-    public LinkManager links;
+    [SerializeField] private MessageSystem messageSystem;
 
-    public string Message = "Mini-Boss Archon";
+    [SerializeField] private float messageTime;
+
+    [SerializeField] private string message = "Mini-Boss Archon";
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -14,11 +16,7 @@ public class DoorLock : MonoBehaviour
         {
             DoorLocker.SetActive(true);
 
-            if (links != null) 
-            {
-                links.MessagePanel.SetActive(true);
-                links.MessageText.text = Message;
-            }
+            if (messageSystem != null) messageSystem.SendMessage(message, 2f);
 
             Destroy(gameObject);
         }

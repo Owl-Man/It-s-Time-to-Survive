@@ -5,11 +5,12 @@ using System.Collections;
 
 public class GlobalLightControlller : MonoBehaviour
 {
-    public Light2D light;
-    public Values values;
-    public float timeDayComing;
+    [SerializeField] private Light2D light;
+    [SerializeField] private Values values;
 
-    public GameObject[] AdditionalLights;
+    [SerializeField] private GameObject[] AdditionalLights;
+
+    public float timeDayComing;
 
     public float DefaultNightTime;
     public float DefaultDayTime;
@@ -43,7 +44,11 @@ public class GlobalLightControlller : MonoBehaviour
         if (light.intensity <= 0.15f && NightTime != 0) NightTime--; //Ночь наступила, ждет пока пройдет
 
 
-        if (light.intensity <= 0.15f && NightTime == 0) isDay = false; //Ночь прошла, переключает режим на переход в ден
+        if (light.intensity <= 0.15f && NightTime == 0) //Ночь прошла, переключает режим на переход в день
+        {
+            isDay = false;
+            values.ChangeDaysValue(1);
+        } 
 
         if (light.intensity < 0.9f && isDay == false) // Увеличивается свет, наступает день
         {
@@ -53,10 +58,9 @@ public class GlobalLightControlller : MonoBehaviour
 
         AdditionalLightsUpdate();
 
-        if (light.intensity <= 0.15f && DayTime != 0) //Наступил день, ждет пока пройдет
+        if (light.intensity < 0.9f && DayTime != 0) //Наступил день, ждет пока пройдет
         {
             DayTime--;
-            values.ChangeDaysValue(1);
         }
 
         if (light.intensity >= 0.9f && isDay == false && DayTime == 0) isDay = true; //День прошел, переключает режим на переход в ночь

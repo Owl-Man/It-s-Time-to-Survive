@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8197822830207637446
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8197822830207637445}
+  - component: {fileID: 8197822830207637444}
+  - component: {fileID: 7080124243941974556}
+  m_Layer: 0
+  m_Name: povozka
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &8197822830207637445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197822830207637446}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.54, y: 9.45, z: -47.09462}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8197822830207637444
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197822830207637446}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1264334963581156792, guid: 42bb4d85271a5d4ac99674628e2b675c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.32, y: 0.31}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!60 &7080124243941974556
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8197822830207637446}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.1, y: 3.1}
+    newSize: {x: 0.32, y: 0.31}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.8000001, y: 0.3323452}
+      - {x: 0.8264668, y: -0.11471604}
+      - {x: 0.7323443, y: 0.7735306}
+      - {x: 1.9558775, y: 1.3205928}
+      - {x: 1.814692, y: 1.4794073}
+      - {x: 1.578691, y: 1.5250893}
+      - {x: 1.4264703, y: 1.4088147}
+      - {x: 1.3325182, y: 1.4206238}
+      - {x: 1.1441225, y: 1.2852831}
+      - {x: 0.871845, y: 1.3018982}
+      - {x: 0.011751622, y: 0.9588146}
+      - {x: -0.42647025, y: 1.2646912}
+      - {x: -0.67132145, y: 1.3980469}
+      - {x: -1.152937, y: 1.1617533}
+      - {x: -1.3071554, y: 0.9226636}
+      - {x: -1.267631, y: 0.41175252}
+      - {x: -2.05, y: 0.20881458}
+      - {x: -2.05, y: -0.9058524}
+      - {x: -2, y: -1.2882223}
+      - {x: -1.8941243, y: -1.3382224}
+      - {x: -1.2641429, y: -1.0558517}
+      - {x: -0.91002095, y: -1.5554086}
+      - {x: -0.5260682, y: -1.6193905}
+      - {x: -0.1676522, y: -1.3852841}
+      - {x: -0.078455105, y: -0.9089096}
+      - {x: -0.030317128, y: -0.68818253}
+      - {x: 0.60294056, y: -0.4823461}
+      - {x: 1.9794073, y: 0.097061224}
+      - {x: 2.05, y: 0.4}

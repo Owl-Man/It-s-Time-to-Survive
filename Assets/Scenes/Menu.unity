@@ -9679,7 +9679,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cff16dde45986b4ef9d0b52f10e2a248, type: 3}
+    m_Font: {fileID: 12800000, guid: c9f6d0e7bc8541498c9a4799ba184ede, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 1
@@ -10811,8 +10811,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.14e-13, y: 26}
-  m_SizeDelta: {x: 81, y: 81}
+  m_AnchoredPosition: {x: -1.14e-13, y: 27.76}
+  m_SizeDelta: {x: 81, y: 75.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1290530487
 MonoBehaviour:
@@ -17319,7 +17319,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 78f3b53c9792f9ba098fd2056b7311b6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.702
   m_Pitch: 1
   Loop: 1
   Mute: 0

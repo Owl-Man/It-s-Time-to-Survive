@@ -5,6 +5,7 @@ using UnityEngine;
 public class RedMoonWave : SpawnBase
 {
     public Transform[] points;
+
     public void RedMoonStart() => StartCoroutine(Spawner());
     
     IEnumerator Spawner()
@@ -13,8 +14,7 @@ public class RedMoonWave : SpawnBase
         {
             yield return new WaitForSeconds(time);
 
-            int RandCount = UnityEngine.Random.Range(3, 20);
-            Wave(RandCount);
+            Wave(UnityEngine.Random.Range(3, 20));
 
             StartCoroutine(Spawner());
         }
@@ -24,8 +24,7 @@ public class RedMoonWave : SpawnBase
     {
         for (int i = 0; i <= count; i++)
         {
-            int RandPoint = UnityEngine.Random.Range(1, points.Length);
-            Spawn(points[RandPoint]);
+            Spawn(points[UnityEngine.Random.Range(1, points.Length)]);
         }
     }
 }
