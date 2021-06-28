@@ -10,6 +10,8 @@ public class Pause : MonoBehaviour
 
     private bool isPausePanelActivate;
 
+    private void Start() => Pockets.SetActive(true);
+
     public void OnPauseButtonClick() 
     {
         PausePanel.SetActive(true);

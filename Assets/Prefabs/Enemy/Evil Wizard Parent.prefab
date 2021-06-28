@@ -203,7 +203,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 4d6526439eb68ed02b4670d9aa0d2e5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -342,6 +342,7 @@ MonoBehaviour:
   damage: 1
   health: 4
   startTimeBtwAttack: 4
+  GiveEXP: 0
   isDying: 0
   SpriteFlipBool: 0
   EnemyObject: {fileID: 16002058992910223}

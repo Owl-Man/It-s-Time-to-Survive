@@ -18,7 +18,7 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && isPickedUp == false)
+        if (isPickedUp == false && other.CompareTag("Player"))
         {
             isPickedUp = true;
 
@@ -47,7 +47,7 @@ public class PickUp : MonoBehaviour
             {
                 if (inventory.isFull[i] == false)
                 {
-					inventory.AddItemMain(i, slotButton, gameObject);
+					inventory.AddNewItem(i, slotButton, gameObject);
                     break;
                 }
             }

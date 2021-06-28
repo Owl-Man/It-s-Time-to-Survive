@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAIBase : MonoBehaviour
+public abstract class EnemyAIBase : MonoCache
 {
     [Header("Values")]
 
@@ -78,7 +78,7 @@ public abstract class EnemyAIBase : MonoBehaviour
         collider.enabled = true;
     }
 
-    private void Update()
+    public override void OnTick()
     {
         if (isDying == false) 
         {

@@ -13,11 +13,13 @@ public class Slot : MonoBehaviour
     public int CountOfItems = 0;
 
     [Header("Slot states")]
+
     public bool isSlotUse = false;
     public bool isSlotChest;
     public bool isSlotHaveItem = false; // for transport SlotTo
 
     [Header("Other")]
+    
     public GameObject UseSlotHighLightning;
     public LinkManager link;
 

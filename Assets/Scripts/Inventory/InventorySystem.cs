@@ -69,21 +69,17 @@ public class InventorySystem : MonoBehaviour
 
     public void isSelectSlot(int id, bool state) //Global selecting or unselecting any slot
     {
-        slot = slotScripts[id];
-
-        slot.MainChangeSlotUsingState(state);
+        slotScripts[id].MainChangeSlotUsingState(state);
     }
 
     public void ChangeHaveItemState(int id, bool state)
     {
-        slot = slotScripts[id];
-
-        slot.isSlotHaveItem = state;
+        slotScripts[id].isSlotHaveItem = state;
 
         isFull[id] = state;
     }
 
-    public void AddItemMain(int i, GameObject item, GameObject obj)
+    public void AddNewItem(int i, GameObject item, GameObject obj)
     {
         isFull[i] = true;
 

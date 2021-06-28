@@ -7,9 +7,11 @@ public class Menu : MonoBehaviour
 
     [Header ("References")]
 
-    public FPSController fpsCntrl;
+    [SerializeField] private FPSController fpsCntrl;
 
-    public SoundController Music;
+    [SerializeField] private SoundController Music;
+
+    [SerializeField] private EffectsController effectsCntrl; 
 
     [Header ("GameObjects")]
 
@@ -19,12 +21,66 @@ public class Menu : MonoBehaviour
 
     public GameObject[] galochka;
 
-    public GameObject MusicOnButton;
-    public GameObject MusicOffButton;
+    public GameObject MusicOnButton, MusicOffButton;
+
+    public GameObject EffectsOnObject, EffectsOffObject;
 
     private void Start() 
     {
         UpdateFPSState(PlayerPrefs.GetInt("IdFPS"));
+        UpdateEffectsState();
+
+        Time.timeScale = 1f;
+    }
+
+    public void OnPlayButtonClick() => SceneManager.LoadScene(MainPlayScene);
+
+    public void On30FPSButtonClick() => UpdateFPS(30, 0);
+
+    public void On60FPSButtonClick() => UpdateFPS(60, 1);
+
+    public void On90FPSButtonClick() => UpdateFPS(90, 2);
+
+    public void On120FPSButtonClick() => UpdateFPS(120, 3);
+
+    public void OnMusicOnButtonClick() => MusicOn();
+
+    public void OnMusicOffButtonClick() => MusicOff();
+
+    public void OnEffectsOnButtonClick() => EffectsOn();
+
+    public void OnEffectsOffButtonClick() => EffectsOff();
+
+    public void OnExitButtonClick() => Application.Quit();
+
+    public void UpdateEffectsState() 
+    {
+        effectsCntrl.UpdateEffects();
+
+        if (PlayerPrefs.GetInt("isEffectsEnabled") == 1)
+        {
+            EffectsOnObject.SetActive(true);
+            EffectsOffObject.SetActive(false);
+        }
+        else 
+        {
+            EffectsOnObject.SetActive(false);
+            EffectsOffObject.SetActive(true);
+        }
+    }
+
+    private void EffectsOn() 
+    {
+        PlayerPrefs.SetInt("isEffectsEnabled", 1);
+
+        UpdateEffectsState();
+    }
+
+    private void EffectsOff() 
+    {
+        PlayerPrefs.SetInt("isEffectsEnabled", 0);
+
+        UpdateEffectsState();
     }
 
     public void UpdateFPSState(int id) 
@@ -44,8 +100,6 @@ public class Menu : MonoBehaviour
         if (state == 1) MusicOn();
     }
 
-    public void OnPlayButtonClick() => SceneManager.LoadScene(MainPlayScene);
-
     public void OnSettingsButtonClick() 
     {
         SettingsPanel.SetActive(true);
@@ -57,18 +111,6 @@ public class Menu : MonoBehaviour
         SettingsPanel.SetActive(false);
         SettingsButton.SetActive(true);
     }
-
-    public void On30FPSButtonClick() => UpdateFPS(30, 0);
-
-    public void On60FPSButtonClick() => UpdateFPS(60, 1);
-
-    public void On90FPSButtonClick() => UpdateFPS(90, 2);
-
-    public void On120FPSButtonClick() => UpdateFPS(120, 3);
-
-    public void OnMusicOnButtonClick() => MusicOn();
-
-    public void OnMusicOffButtonClick() => MusicOff();
 
     private void MusicOn() 
     {
@@ -112,6 +154,4 @@ public class Menu : MonoBehaviour
 
         SceneManager.LoadScene("Menu");
     }
-    
-    public void OnExitButtonClick() => Application.Quit();
 }

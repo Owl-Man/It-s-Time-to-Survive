@@ -51,6 +51,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 4962dec34a6ab1e1bbd3bf10ebac1caf, type: 3}
     - {fileID: 2800000, guid: 80f88cb7e68828efd9ac6a0915536a20, type: 3}
     - {fileID: 2800000, guid: 5e7c1b0f7fe416834b3248cf69cc5b38, type: 3}
+    - {fileID: 2800000, guid: dfb0adcf538e7dd94a3f9b4c856bc9bc, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -63,6 +64,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 600a8c5a35b92b0189981ec3b08d9528, type: 3}
   - {fileID: 21300000, guid: 67d418da9e54ea7d6ab43a5388a7c532, type: 3}
   - {fileID: 21300000, guid: 5e7c1b0f7fe416834b3248cf69cc5b38, type: 3}
+  - {fileID: 21300000, guid: dfb0adcf538e7dd94a3f9b4c856bc9bc, type: 3}
   m_PackedSpriteNamesToIndex:
   - music-on
   - CloseButton
@@ -71,6 +73,7 @@ SpriteAtlas:
   - FPS
   - settings
   - icon_done
+  - Effects
   m_RenderDataMap: {}
   m_Tag: Menu
   m_IsVariant: 0

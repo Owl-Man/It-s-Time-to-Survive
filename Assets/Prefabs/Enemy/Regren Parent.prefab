@@ -256,7 +256,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 4d6526439eb68ed02b4670d9aa0d2e5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -376,6 +376,8 @@ MonoBehaviour:
   damage: 1
   health: 1
   startTimeBtwAttack: 0
+  GiveEXP: 15
+  isDying: 0
   SpriteFlipBool: 0
   EnemyObject: {fileID: 3191090289605744223}
   AngryEmotion: {fileID: 1683202734}
@@ -397,7 +399,6 @@ MonoBehaviour:
   HitAnimationKey: 
   AttackAnimationKey: 
   IdleAnimationKey: idle
-  GiveEXP: 15
 --- !u!95 &3322609035912582694
 Animator:
   serializedVersion: 3

@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D rightHit;
     public BoxCollider2D leftHit;
 
+    private void Start() => Time.timeScale = 1f;
+
     private void FixedUpdate()
     {
         moveInput = new Vector2(joystick.Horizontal, joystick.Vertical);

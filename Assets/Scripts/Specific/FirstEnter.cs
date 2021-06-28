@@ -26,6 +26,7 @@ public class FirstEnter : MonoBehaviour
         PlayerPrefs.SetInt("IdFPS", 1);
         PlayerPrefs.SetInt("Music", 1);
         PlayerPrefs.SetInt("CompletedTask", 0);
+        PlayerPrefs.SetInt("isEffectsEnabled", 1);
 
         PlayerPrefs.SetInt("isntAfterIntroEnter", 1);
     }
