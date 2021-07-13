@@ -12,7 +12,7 @@ public abstract class EnemyAIBase : MonoCache
     public float startTimeBtwAttack;
     public float GiveEXP;
 
-    [SerializeField] public bool isDying;
+    public bool isDying;
     public bool SpriteFlipBool;
 
     public GameObject EnemyObject;
@@ -31,10 +31,10 @@ public abstract class EnemyAIBase : MonoCache
 
     public BoxCollider2D collider;
 
-    public Animator animator;
-    public Transform player;
-    public SpriteRenderer sprite;
-    public Rigidbody2D rb;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Transform player;
+    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private Rigidbody2D rb;
 
     [Header("References")]
 
@@ -80,7 +80,7 @@ public abstract class EnemyAIBase : MonoCache
 
     public override void OnTick()
     {
-        if (isDying == false) 
+        if (isDying == false)
         {
             if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
             {
@@ -95,15 +95,15 @@ public abstract class EnemyAIBase : MonoCache
                 goback = true;
                 angry = false;
             }
-        
+
             if (PlayerPrefs.GetInt("isRedMoonDay") == 1) Angrying();
-        
+
             if (chill) Chill();
-        
+
             else if (angry) Angry();
-        
+
             else if (goback) GoBack();
-        
+
             if (health <= 0 && isDying == false) StartCoroutine(Dead());
         }
     }
@@ -232,6 +232,6 @@ public abstract class EnemyAIBase : MonoCache
         BeforeDie();
         Destroy(EnemyObject);
     }
-    
+
     public virtual void BeforeDie() { }
 }
