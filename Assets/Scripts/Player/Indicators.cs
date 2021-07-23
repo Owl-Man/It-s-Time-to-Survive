@@ -1,30 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Indicators : MonoBehaviour
 {
-    public Image[] Lives;
-    public Sprite fullLive;
-    public Sprite emptyLive;
+    [SerializeField] private Image[] Lives;
+    [SerializeField] private Sprite fullLive;
+    [SerializeField] private Sprite emptyLive;
 
-    public Image[] Satiety;
-    public Sprite fullSatiety;
-    public Sprite emptySatiety;
+    [SerializeField] private Image[] Satiety;
+    [SerializeField] private Sprite fullSatiety;
+    [SerializeField] private Sprite emptySatiety;
+
+    [SerializeField] private float HungeringSpeed;
+
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private GameObject GameOverPanel;
+    [SerializeField] private GameObject Pockets;
 
     public int health;
-    public int numberOfLives;
+    [SerializeField] private int numberOfLives;
 
     public int satiety;
-    public int numberOfSatiety;
+    [SerializeField] private int numberOfSatiety;
 
-    public float HungeringSpeed;
-
-    public Animator animator;
-
-    public GameObject GameOverPanel;
-    public GameObject Pockets;
 
     private bool isSatietyDying;
 
@@ -49,22 +49,8 @@ public class Indicators : MonoBehaviour
 
         for (int i = 0; i < Lives.Length; i++)
         {
-            if (i < health)
-            {
-                Lives[i].sprite = fullLive;
-            }
-            else
-            {
-                Lives[i].sprite = emptyLive;
-            }
-            if (i < numberOfLives)
-            {
-                Lives[i].enabled = true;
-            }
-            else
-            {
-                Lives[i].enabled = false;
-            }
+            Lives[i].sprite = i < health ? fullLive : emptyLive;
+            Lives[i].enabled = i < numberOfLives;
         }
 
         if (health <= 0)
@@ -87,22 +73,8 @@ public class Indicators : MonoBehaviour
 
         for (int i = 0; i < Satiety.Length; i++)
         {
-            if (i < satiety)
-            {
-                Satiety[i].sprite = fullSatiety;
-            }
-            else
-            {
-                Satiety[i].sprite = emptySatiety;
-            }
-            if (i < numberOfSatiety)
-            {
-                Satiety[i].enabled = true;
-            }
-            else
-            {
-                Satiety[i].enabled = false;
-            }
+            Satiety[i].sprite = i < satiety ? fullSatiety : emptySatiety;
+            Satiety[i].enabled = i < numberOfSatiety;
         }
 
         if (satiety <= 0 && isSatietyDying == false) 

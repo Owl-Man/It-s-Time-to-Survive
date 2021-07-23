@@ -140,7 +140,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 04bb597dd6fb4f64099f36f15ba76128, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,6 +260,8 @@ MonoBehaviour:
   damage: 1
   health: 2
   startTimeBtwAttack: 3
+  GiveEXP: 0
+  isDying: 0
   SpriteFlipBool: 0
   EnemyObject: {fileID: 7925667076730976110}
   AngryEmotion: {fileID: 6342045286798693980}
@@ -274,7 +276,6 @@ MonoBehaviour:
   player: {fileID: 0}
   sprite: {fileID: 6750102896960265591}
   rb: {fileID: 6750102896960265481}
-  transform: {fileID: 6750102896960265588}
   links: {fileID: 0}
   EnemyData: {fileID: 11400000, guid: bc17cccdc28f8b50fa575eb82d535c55, type: 2}
   values: {fileID: 0}
@@ -283,6 +284,7 @@ MonoBehaviour:
   AttackAnimationKey: 
   IdleAnimationKey: 
   Magic: {fileID: 0}
+  bossFight: {fileID: 0}
 --- !u!1 &6750102897183678068
 GameObject:
   m_ObjectHideFlags: 0

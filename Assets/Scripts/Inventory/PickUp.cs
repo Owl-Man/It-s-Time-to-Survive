@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    public LinkManager links;
-
     private InventorySystem inventory;
 
     public GameObject slotButton; // item in slot
@@ -14,7 +12,7 @@ public class PickUp : MonoBehaviour
 
     private bool isPickedUp = false;
 
-    private void Start() => inventory = links.inventory;
+    private void Start() => inventory = LinkManager.instance.inventory;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,7 +35,6 @@ public class PickUp : MonoBehaviour
                 {
                     inventory.AddItem(a, gameObject);
                     return;
-                    break;
                 }
             }
             

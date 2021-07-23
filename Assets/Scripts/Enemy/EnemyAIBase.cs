@@ -1,35 +1,35 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class EnemyAIBase : MonoCache
 {
     [Header("Values")]
 
-    public int damage = 1;
-    public int health = 1;
+    private int health;
+
     private float timeBtwAttack;
-    public float startTimeBtwAttack;
-    public float GiveEXP;
 
-    public bool isDying;
-    public bool SpriteFlipBool;
+    [SerializeField] private bool isDying;
+    [SerializeField] private bool SpriteFlipBool;
 
-    public GameObject EnemyObject;
+    [SerializeField] private GameObject EnemyObject;
 
-    public GameObject AngryEmotion;
-    public GameObject LoseTargetEmotion;
+    [SerializeField] private GameObject AngryEmotion;
+    [SerializeField] private GameObject LoseTargetEmotion;
 
-    public float rayDistance = 1.5f;
-    public float stoppingDistance;
-    public float speed;
-    public int positionOfPatrol;
-    public Transform point;
+    [SerializeField] private float rayDistance = 1.5f;
+    [SerializeField] private float stoppingDistance;
+    [SerializeField] private float speed = 4;
+    [SerializeField] private float angrySpeed = 5;
+
+    [SerializeField] private int positionOfPatrol;
+
+    [SerializeField] private Transform point;
     bool movingRight;
 
     [Header("Components")]
 
-    public BoxCollider2D collider;
+    [SerializeField] private BoxCollider2D collider;
 
     [SerializeField] private Animator animator;
     [SerializeField] private Transform player;
@@ -38,41 +38,22 @@ public abstract class EnemyAIBase : MonoCache
 
     [Header("References")]
 
-    public LinkManager links;
-
-    private PlayerController playerController;
-    private Indicators indicators;
-    private BloodScript bloodCntrl;
-
-    public Enemy EnemyData;
-
-    [HideInInspector] public Values values;
+    [SerializeField] private Enemy EnemyData;
 
     [Header("AnimationKeys")]
 
-    public string DeathAnimationKey;
-    public string HitAnimationKey;
-    public string AttackAnimationKey;
-    public string IdleAnimationKey;
+    [SerializeField] private string DeathAnimationKey;
+    [SerializeField] private string HitAnimationKey;
+    [SerializeField] private string AttackAnimationKey;
+    [SerializeField] private string IdleAnimationKey;
 
     bool chill, angry, goback = false;
 
-    private void Awake()
+    private void Start()
     {
-        if (links == null) links = GameObject.FindGameObjectWithTag("LinkManager").GetComponent<LinkManager>();
+        player = LinkManager.instance.PlayerObject.transform;
 
-        player = links.PlayerObject.transform;
-        playerController = links.playerController;
-
-        indicators = links.indicators;
-        values = links.values;
-
-        bloodCntrl = links.bloodCntrl;
-
-        damage = EnemyData.damage;
         health = EnemyData.health;
-        startTimeBtwAttack = EnemyData.attackSpeed;
-        GiveEXP = EnemyData.EXP;
 
         Physics2D.queriesStartInColliders = false;
         collider.enabled = true;
@@ -95,8 +76,6 @@ public abstract class EnemyAIBase : MonoCache
                 goback = true;
                 angry = false;
             }
-
-            if (PlayerPrefs.GetInt("isRedMoonDay") == 1) Angrying();
 
             if (chill) Chill();
 
@@ -145,8 +124,7 @@ public abstract class EnemyAIBase : MonoCache
 
     private void Angry()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-        speed = 5;
+        transform.position = Vector2.MoveTowards(transform.position, player.position, angrySpeed * Time.deltaTime);
 
         SpriteFlipUpdate();
     }
@@ -154,7 +132,6 @@ public abstract class EnemyAIBase : MonoCache
     private void GoBack()
     {
         transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
-        speed = 4;
 
         LoseTargetEmotion.SetActive(true);
         AngryEmotion.SetActive(false);
@@ -162,12 +139,7 @@ public abstract class EnemyAIBase : MonoCache
         SpriteFlipUpdate();
     }
 
-    private void SpriteFlipUpdate()
-    {
-        if (movingRight) sprite.flipX = SpriteFlipBool;
-
-        else sprite.flipX = !SpriteFlipBool;
-    }
+    private void SpriteFlipUpdate() => sprite.flipX = movingRight ? SpriteFlipBool : !SpriteFlipBool;
 
     private void OnTriggerStay2D(Collider2D other) //Попытка атаки
     {
@@ -186,12 +158,14 @@ public abstract class EnemyAIBase : MonoCache
 
     public virtual void AttackPlayer() //Нанесение урона
     {
-        indicators.health -= damage;
-        indicators.HealthDiagnostic();
+        Debug.Log(LinkManager.instance.indicators);
+
+        LinkManager.instance.indicators.health -= EnemyData.damage;
+        LinkManager.instance.indicators.HealthDiagnostic();
 
         if (AttackAnimationKey != "") animator.Play(AttackAnimationKey);
 
-        timeBtwAttack = startTimeBtwAttack;
+        timeBtwAttack = EnemyData.attackSpeed;
     }
 
     private void OnTriggerExit(Collider other)
@@ -207,7 +181,7 @@ public abstract class EnemyAIBase : MonoCache
         if (other.CompareTag("WeaponHitBox"))
         {
             if (HitAnimationKey != "") animator.Play(HitAnimationKey);
-            health -= playerController.weaponScript.weapon.damage;
+            health -= LinkManager.instance.playerController.weaponScript.weapon.damage;
         }
     }
 
@@ -219,14 +193,14 @@ public abstract class EnemyAIBase : MonoCache
 
         collider.enabled = false;
 
-        values.ChangesKillsValue(1);
+        LinkManager.instance.values.ChangesKillsValue(1);
 
-        values.ChangeEXPValue(GiveEXP);
+        LinkManager.instance.values.ChangeEXPValue(EnemyData.EXP);
 
         AngryEmotion.SetActive(false);
         LoseTargetEmotion.SetActive(false);
 
-        if (bloodCntrl != null) bloodCntrl.InstantiateBlood(transform);
+        LinkManager.instance.bloodCntrl.InstantiateBlood(transform);
 
         yield return new WaitForSeconds(0.8f);
         BeforeDie();

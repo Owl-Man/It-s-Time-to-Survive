@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +14,13 @@ public class Values : MonoBehaviour
     
     public Image LevelBar;
 
-    public RedMoonWave RedMoon;
+    private RedMoonWave redMoon;
 
-    private void Start() => SyncValues();
+    private void Start()
+    {
+        redMoon = LinkManager.instance.redMoonWave;
+        SyncValues();
+    }
 
     private void SyncValues() 
     {
@@ -83,7 +86,7 @@ public class Values : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("DaysToRedMoon") == 1) //Начало красной луны
         {
-            RedMoon.RedMoonStart();
+            redMoon.RedMoonStart();
             DaysText.color = Color.red;
         }
 

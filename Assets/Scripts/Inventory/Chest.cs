@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Chest : MonoBehaviour
 {
-	public InventorySystem inventory;
+	private InventorySystem inventory;
 
 	public GameObject ChestPanel;
 
 	public GameObject[] ChestContainer;
 
-	private void OnTriggerEnter2D(Collider2D other) 
+    private void Start() => inventory = LinkManager.instance.inventory;
+
+    private void OnTriggerEnter2D(Collider2D other) 
 	{
 		if (other.CompareTag("Player")) 
 		{

@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LinkManager : MonoBehaviour 
 {
-    [Header ("Link Storage")]
+    [Header ("Links Storage")]
 
     public GameObject PlayerObject;
 
@@ -23,4 +22,8 @@ public class LinkManager : MonoBehaviour
     public BloodScript bloodCntrl;
 
     public MessageSystem messageSystem;
+
+    public static LinkManager instance;
+
+    private void Awake() => instance = this;
 }

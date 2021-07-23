@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Evil Wizard
   description: Strong magician using the element of fire
   damage: 2
-  health: 4
+  health: 3
   attackSpeed: 4
   EXP: 25
   sprite: {fileID: 4723107735738678597, guid: 6fc66c021eec74942b4e71a3fde4dc04, type: 3}

@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-    public GameObject TaskPanel;
+    [SerializeField] private GameObject TaskPanel;
 
-    public Text TaskHeader;
+    [SerializeField] private Text TaskHeader;
 
-    public Text TaskHeaderInFull;
+    [SerializeField] private Text TaskHeaderInFull;
 
-    public Text TaskDescription;
+    [SerializeField] private Text TaskDescription;
 
     public int CompletedTask;
 

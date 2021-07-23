@@ -203,7 +203,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4d6526439eb68ed02b4670d9aa0d2e5a, type: 2}
+  - {fileID: 2100000, guid: 04bb597dd6fb4f64099f36f15ba76128, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -351,6 +351,7 @@ MonoBehaviour:
   rayDistance: 1.5
   stoppingDistance: 5
   speed: 4
+  angrySpeed: 5
   positionOfPatrol: 5
   point: {fileID: 3488133762897368724}
   collider: {fileID: 3488133763657520617}
@@ -358,7 +359,6 @@ MonoBehaviour:
   player: {fileID: 0}
   sprite: {fileID: 3488133763657520534}
   rb: {fileID: 3488133763657520616}
-  links: {fileID: 0}
   EnemyData: {fileID: 11400000, guid: 56173e9a069bde33ca663cfcf4442e95, type: 2}
   values: {fileID: 0}
   DeathAnimationKey: Death

@@ -1,34 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 
 public class InventorySystem : MonoBehaviour
 {
-    [Header("Other")]
-
-    public bool[] isFull;
-    public GameObject[] slots;
-    public Slot[] slotScripts; //SLOT COMPONENTS CASHED IN CONTAINER
-
     public GameObject FoodUseButton;
     public GameObject AttackButton;
 
-    public LinkManager links;
     public ButtonsController buttonsCntrl;
 
     private Weapon weapon;
     private Food food;
 
-    private Slot slot;
-
     [Header("Description Fields")]
 
-    public Text name;
-    public Text description;
-    public Text healOrDamage;
-    public Text satietyOrRare;
+    [SerializeField] private Text name;
+    [SerializeField] private Text description;
+    [SerializeField] private Text healOrDamage;
+    [SerializeField] private Text satietyOrRare;
 
     [Header("Transport Elements")]
 
@@ -38,14 +27,14 @@ public class InventorySystem : MonoBehaviour
 
     private Slot slotFromScript;
     private Slot slotToScript;
+    
+    [Header("Other")]
 
-    private int IdSlotFrom;
-    private int IdSlotTo;
+    public bool[] isFull;
+    public GameObject[] slots;
+    public Slot[] slotScripts; //SLOT COMPONENTS CASHED IN CONTAINER
 
-    private void Awake() 
-    {
-        PlayerPrefs.SetInt("isAnySlotUsed", 0);
-    }
+    private void Awake() => PlayerPrefs.SetInt("isAnySlotUsed", 0);
 
     public void InsertDescriptionFieldsWeapon(GameObject child) //Передача описания обьекта в панель типа "оружие"
     {
@@ -67,10 +56,7 @@ public class InventorySystem : MonoBehaviour
         satietyOrRare.text = "Satiety: " + food.satiety.ToString();
     }
 
-    public void isSelectSlot(int id, bool state) //Global selecting or unselecting any slot
-    {
-        slotScripts[id].MainChangeSlotUsingState(state);
-    }
+    public void IsSelectSlot(int id, bool state) => slotScripts[id].MainChangeSlotUsingState(state);
 
     public void ChangeHaveItemState(int id, bool state)
     {
@@ -84,10 +70,6 @@ public class InventorySystem : MonoBehaviour
         isFull[i] = true;
 
         GameObject PickUpedItem = Instantiate(item, slots[i].transform);
-
-        PickUpedItem.GetComponent<Spawn>().links = links;
-
-        if (PickUpedItem.CompareTag("Food")) PickUpedItem.GetComponent<UseFood>().links = links;
 
         PickUpedItem.GetComponent<Item>().id = i;
 
@@ -120,7 +102,7 @@ public class InventorySystem : MonoBehaviour
 
             SlotFromChild = slotFromScript.Child; // Получаем ссылку на обьект в слоте, которую надо переместить
 
-            isSelectSlot(IdSlotFrom, false);
+            IsSelectSlot(IdSlotFrom, false);
             ChangeHaveItemState(IdSlotFrom, false);
 
             SlotTo = slots[IdSlotTo];
@@ -141,15 +123,15 @@ public class InventorySystem : MonoBehaviour
 
             slotScripts[IdSlotTo].UpdateItemsCountField();
 
-            isSelectSlot(IdSlotTo, true);
+            IsSelectSlot(IdSlotTo, true);
             ChangeHaveItemState(IdSlotTo, true);
 
-            Destroy(SlotFromChild.gameObject); //Удаляем старый обьект в старом слоте
+            Destroy(SlotFromChild); //Удаляем старый обьект в старом слоте
         }
         catch (Exception ex)
         {
             Debug.Log(ex);
-            //nothing in slot, bruh moment
+            //в слоте ничего нет
         }
     }
 }

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BloodScript : MonoBehaviour
 {
-    public GameObject[] Bloods;
+    [SerializeField] private GameObject[] Bloods;
 
     public void InstantiateBlood(Transform transform) 
     {

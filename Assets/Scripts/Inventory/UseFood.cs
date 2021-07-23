@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class UseFood : MonoBehaviour
 {
-	public LinkManager links;
 	public Food food;
 	private Indicators indicators;
 
-	private void Start() => indicators = links.indicators;
+	private void Start() => indicators = LinkManager.instance.indicators;
 
 	public void EatFood() 
 	{

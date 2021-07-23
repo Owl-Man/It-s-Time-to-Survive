@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MessageSystem : MonoBehaviour
 {
-    public GameObject MessageBox;
+    [SerializeField] private GameObject MessageBox;
 
-    public Text MessageText;
+    [SerializeField] private Text MessageText;
 
     public void SendMessage(string message, float messageTime) => StartCoroutine(SendingMessage(message, messageTime));
 

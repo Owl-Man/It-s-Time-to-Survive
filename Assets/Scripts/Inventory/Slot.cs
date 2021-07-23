@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
-using System.Collections;
 
 public class Slot : MonoBehaviour
 {
@@ -21,7 +19,6 @@ public class Slot : MonoBehaviour
     [Header("Other")]
     
     public GameObject UseSlotHighLightning;
-    public LinkManager link;
 
     [HideInInspector] public GameObject Child;
 
@@ -30,9 +27,9 @@ public class Slot : MonoBehaviour
 
     private void Start()
     {
-        player = link.playerController;
+        player = LinkManager.instance.playerController;
 
-        inventory = link.inventory;
+        inventory = LinkManager.instance.inventory;
 
         buttons_controller = inventory.buttonsCntrl;
 
@@ -78,7 +75,7 @@ public class Slot : MonoBehaviour
 
             if (isSlotHaveItem == true)
             {
-                inventory.isSelectSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), false); //Отменяет выделение слота, который был выделен
+                inventory.IsSelectSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), false); //Отменяет выделение слота, который был выделен
                 MainChangeSlotUsingState(true); //Выделяет этот слот
             }
             else

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Regren
   description: A cute, at first glance, flying creature.
   damage: 1
-  health: 3
+  health: 2
   attackSpeed: 2
   EXP: 15
   sprite: {fileID: -5090279544326020762, guid: cb87e13980fc817f3a07917ed000759d, type: 3}

@@ -203,7 +203,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 04bb597dd6fb4f64099f36f15ba76128, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -323,6 +323,8 @@ MonoBehaviour:
   damage: 1
   health: 1
   startTimeBtwAttack: 0
+  GiveEXP: 35
+  isDying: 0
   SpriteFlipBool: 1
   EnemyObject: {fileID: 2355587004609994310}
   AngryEmotion: {fileID: 1347740444078668234}
@@ -344,7 +346,6 @@ MonoBehaviour:
   HitAnimationKey: HeavyBandit_Hurt
   AttackAnimationKey: HeavyBandit_Attack
   IdleAnimationKey: HeavyBandit_Run
-  GiveEXP: 35
 --- !u!95 &2367108540009754922
 Animator:
   serializedVersion: 3

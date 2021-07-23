@@ -4,5 +4,9 @@ public class FPSController : MonoBehaviour
 {
     private void Awake() => UpdateFPS();
 
-    public void UpdateFPS() => Application.targetFrameRate = PlayerPrefs.GetInt("FPS");
+    public void UpdateFPS() 
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = PlayerPrefs.GetInt("FPS");
+    }
 }

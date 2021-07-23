@@ -7,11 +7,15 @@ public class GameOverPanel : MonoBehaviour
     [SerializeField] private Text DaysText;
     [SerializeField] private Text LevelText;
 
-	public Values values;
+	private Values values;
 
-	private void Awake() => SyncPlayerValues();
+    private void Awake()
+    {
+        values = LinkManager.instance.values;
+        SyncPlayerValues();
+    }
 
-	private void SyncPlayerValues() 
+    private void SyncPlayerValues() 
 	{
 		KillsText.text = values.Kills.ToString();
 		DaysText.text = values.Days.ToString();

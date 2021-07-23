@@ -1,7 +1,4 @@
-using UnityEngine;
-using System.Collections;
-
 public class EvilWizardAI : MagicanAIBase, IMagicanEnemyAI
 {
-	private void Start() => Magic = links.FireBurningPlayer;
+	private void Start() => Magic = LinkManager.instance.FireBurningPlayer;
 }

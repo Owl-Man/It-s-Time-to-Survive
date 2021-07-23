@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject PausePanel;
+    [SerializeField] private GameObject PausePanel;
 
-    public GameObject Pockets;
+    [SerializeField] private GameObject Pockets;
 
     private bool isPausePanelActivate;
 
