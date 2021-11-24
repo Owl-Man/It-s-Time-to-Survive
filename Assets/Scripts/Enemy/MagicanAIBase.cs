@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class MagicanAIBase : EnemyAIBase, IMagicanEnemyAI
+public abstract class MagicanAIBase : EnemyAIBase
 {
     [HideInInspector] public GameObject Magic;
 

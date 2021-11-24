@@ -32,7 +32,7 @@ public class InventorySystem : MonoBehaviour
 
     public bool[] isFull;
     public GameObject[] slots;
-    public Slot[] slotScripts; //SLOT COMPONENTS CASHED IN CONTAINER
+    public Slot[] slotScripts; //Список закешированных ссылок на компоненты слотов
 
     private void Awake() => PlayerPrefs.SetInt("isAnySlotUsed", 0);
 

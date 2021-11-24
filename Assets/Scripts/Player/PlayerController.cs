@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     public float reloadAttacking;
     private int AttackCombo = 1;
     private bool isAttacking;
-    private Vector2 moveInput;
-    private Vector2 moveVelocity;
+    
+    private Vector2 moveInput, moveVelocity;
 
     public GameObject attackHitBox;
 
@@ -30,8 +30,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer sprite;
     public InventorySystem inventory;
 
-    public BoxCollider2D rightHit;
-    public BoxCollider2D leftHit;
+    public BoxCollider2D rightHit, leftHit;
 
     private void Start() => Time.timeScale = 1f;
 
@@ -66,10 +65,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttackButtonClick()
     {
-        if (animator.GetBool("isDead") == true) return;
+        if (animator.GetBool("isDead")) return;
 
-        if (isAttacking == true) return;
-        else isAttacking = true;    
+        if (isAttacking) return;
+        
+        isAttacking = true;    
 
         StartCoroutine(Attacking());
     }
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
     public void BringWeaponState(bool state) 
     {
-        if (animator.GetBool("isDead") == true) return;
+        if (animator.GetBool("isDead")) return;
         
         if (state == true) 
         {

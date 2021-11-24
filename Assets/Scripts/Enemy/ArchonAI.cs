@@ -1,4 +1,4 @@
-public class ArchonAI : MagicanAIBase, IMagicanEnemyAI, IBossEnemy
+public sealed class ArchonAI : MagicanAIBase, IBossEnemy
 {
     public BossFightSystem bossFight;
 

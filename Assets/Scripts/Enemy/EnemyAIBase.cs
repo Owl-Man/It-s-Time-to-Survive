@@ -4,20 +4,19 @@ using UnityEngine;
 public abstract class EnemyAIBase : MonoCache
 {
     [Header("Values")]
-
     private int health;
-
     private float timeBtwAttack;
 
     [SerializeField] private bool isDying;
     [SerializeField] private bool SpriteFlipBool;
+    
+    private bool movingRight;
+    private bool chill, angry, goback;
 
     [SerializeField] private GameObject EnemyObject;
 
-    [SerializeField] private GameObject AngryEmotion;
-    [SerializeField] private GameObject LoseTargetEmotion;
+    [SerializeField] private GameObject AngryEmotion, LoseTargetEmotion;
 
-    [SerializeField] private float rayDistance = 1.5f;
     [SerializeField] private float stoppingDistance;
     [SerializeField] private float speed = 4;
     [SerializeField] private float angrySpeed = 5;
@@ -25,29 +24,21 @@ public abstract class EnemyAIBase : MonoCache
     [SerializeField] private int positionOfPatrol;
 
     [SerializeField] private Transform point;
-    bool movingRight;
 
     [Header("Components")]
-
     [SerializeField] private BoxCollider2D collider;
-
     [SerializeField] private Animator animator;
     [SerializeField] private Transform player;
     [SerializeField] private SpriteRenderer sprite;
-    [SerializeField] private Rigidbody2D rb;
 
     [Header("References")]
-
     [SerializeField] private Enemy EnemyData;
 
     [Header("AnimationKeys")]
-
     [SerializeField] private string DeathAnimationKey;
     [SerializeField] private string HitAnimationKey;
     [SerializeField] private string AttackAnimationKey;
     [SerializeField] private string IdleAnimationKey;
-
-    bool chill, angry, goback = false;
 
     private void Start()
     {
@@ -63,7 +54,7 @@ public abstract class EnemyAIBase : MonoCache
     {
         if (isDying == false)
         {
-            if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
+            if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && !angry)
             {
                 chill = true;
             }
@@ -141,7 +132,7 @@ public abstract class EnemyAIBase : MonoCache
 
     private void SpriteFlipUpdate() => sprite.flipX = movingRight ? SpriteFlipBool : !SpriteFlipBool;
 
-    private void OnTriggerStay2D(Collider2D other) //Попытка атаки
+    private void OnTriggerStay2D(Collider2D other) //Атака
     {
         if (other.CompareTag("Player"))
         {

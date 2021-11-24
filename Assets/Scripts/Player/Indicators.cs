@@ -5,12 +5,10 @@ using UnityEngine.UI;
 public class Indicators : MonoBehaviour
 {
     [SerializeField] private Image[] Lives;
-    [SerializeField] private Sprite fullLive;
-    [SerializeField] private Sprite emptyLive;
+    [SerializeField] private Sprite fullLive, emptyLive;
 
     [SerializeField] private Image[] Satiety;
-    [SerializeField] private Sprite fullSatiety;
-    [SerializeField] private Sprite emptySatiety;
+    [SerializeField] private Sprite fullSatiety, emptySatiety;
 
     [SerializeField] private float HungeringSpeed;
 

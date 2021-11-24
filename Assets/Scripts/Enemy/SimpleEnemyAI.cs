@@ -1,1 +1,1 @@
-public class SimpleEnemyAI : EnemyAIBase { } //Base Enemy
+public sealed class SimpleEnemyAI : EnemyAIBase { } //Base Enemy
