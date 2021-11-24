@@ -45,6 +45,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -280,6 +281,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      more rpg enemies_3: 4157443420479551813
+      more rpg enemies_4: 3051879813964607640
+      more rpg enemies_1: -6029938184265257897
+      more rpg enemies_0: 6460408979914238366
+      more rpg enemies_6: -4764070880535187388
+      more rpg enemies_2: 7317934268515842037
+      more rpg enemies_5: 2586871357906803141
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -210,6 +210,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1600,6 +1601,69 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      fence_medieval_10: -3387143360093600641
+      fence_medieval_25: 4511190857842210837
+      fence_medieval_4: -742677088024618451
+      fence_medieval_46: 6959137656833447511
+      fence_medieval_59: 8361635887007089351
+      fence_medieval_56: -6550065689599451200
+      fence_medieval_16: -2558502474331502081
+      fence_medieval_50: 7892859453473660719
+      fence_medieval_27: -2568408840440770334
+      fence_medieval_51: -4709487039753713929
+      fence_medieval_61: -389460153943105126
+      fence_medieval_5: -4282325092701687923
+      fence_medieval_20: 6048546499156735140
+      fence_medieval_30: 2626568492911807997
+      fence_medieval_15: -2605005703195701859
+      fence_medieval_57: 6931517119889378096
+      fence_medieval_43: 6097828321427571391
+      fence_medieval_1: -2506201865716899600
+      fence_medieval_36: 6339125622488996565
+      fence_medieval_6: -8680804583253111034
+      fence_medieval_13: -1757940567109883666
+      fence_medieval_18: -7104876337281231247
+      fence_medieval_49: -3146278791886375718
+      fence_medieval_44: -5795744465476979761
+      fence_medieval_21: 5718035901488978452
+      fence_medieval_33: -5285640270337567063
+      fence_medieval_40: -567691444274754289
+      fence_medieval_23: -7071654311140531896
+      fence_medieval_39: 3213217592349014138
+      fence_medieval_52: -3067486160106053674
+      fence_medieval_54: -1207652306061634823
+      fence_medieval_32: 7210958079453627268
+      fence_medieval_38: 4794408899993926578
+      fence_medieval_14: 4920396445663604620
+      fence_medieval_37: 8123264871778994596
+      fence_medieval_8: 7108174223648684465
+      fence_medieval_31: -1802612604972358210
+      fence_medieval_45: -5708732599238763129
+      fence_medieval_2: -3491280296572752391
+      fence_medieval_3: -4598984693783528677
+      fence_medieval_9: -4746260299239765569
+      fence_medieval_17: 8967918372545486103
+      fence_medieval_47: 5339291101311410579
+      fence_medieval_29: 1957511020197454289
+      fence_medieval_55: 5055238112035983997
+      fence_medieval_12: -268051610289038803
+      fence_medieval_22: 5918825267302073540
+      fence_medieval_0: 3855983528902443934
+      fence_medieval_42: 8274592904583094677
+      fence_medieval_28: -3352907357737305402
+      fence_medieval_35: -7584478522459255561
+      fence_medieval_48: -5018550175940601592
+      fence_medieval_58: -4661806980919827329
+      fence_medieval_19: -4763487418190492150
+      fence_medieval_60: -751559432749645945
+      fence_medieval_7: -1064312296750804796
+      fence_medieval_26: -8403278129961201807
+      fence_medieval_34: 8753682614129450587
+      fence_medieval_41: -9188489282736218316
+      fence_medieval_53: 2142577716235210949
+      fence_medieval_11: 6040866395060640183
+      fence_medieval_24: 8332228281888506152
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

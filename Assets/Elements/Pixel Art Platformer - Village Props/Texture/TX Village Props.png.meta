@@ -234,6 +234,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1792,6 +1793,77 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Village Props Flower A: 21300100
+      TX Village Props Fence B Rail: 21300040
+      TX Village Props Well: 21300066
+      TX Village Props Road Lamp Light Off: 21300018
+      TX Village Props Bush A: 21300110
+      TX Village Props Bucket: 21300068
+      TX Village Props Road Sign B: 21300044
+      TX Village Props Gravestone B: 21300088
+      TX Village Props Hay Pile: 21300078
+      TX Village Props Crate Large: 21300000
+      TX Village Props Fence A Rail C: 21300034
+      TX Village Props Chest Opened: 21300006
+      TX Village Props Fence B Pillar: 21300038
+      TX Village Props Crate Small: 21300002
+      TX Village Props Hay Fork: 21300080
+      TX Village Props Stump: 21300062
+      TX Village Props Axe: 21300064
+      TX Village Props Billboard Noti C: 21300060
+      TX Village Props Ladder M: 21300072
+      TX Village Props Grass A: 21300094
+      TX Village Props Flower B: 21300108
+      TX Village Props Grass C: 21300098
+      TX Village Props Pot B: 21300012
+      TX Village Props Rock C: 21300138
+      TX Village Props Fence A Rail B: 21300032
+      TX Village Props Gravestone D: 21300092
+      TX Village Props Fence A Rail A: 21300030
+      TX Village Props Fence A Pillar C: 21300028
+      TX Village Props Bush C: 21300114
+      TX Village Props Road Sign Text B: 21300048
+      TX Village Props Torch: 21300022
+      TX Village Props Pot C: 21300014
+      TX Village Props Campfire: 21300128
+      TX Village Props Ladder T: 21300070
+      TX Village Props Road Lamp Light On: 21300020
+      TX Village Props Billboard Noti D: 21300056
+      TX Village Props Billboard Noti A: 21300054
+      TX Village Props Wheelbarrow: 21300116
+      TX Village Props Wood Logs: 21300126
+      TX Village Props Wheelbarrow Wheel: 21300118
+      TX Village Props Fence A Pillar B: 21300026
+      TX Village Props Road Sign Text A: 21300046
+      TX Village Props Billboard Noti B: 21300058
+      TX Village Props Banner Pillar: 21300122
+      TX Village Props Gunny Bag B: 21300132
+      TX Village Props Road Lamp: 21300016
+      TX Village Props Rock B: 21300136
+      TX Village Props Gravestone C: 21300090
+      TX Village Props B: 21300074
+      TX Village Props Grass B: 21300096
+      TX Village Props Pot A: 21300010
+      TX Village Props Banner: 21300124
+      TX Village Props Chest: 21300004
+      TX Village Props Hay Bale: 21300076
+      TX Village Props Scarecrow: 21300082
+      TX Village Props Gunny Bag A: 21300130
+      TX Village Props Anvil: 21300084
+      TX Village Props Fence A Nail: 21300036
+      TX Village Props Grass D: 21300102
+      TX Village Props Road Sign A: 21300042
+      TX Village Props Tree: 21300120
+      TX Village Props Grass F: 21300106
+      TX Village Props Billboard: 21300052
+      TX Village Props Bush B: 21300112
+      TX Village Props Gravestone A: 21300086
+      TX Village Props Rock A: 21300134
+      TX Village Props Grass E: 21300104
+      TX Village Props Fence A Pillar A: 21300024
+      TX Village Props Barrel: 21300008
+      TX Village Props Road Sign Text C: 21300050
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

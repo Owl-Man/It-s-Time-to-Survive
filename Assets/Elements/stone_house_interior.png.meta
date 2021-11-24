@@ -30,6 +30,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -454,6 +455,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      stone_house_interior_12: 6853848113644716979
+      stone_house_interior_14: -4007205290049819121
+      stone_house_interior_2: 860893928464122639
+      stone_house_interior_5: 8961556742514713766
+      stone_house_interior_15: -3226187329815021105
+      stone_house_interior_3: -1434104960253291032
+      stone_house_interior_9: 454508634795512379
+      stone_house_interior_8: -5632903042033122374
+      stone_house_interior_10: 6344297898962041621
+      stone_house_interior_1: -1366601298317423804
+      stone_house_interior_11: 2057163516765952711
+      stone_house_interior_0: -2037009630201329319
+      stone_house_interior_6: 7774102594049303065
+      stone_house_interior_4: -5444032582576950929
+      stone_house_interior_7: 8047819743597512414
+      stone_house_interior_13: 1067523311771032266
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

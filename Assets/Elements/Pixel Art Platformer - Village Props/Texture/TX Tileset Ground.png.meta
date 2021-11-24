@@ -110,6 +110,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -119,8 +121,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -141,9 +143,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -792,6 +797,36 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      TX Tileset Ground B: 21300012
+      TX Tileset Ground BR: 21300014
+      TX Tileset Ground Col B: 21300032
+      TX Tileset Ground_2: 21300030
+      TX Tileset Ground Slope X2 L: 21300054
+      TX Tileset Ground BL: 21300016
+      TX Tileset Ground L: 21300010
+      TX Tileset Ground C TL: 21300048
+      TX Tileset Ground C BL: 21300042
+      TX Tileset Ground Row R: 21300022
+      TX Tileset Ground C R: 21300038
+      TX Tileset Ground C L: 21300036
+      TX Tileset Ground C TR: 21300046
+      TX Tileset Ground M: 21300008
+      TX Tileset Ground R: 21300006
+      TX Tileset Ground C T: 21300034
+      TX Tileset Ground Col M: 21300028
+      TX Tileset Ground C B: 21300040
+      TX Tileset Ground C BR: 21300044
+      TX Tileset Ground Row L: 21300018
+      TX Tileset Ground Slope X1 L: 21300050
+      TX Tileset Ground Slope X1 R: 21300052
+      TX Tileset Ground S: 21300024
+      TX Tileset Ground T: 21300002
+      TX Tileset Ground TR: 21300004
+      TX Tileset Ground Col T: 21300026
+      TX Tileset Ground_0: 21300056
+      TX Tileset Ground TL: 21300000
+      TX Tileset Ground Row M: 21300020
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

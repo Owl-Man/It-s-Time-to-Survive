@@ -132,6 +132,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -976,6 +977,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      HeavyBandit_25: 21300050
+      HeavyBandit_22: 21300044
+      HeavyBandit_2: 21300004
+      HeavyBandit_16: 21300032
+      HeavyBandit_1: 21300002
+      HeavyBandit_35: 21300070
+      HeavyBandit_12: 21300024
+      HeavyBandit_31: 21300062
+      HeavyBandit_23: 21300046
+      HeavyBandit_15: 21300030
+      HeavyBandit_20: 21300040
+      HeavyBandit_9: 21300018
+      HeavyBandit_4: 21300008
+      HeavyBandit_34: 21300068
+      HeavyBandit_26: 21300052
+      HeavyBandit_28: 21300056
+      HeavyBandit_13: 21300026
+      HeavyBandit_0: 21300000
+      HeavyBandit_33: 21300066
+      HeavyBandit_17: 21300034
+      HeavyBandit_6: 21300012
+      HeavyBandit_21: 21300042
+      HeavyBandit_18: 21300036
+      HeavyBandit_10: 21300020
+      HeavyBandit_24: 21300048
+      HeavyBandit_7: 21300014
+      HeavyBandit_11: 21300022
+      HeavyBandit_27: 21300054
+      HeavyBandit_32: 21300064
+      HeavyBandit_14: 21300028
+      HeavyBandit_29: 21300058
+      HeavyBandit_5: 21300010
+      HeavyBandit_30: 21300060
+      HeavyBandit_3: 21300006
+      HeavyBandit_8: 21300016
+      HeavyBandit_19: 21300038
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

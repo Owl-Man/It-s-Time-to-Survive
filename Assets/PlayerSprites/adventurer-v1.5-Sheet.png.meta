@@ -363,6 +363,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -2824,6 +2825,120 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      adventurer-v1.5-Sheet_69: 8411943351174162674
+      adventurer-v1.5-Sheet_3: -1286846480614585512
+      adventurer-v1.5-Sheet_76: -337768029710342958
+      adventurer-v1.5-Sheet_71: -557010918586539719
+      adventurer-v1.5-Sheet_30: -4670524627354225690
+      adventurer-v1.5-Sheet_7: -7325812272228753660
+      adventurer-v1.5-Sheet_19: 3154423721751135380
+      adventurer-v1.5-Sheet_12: 4767782445854341248
+      adventurer-v1.5-Sheet_17: -1445968619721516053
+      adventurer-v1.5-Sheet_105: 1228577793076202832
+      adventurer-v1.5-Sheet_42: -5879861640036576305
+      adventurer-v1.5-Sheet_102: 1279282305892391521
+      adventurer-v1.5-Sheet_31: -3691666962754819948
+      adventurer-v1.5-Sheet_62: 5727431968332616976
+      adventurer-v1.5-Sheet_10: -7282547523972205124
+      adventurer-v1.5-Sheet_52: 7081805965666925738
+      adventurer-v1.5-Sheet_89: -4075373463826780061
+      adventurer-v1.5-Sheet_60: 5457910563689496721
+      adventurer-v1.5-Sheet_98: -7312278344557230603
+      adventurer-v1.5-Sheet_45: 756061678156850320
+      adventurer-v1.5-Sheet_73: 3458805228374877273
+      adventurer-v1.5-Sheet_35: -55448408435447049
+      adventurer-v1.5-Sheet_15: -6829922608690292844
+      adventurer-v1.5-Sheet_24: 8427078801919675099
+      adventurer-v1.5-Sheet_18: -1394527152228223720
+      adventurer-v1.5-Sheet_5: 5352652116806695986
+      adventurer-v1.5-Sheet_41: 4968957380249203935
+      adventurer-v1.5-Sheet_94: 8686480909226747678
+      adventurer-v1.5-Sheet_86: -5516172988903973048
+      adventurer-v1.5-Sheet_21: 5743002360071119732
+      adventurer-v1.5-Sheet_22: 5695235962273761828
+      adventurer-v1.5-Sheet_44: -7384182149723659870
+      adventurer-v1.5-Sheet_68: -7115898312809811634
+      adventurer-v1.5-Sheet_8: -3051788477456609919
+      adventurer-v1.5-Sheet_101: -1669581087827291848
+      adventurer-v1.5-Sheet_111: -6100427877554654322
+      adventurer-v1.5-Sheet_9: 6812864027602333311
+      adventurer-v1.5-Sheet_88: 1767457240126523544
+      adventurer-v1.5-Sheet_106: 6958489048758843142
+      adventurer-v1.5-Sheet_4: -4716468363168978379
+      adventurer-v1.5-Sheet_104: 8043192317792241512
+      adventurer-v1.5-Sheet_39: -2237402569225598170
+      adventurer-v1.5-Sheet_93: -6787540193282983219
+      adventurer-v1.5-Sheet_75: 8609885239257350908
+      adventurer-v1.5-Sheet_11: 1062949542834640332
+      adventurer-v1.5-Sheet_56: -539368960687019306
+      adventurer-v1.5-Sheet_90: -3585722546115978389
+      adventurer-v1.5-Sheet_23: 8248592303025495236
+      adventurer-v1.5-Sheet_2: 5974857443207731813
+      adventurer-v1.5-Sheet_37: -2864484378095117669
+      adventurer-v1.5-Sheet_95: 3884523371282086033
+      adventurer-v1.5-Sheet_87: -4341356872245263088
+      adventurer-v1.5-Sheet_54: -8615837943046799719
+      adventurer-v1.5-Sheet_20: -1099163315959880021
+      adventurer-v1.5-Sheet_92: -1245805177388227614
+      adventurer-v1.5-Sheet_100: -2185112768862623970
+      adventurer-v1.5-Sheet_1: 8990718453661354843
+      adventurer-v1.5-Sheet_80: -2066183305326779831
+      adventurer-v1.5-Sheet_53: -9013844846209147344
+      adventurer-v1.5-Sheet_97: -8824249870287036601
+      adventurer-v1.5-Sheet_36: 7004264473935265697
+      adventurer-v1.5-Sheet_74: -6092153715207035312
+      adventurer-v1.5-Sheet_29: 3771267384243845313
+      adventurer-v1.5-Sheet_48: 2121196686736080109
+      adventurer-v1.5-Sheet_81: -1587948146142584492
+      adventurer-v1.5-Sheet_108: 3252349530020607276
+      adventurer-v1.5-Sheet_85: 1867614440103027997
+      adventurer-v1.5-Sheet_51: -2549233721657181880
+      adventurer-v1.5-Sheet_58: -3173507598410241640
+      adventurer-v1.5-Sheet_27: -5769049464661738840
+      adventurer-v1.5-Sheet_66: 2064600301687814877
+      adventurer-v1.5-Sheet_82: -6797026568485068343
+      adventurer-v1.5-Sheet_99: 8632490420879095957
+      adventurer-v1.5-Sheet_110: -2005489889676191732
+      adventurer-v1.5-Sheet_112: 2979789710812743995
+      adventurer-v1.5-Sheet_83: -3793652580250871328
+      adventurer-v1.5-Sheet_96: 7270062891368290615
+      adventurer-v1.5-Sheet_61: 4020093697899924549
+      adventurer-v1.5-Sheet_13: -2021519671248309078
+      adventurer-v1.5-Sheet_50: 6743096067385053398
+      adventurer-v1.5-Sheet_72: 1292223576449554274
+      adventurer-v1.5-Sheet_77: -2999520307170388906
+      adventurer-v1.5-Sheet_64: -5732853594353692590
+      adventurer-v1.5-Sheet_109: -6373378588745349680
+      adventurer-v1.5-Sheet_0: -3316437661583186769
+      adventurer-v1.5-Sheet_28: 8000613085043981434
+      adventurer-v1.5-Sheet_59: -7092784828369904500
+      adventurer-v1.5-Sheet_32: 6304556023490750544
+      adventurer-v1.5-Sheet_70: -572935638892792279
+      adventurer-v1.5-Sheet_78: -6091379090655602125
+      adventurer-v1.5-Sheet_107: -5727256042839303126
+      adventurer-v1.5-Sheet_25: -2458887622680725957
+      adventurer-v1.5-Sheet_103: -773844512500955763
+      adventurer-v1.5-Sheet_26: 622860959154257170
+      adventurer-v1.5-Sheet_63: 2322306977092904692
+      adventurer-v1.5-Sheet_57: -7032205920181708771
+      adventurer-v1.5-Sheet_84: 9173813048575503478
+      adventurer-v1.5-Sheet_6: -2199296802102092023
+      adventurer-v1.5-Sheet_91: 2729851271774367765
+      adventurer-v1.5-Sheet_79: -7195962820408333091
+      adventurer-v1.5-Sheet_49: 1460603255664568255
+      adventurer-v1.5-Sheet_46: 1075423825034056700
+      adventurer-v1.5-Sheet_16: 9007157022648109736
+      adventurer-v1.5-Sheet_33: -3428362339425429463
+      adventurer-v1.5-Sheet_55: -5253927435303738400
+      adventurer-v1.5-Sheet_43: 413466564722158248
+      adventurer-v1.5-Sheet_34: 3894427792011160454
+      adventurer-v1.5-Sheet_40: 6900313407354992353
+      adventurer-v1.5-Sheet_38: 5808025637508920791
+      adventurer-v1.5-Sheet_67: -1793489991093253315
+      adventurer-v1.5-Sheet_47: 5394183733801526263
+      adventurer-v1.5-Sheet_14: 101571700091508751
+      adventurer-v1.5-Sheet_65: 3154456230993132333
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

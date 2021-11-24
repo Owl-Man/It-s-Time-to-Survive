@@ -144,6 +144,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1072,6 +1073,47 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      buttonsPack2_35: -2522567666303867097
+      buttonsPack2_0: -1850880533030592381
+      buttonsPack2_28: -1353170523348995685
+      buttonsPack2_15: 673670892448335747
+      buttonsPack2_11: -8839198760184392091
+      buttonsPack2_20: 7878175714562216320
+      buttonsPack2_24: 4822360869536493538
+      buttonsPack2_18: -3009265602750530767
+      buttonsPack2_39: 6208917555151073208
+      buttonsPack2_9: 7794021868038891297
+      buttonsPack2_37: 6351811596970988430
+      buttonsPack2_31: -8959997810624002096
+      buttonsPack2_29: -4534432288912811762
+      buttonsPack2_6: 520174738899584005
+      buttonsPack2_25: -4041872491293997722
+      buttonsPack2_3: 1836300163744011988
+      buttonsPack2_14: 1407530279420275020
+      buttonsPack2_36: 6548470464377361301
+      buttonsPack2_7: -1127013934700344694
+      buttonsPack2_1: -4520321046594478847
+      buttonsPack2_16: 4494730509288224831
+      buttonsPack2_22: -504814036502566353
+      buttonsPack2_21: -9197713705284675622
+      buttonsPack2_30: 1270337844943206862
+      buttonsPack2_12: 61160046745858698
+      buttonsPack2_26: 2415110928033540427
+      buttonsPack2_34: -2328072254683677960
+      buttonsPack2_4: 746856257820501621
+      buttonsPack2_27: 865116440169455697
+      buttonsPack2_38: 4774531217904675893
+      buttonsPack2_33: -279014835991248284
+      buttonsPack2_8: -9163124452812388592
+      buttonsPack2_2: -3179191505672245617
+      buttonsPack2_10: -2587127406453425761
+      buttonsPack2_13: -6125626151490449535
+      buttonsPack2_17: 8721497959496335810
+      buttonsPack2_5: -3609514741161551061
+      buttonsPack2_23: -2884258383114333187
+      buttonsPack2_32: 4312751237007640340
+      buttonsPack2_19: 2756998541201938051
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

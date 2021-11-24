@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 using System;
 using System.Collections;
 
 public class GlobalLightControlller : MonoBehaviour
 {
-    [SerializeField] private Light2D light;
+    [SerializeField] private UnityEngine.Rendering.Universal.Light2D light;
     [SerializeField] private Values values;
 
     [SerializeField] private GameObject[] AdditionalLights;
