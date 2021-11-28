@@ -6,29 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class IntroScript : MonoBehaviour
 {
-	public Text IntroTextComponent;
+	[SerializeField] private Text IntroTextComponent;
 
-	public string[] TextForIntro;
+	[SerializeField] private string[] TextForIntro;
 
-	public GameObject EndingObject;
+	[SerializeField] private GameObject EndingObject;
 
-	public GameObject IntroTextObject;
+	[SerializeField] private GameObject IntroTextObject;
 
-	private int ShowingText = 0;
+	private int ShowingText;
 
-	public float introSpeed;
+	[SerializeField] private float introSpeed, endLogoTime;
 
-	public float endLogoTime;
-
-	private bool isAFirstText = true;
+	private bool _isAFirstText = true;
 
 	private void Start() => StartCoroutine(Intro());
 
 	IEnumerator Intro() 
 	{
-		if (isAFirstText == false) yield return new WaitForSeconds(introSpeed);
+		if (_isAFirstText == false) yield return new WaitForSeconds(introSpeed);
 
-		else isAFirstText = false;
+		else _isAFirstText = false;
 
 		if (ShowingText < TextForIntro.Length) 
 		{

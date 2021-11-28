@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
-	private InventorySystem inventory;
+	[SerializeField] private GameObject ChestPanel;
 
-	public GameObject ChestPanel;
-
-	public GameObject[] ChestContainer;
-
-    private void Start() => inventory = LinkManager.instance.inventory;
+	[SerializeField] private GameObject[] ChestContainer;
+	
+	private InventorySystem _inventory;
+	
+	private void Start() => _inventory = LinkManager.instance.inventory;
 
     private void OnTriggerEnter2D(Collider2D other) 
 	{
@@ -33,19 +33,19 @@ public class Chest : MonoBehaviour
 		int i = 15;
 		int a = 0;
 
-		while (i < inventory.slots.Length && a < ChestContainer.Length)
+		while (i < _inventory.slots.Length && a < ChestContainer.Length)
 		{
-			if (inventory.isFull[i] == false && ChestContainer[a] != null) 
+			if (_inventory.isFull[i] == false && ChestContainer[a] != null) 
 			{
-				inventory.isFull[i] = true;
+				_inventory.isFull[i] = true;
 
-				GameObject SwapedItem = Instantiate(ChestContainer[a], inventory.slots[i].transform);
+				GameObject swappedItem = Instantiate(ChestContainer[a], _inventory.slots[i].transform);
 
-				inventory.slotScripts[i].GetChild();
+				_inventory.slotScripts[i].GetChild();
 					
-				SwapedItem.GetComponent<Item>().id = i;
+				swappedItem.GetComponent<Item>().id = i;
 
-				Slot slot = inventory.slotScripts[i];
+				Slot slot = _inventory.slotScripts[i];
 
 				slot.isSlotHaveItem = true;
 			}
@@ -65,15 +65,15 @@ public class Chest : MonoBehaviour
 		int i = 15;
 		int a = 0;
 
-		while (i < inventory.slots.Length && a < ChestContainer.Length)
+		while (i < _inventory.slots.Length && a < ChestContainer.Length)
 		{
-			if (inventory.isFull[i] == true) 
+			if (_inventory.isFull[i] == true) 
 			{
-				inventory.isFull[i] = false;
+				_inventory.isFull[i] = false;
 
-				ChestContainer[a] = inventory.slots[i];
+				ChestContainer[a] = _inventory.slots[i];
 
-				Slot slot = inventory.slotScripts[i];
+				Slot slot = _inventory.slotScripts[i];
 
 				slot.isSlotHaveItem = false;
 

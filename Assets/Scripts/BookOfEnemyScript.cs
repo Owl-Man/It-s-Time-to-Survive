@@ -6,26 +6,22 @@ using UnityEngine.UI;
 public class BookOfEnemyScript : MonoBehaviour
 {
     [Header ("GameObjects")]
-    public GameObject BookPanel;
-    public GameObject Pockets;
+    [SerializeField] private GameObject BookPanel;
+    [SerializeField] private GameObject Pockets;
 
     [Header ("Components")]
-    public Text NameEnemy;
-    public Text DescriptionEnemy;
-    public Text DamageEnemy;
-    public Text HealthEnemy;
-    public Text AttackSpeedEnemy;
-    public Text EXPEnemy;
+    [SerializeField] private Text NameEnemy, DescriptionEnemy, HealthEnemy;
+    [SerializeField] private Text DamageEnemy, AttackSpeedEnemy, EXPEnemy;
 
-    public Image SpriteEnemy;
+    [SerializeField] private Image SpriteEnemy;
 
-    public Text CurrentPage;
+    [SerializeField] private Text CurrentPage;
 
     [Header ("Values")]
-    public int currentEnemy = 0;
+    [SerializeField] private int currentEnemy;
 
     [Header ("References")]
-    public Enemy[] EnemiesData;
+    [SerializeField] private Enemy[] EnemiesData;
 
     public void OnBookOfEvilButtonClick() => SetBookPanelActive(true);
 

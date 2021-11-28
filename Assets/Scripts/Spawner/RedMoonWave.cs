@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
@@ -7,8 +6,8 @@ public class RedMoonWave : SpawnBase
     public Transform[] points;
 
     public void RedMoonStart() => StartCoroutine(Spawner());
-    
-    IEnumerator Spawner()
+
+    private IEnumerator Spawner()
     {
         if (PlayerPrefs.GetInt("isRedMoonDay") == 1)
         {

@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class EnemyAIBase : MonoCache
 {
     [Header("Values")]
-    private int health;
-    private float timeBtwAttack;
+    private int _health;
+    private float _timeBtwAttack;
 
     [SerializeField] private bool isDying;
     [SerializeField] private bool SpriteFlipBool;
     
-    private bool movingRight;
-    private bool chill, angry, goback;
+    private bool _movingRight;
+    private bool _chill, _angry, _goBack;
 
     [SerializeField] private GameObject EnemyObject;
 
@@ -25,11 +26,14 @@ public abstract class EnemyAIBase : MonoCache
 
     [SerializeField] private Transform point;
 
+    private Vector3 _enemyPosition, _playerPosition;
+
     [Header("Components")]
     [SerializeField] private BoxCollider2D collider;
     [SerializeField] private Animator animator;
-    [SerializeField] private Transform player;
     [SerializeField] private SpriteRenderer sprite;
+
+    private LinkManager _link;
 
     [Header("References")]
     [SerializeField] private Enemy EnemyData;
@@ -42,9 +46,11 @@ public abstract class EnemyAIBase : MonoCache
 
     private void Start()
     {
-        player = LinkManager.instance.PlayerObject.transform;
+        _enemyPosition = transform.position;
+        _link = LinkManager.instance;
+        _playerPosition = _link.PlayerObject.transform.position;
 
-        health = EnemyData.health;
+        _health = EnemyData.health;
 
         Physics2D.queriesStartInColliders = false;
         collider.enabled = true;
@@ -54,35 +60,35 @@ public abstract class EnemyAIBase : MonoCache
     {
         if (isDying == false)
         {
-            if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && !angry)
+            if (Vector2.Distance(_enemyPosition, point.position) < positionOfPatrol && !_angry)
             {
-                chill = true;
+                _chill = true;
             }
-            if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
+            if (Vector2.Distance(_enemyPosition, _playerPosition) < stoppingDistance)
             {
                 Angrying();
             }
-            if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            if (Vector2.Distance(_enemyPosition, _playerPosition) > stoppingDistance)
             {
-                goback = true;
-                angry = false;
+                _goBack = true;
+                _angry = false;
             }
 
-            if (chill) Chill();
+            if (_chill) Chill();
 
-            else if (angry) Angry();
+            else if (_angry) Angry();
 
-            else if (goback) GoBack();
+            else if (_goBack) GoBack();
 
-            if (health <= 0 && isDying == false) StartCoroutine(Dead());
+            if (_health <= 0 && isDying == false) StartCoroutine(Dead());
         }
     }
 
     private void Angrying()
     {
-        angry = true;
-        goback = false;
-        chill = false;
+        _angry = true;
+        _goBack = false;
+        _chill = false;
 
         AngryEmotion.SetActive(true);
         LoseTargetEmotion.SetActive(false);
@@ -93,15 +99,15 @@ public abstract class EnemyAIBase : MonoCache
         LoseTargetEmotion.SetActive(false);
         AngryEmotion.SetActive(false);
 
-        if (transform.position.x > point.position.x + positionOfPatrol)
+        if (_enemyPosition.x > point.position.x + positionOfPatrol)
         {
-            movingRight = false;
+            _movingRight = false;
         }
-        else if (transform.position.x < point.position.x - positionOfPatrol)
+        else if (_enemyPosition.x < point.position.x - positionOfPatrol)
         {
-            movingRight = true;
+            _movingRight = true;
         }
-        if (movingRight)
+        if (_movingRight)
         {
             transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
             sprite.flipX = SpriteFlipBool;
@@ -111,52 +117,54 @@ public abstract class EnemyAIBase : MonoCache
             transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
             sprite.flipX = !SpriteFlipBool;
         }
+
+        _enemyPosition = transform.position;
     }
 
     private void Angry()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, angrySpeed * Time.deltaTime);
-
+        transform.position = Vector2.MoveTowards(transform.position, _playerPosition, angrySpeed * Time.deltaTime);
+        _enemyPosition = transform.position;
+        
         SpriteFlipUpdate();
     }
 
     private void GoBack()
     {
         transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
-
+        _enemyPosition = transform.position;
+        
         LoseTargetEmotion.SetActive(true);
         AngryEmotion.SetActive(false);
 
         SpriteFlipUpdate();
     }
 
-    private void SpriteFlipUpdate() => sprite.flipX = movingRight ? SpriteFlipBool : !SpriteFlipBool;
+    private void SpriteFlipUpdate() => sprite.flipX = _movingRight ? SpriteFlipBool : !SpriteFlipBool;
 
     private void OnTriggerStay2D(Collider2D other) //Атака
     {
         if (other.CompareTag("Player"))
         {
-            if (timeBtwAttack <= 0)
+            if (_timeBtwAttack <= 0)
             {
                 AttackPlayer();
             }
             else
             {
-                timeBtwAttack -= Time.deltaTime;
+                _timeBtwAttack -= Time.deltaTime;
             }
         }
     }
 
     public virtual void AttackPlayer() //Нанесение урона
     {
-        Debug.Log(LinkManager.instance.indicators);
-
-        LinkManager.instance.indicators.health -= EnemyData.damage;
-        LinkManager.instance.indicators.HealthDiagnostic();
+        _link.indicators.health -= EnemyData.damage;
+        _link.indicators.HealthDiagnostic();
 
         if (AttackAnimationKey != "") animator.Play(AttackAnimationKey);
 
-        timeBtwAttack = EnemyData.attackSpeed;
+        _timeBtwAttack = EnemyData.attackSpeed;
     }
 
     private void OnTriggerExit(Collider other)
@@ -172,11 +180,11 @@ public abstract class EnemyAIBase : MonoCache
         if (other.CompareTag("WeaponHitBox"))
         {
             if (HitAnimationKey != "") animator.Play(HitAnimationKey);
-            health -= LinkManager.instance.playerController.weaponScript.weapon.damage;
+            _health -= _link.playerController.weaponScript.weapon.damage;
         }
     }
 
-    IEnumerator Dead()
+    private IEnumerator Dead()
     {
         isDying = true;
 
@@ -184,14 +192,14 @@ public abstract class EnemyAIBase : MonoCache
 
         collider.enabled = false;
 
-        LinkManager.instance.values.ChangesKillsValue(1);
+        _link.values.ChangesKillsValue(1);
 
-        LinkManager.instance.values.ChangeEXPValue(EnemyData.EXP);
+        _link.values.ChangeEXPValue(EnemyData.EXP);
 
         AngryEmotion.SetActive(false);
         LoseTargetEmotion.SetActive(false);
 
-        LinkManager.instance.bloodCntrl.InstantiateBlood(transform);
+        _link.bloodCntrl.InstantiateBlood(transform);
 
         yield return new WaitForSeconds(0.8f);
         BeforeDie();

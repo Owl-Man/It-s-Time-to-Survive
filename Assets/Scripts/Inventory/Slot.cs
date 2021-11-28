@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +23,7 @@ public class Slot : MonoBehaviour
 
     [HideInInspector] public GameObject Child;
 
-    public Text ItemsCountField;
+    [SerializeField] private Text ItemsCountField;
 
 
     private void Start()

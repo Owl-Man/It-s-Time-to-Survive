@@ -5,11 +5,11 @@ using Unity.Notifications.Android;
 
 public class Notification : MonoBehaviour
 {
-    bool ispaused = false;
+    private bool _isPaused;
 
-    int timeForNotification;
+    private int _timeForNotification;
 
-    public string GameName, NotificationTitle, NotificationText;
+    [SerializeField] private string GameName, NotificationTitle, NotificationText;
 
     private void Start() 
     {
@@ -18,16 +18,16 @@ public class Notification : MonoBehaviour
 
     void OnApplicationPause (bool pauseStatus) 
     {
-        ispaused = pauseStatus;
+        _isPaused = pauseStatus;
 
-        if (ispaused == true) TrySendNotification();
+        if (_isPaused) TrySendNotification();
     }
 
     void OnApplicationQuit () => TrySendNotification();
 
     public void TrySendNotification()
     {
-        int isSending = UnityEngine.Random.Range(1, 6); //Шанс отправки уведомления
+        int isSending = Random.Range(1, 6); //Шанс отправки уведомления
 
         if (isSending == 1) SendNotification();
     }
@@ -54,8 +54,8 @@ public class Notification : MonoBehaviour
         notification.Text = NotificationText;
         notification.LargeIcon = "icon_0";
         notification.SmallIcon = "icon_1";
-        timeForNotification = UnityEngine.Random.Range(550, 2600);
-        notification.FireTime = System.DateTime.Now.AddMinutes(timeForNotification);
+        _timeForNotification = UnityEngine.Random.Range(550, 2600);
+        notification.FireTime = System.DateTime.Now.AddMinutes(_timeForNotification);
 
         AndroidNotificationCenter.SendNotification(notification, "channel_id");
     }

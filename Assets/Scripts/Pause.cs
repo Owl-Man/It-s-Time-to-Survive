@@ -7,7 +7,7 @@ public class Pause : MonoBehaviour
 
     [SerializeField] private GameObject Pockets;
 
-    private bool isPausePanelActivate;
+    private bool _isPausePanelActivate;
 
     private void Start() => Pockets.SetActive(true);
 
@@ -20,21 +20,21 @@ public class Pause : MonoBehaviour
         StartCoroutine(TimeChange());
     }
 
-    IEnumerator TimeChange() 
+    private IEnumerator TimeChange() 
     {
         yield return new WaitForSeconds(0.52f);
         Time.timeScale = 0f;
-        isPausePanelActivate = true;
+        _isPausePanelActivate = true;
     }
 
     public void OnBackForPauseButtonClick() 
     {
-        if (isPausePanelActivate == false) return;
+        if (_isPausePanelActivate == false) return;
 
         Time.timeScale = 1f;
         PausePanel.SetActive(false);
 
-        isPausePanelActivate = false;
+        _isPausePanelActivate = false;
 
         if (Pockets != null) Pockets.SetActive(true);
     }

@@ -6,17 +6,17 @@ public class Message : MonoBehaviour
 
     [SerializeField] private string message;
 
-    private bool isMessageActivated;
-
     [SerializeField] private string targetTag = "Player";
 
     [SerializeField] private float timeMessageActive = 1f;
+    
+    private bool _isMessageActivated;
 
     public void OnTriggerEnter2D(Collider2D other) 
     {
-        if (isMessageActivated == false && other.CompareTag(targetTag)) 
+        if (_isMessageActivated == false && other.CompareTag(targetTag)) 
         {
-            isMessageActivated = true;
+            _isMessageActivated = true;
             if (messageSystem != null) messageSystem.SendMessage(message, timeMessageActive);
         }
     }

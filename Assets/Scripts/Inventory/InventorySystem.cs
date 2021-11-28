@@ -4,13 +4,14 @@ using System;
 
 public class InventorySystem : MonoBehaviour
 {
+    [Header("Components")]
     public GameObject FoodUseButton;
     public GameObject AttackButton;
 
     public ButtonsController buttonsCntrl;
 
-    private Weapon weapon;
-    private Food food;
+    private Weapon _weapon;
+    private Food _food;
 
     [Header("Description Fields")]
 
@@ -21,12 +22,12 @@ public class InventorySystem : MonoBehaviour
 
     [Header("Transport Elements")]
 
-    private GameObject SlotFromChild;
-    private GameObject SlotTo;
-    private GameObject SlotToChild;
+    private GameObject _slotFromChild;
+    private GameObject _slotTo;
+    private GameObject _slotToChild;
 
-    private Slot slotFromScript;
-    private Slot slotToScript;
+    private Slot _slotFromScript;
+    private Slot _slotToScript;
     
     [Header("Other")]
 
@@ -38,22 +39,22 @@ public class InventorySystem : MonoBehaviour
 
     public void InsertDescriptionFieldsWeapon(GameObject child) //Передача описания обьекта в панель типа "оружие"
     {
-        weapon = child.GetComponent<WeaponItem>().weapon;
+        _weapon = child.GetComponent<WeaponItem>().weapon;
 
-        name.text = weapon.name;
-        description.text = weapon.description;
-        healOrDamage.text = "Damage: " + weapon.damage.ToString();
-        satietyOrRare.text = "Rarity: " + weapon.rare;
+        name.text = _weapon.name;
+        description.text = _weapon.description;
+        healOrDamage.text = "Damage: " + _weapon.damage.ToString();
+        satietyOrRare.text = "Rarity: " + _weapon.rare;
     }
 
     public void InsertDescriptionFieldsFood(GameObject child) //Передача описания обьекта в панель типа "еда"
     {
-        food = child.GetComponent<UseFood>().food;
+        _food = child.GetComponent<UseFood>().food;
 
-        name.text = food.name;
-        description.text = food.description;
-        healOrDamage.text = "Heal: " + food.heal.ToString();
-        satietyOrRare.text = "Satiety: " + food.satiety.ToString();
+        name.text = _food.name;
+        description.text = _food.description;
+        healOrDamage.text = "Heal: " + _food.heal.ToString();
+        satietyOrRare.text = "Satiety: " + _food.satiety.ToString();
     }
 
     public void IsSelectSlot(int id, bool state) => slotScripts[id].MainChangeSlotUsingState(state);
@@ -69,9 +70,9 @@ public class InventorySystem : MonoBehaviour
     {
         isFull[i] = true;
 
-        GameObject PickUpedItem = Instantiate(item, slots[i].transform);
+        GameObject pickUppedItem = Instantiate(item, slots[i].transform);
 
-        PickUpedItem.GetComponent<Item>().id = i;
+        pickUppedItem.GetComponent<Item>().id = i;
 
         slotScripts[i].GetChild();
 
@@ -91,42 +92,42 @@ public class InventorySystem : MonoBehaviour
 
     public void ChangeItemsCount(int id, int count) => slotScripts[id].CountOfItems += count;
 
-    public void TransportItemToOtherSlot(int IdSlotFrom, int IdSlotTo) //Перемещение обьекта из одного слота в другой 
+    public void TransportItemToOtherSlot(int idSlotFrom, int idSlotTo) //Перемещение обьекта из одного слота в другой 
     {
         try
         {
-            slotFromScript = slotScripts[IdSlotFrom];
-            slotToScript = slotScripts[IdSlotTo];
+            _slotFromScript = slotScripts[idSlotFrom];
+            _slotToScript = slotScripts[idSlotTo];
 
-            slotFromScript.GetChild();
+            _slotFromScript.GetChild();
 
-            SlotFromChild = slotFromScript.Child; // Получаем ссылку на обьект в слоте, которую надо переместить
+            _slotFromChild = _slotFromScript.Child; // Получаем ссылку на обьект в слоте, которую надо переместить
 
-            IsSelectSlot(IdSlotFrom, false);
-            ChangeHaveItemState(IdSlotFrom, false);
+            IsSelectSlot(idSlotFrom, false);
+            ChangeHaveItemState(idSlotFrom, false);
 
-            SlotTo = slots[IdSlotTo];
+            _slotTo = slots[idSlotTo];
 
-            SlotToChild = Instantiate(SlotFromChild, SlotTo.transform); // Получаем ссылку на созданный обьект в новом слоте
+            _slotToChild = Instantiate(_slotFromChild, _slotTo.transform); // Получаем ссылку на созданный обьект в новом слоте
 
-            int CountOfItemsSlotFrom = slotScripts[IdSlotFrom].CountOfItems;
+            int countOfItemsSlotFrom = slotScripts[idSlotFrom].CountOfItems;
 
-            ChangeItemsCount(IdSlotFrom, -CountOfItemsSlotFrom);
+            ChangeItemsCount(idSlotFrom, -countOfItemsSlotFrom);
 
-            slotScripts[IdSlotFrom].UpdateItemsCountField();
+            slotScripts[idSlotFrom].UpdateItemsCountField();
 
-            SlotToChild.name = SlotFromChild.name;
+            _slotToChild.name = _slotFromChild.name;
 
-            SlotToChild.GetComponent<Item>().id = slotToScript.i; //Меняем id обьекта на новый, нового слота
+            _slotToChild.GetComponent<Item>().id = _slotToScript.i; //Меняем id обьекта на новый, нового слота
 
-            ChangeItemsCount(IdSlotTo, CountOfItemsSlotFrom);
+            ChangeItemsCount(idSlotTo, countOfItemsSlotFrom);
 
-            slotScripts[IdSlotTo].UpdateItemsCountField();
+            slotScripts[idSlotTo].UpdateItemsCountField();
 
-            IsSelectSlot(IdSlotTo, true);
-            ChangeHaveItemState(IdSlotTo, true);
+            IsSelectSlot(idSlotTo, true);
+            ChangeHaveItemState(idSlotTo, true);
 
-            Destroy(SlotFromChild); //Удаляем старый обьект в старом слоте
+            Destroy(_slotFromChild); //Удаляем старый обьект в старом слоте
         }
         catch (Exception ex)
         {

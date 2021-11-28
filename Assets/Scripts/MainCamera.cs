@@ -11,34 +11,34 @@ public class MainCamera : MonoBehaviour
     [SerializeField] private float bottomLimit;
     [SerializeField] private float upperLimit;
 
-    private Transform player;
+    private Transform _player;
 
-    private Vector3 target;
+    private Vector3 _target;
 
-    private int lastX, currentX;
+    private int _lastX, _currentX;
 
-    void Start()
+    private void Start()
     {
         offset = new Vector2(Mathf.Abs(offset.x), offset.y);
         FocusOnPlayer(isLeft);
     }
 
-    void Update()
+    private void Update()
     {
-        if (player)
+        if (_player)
         {
-            currentX = Mathf.RoundToInt(player.position.x);
+            _currentX = Mathf.RoundToInt(_player.position.x);
 
-            if (currentX > lastX) isLeft = false;
-            else if (currentX < lastX) isLeft = true;
+            if (_currentX > _lastX) isLeft = false;
+            else if (_currentX < _lastX) isLeft = true;
 
-            lastX = Mathf.RoundToInt(player.position.x);
+            _lastX = Mathf.RoundToInt(_player.position.x);
 
-            target = isLeft
-                ? new Vector3(player.position.x - offset.x, player.position.y + offset.y, transform.position.z)
-                : new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
+            _target = isLeft
+                ? new Vector3(_player.position.x - offset.x, _player.position.y + offset.y, transform.position.z)
+                : new Vector3(_player.position.x + offset.x, _player.position.y + offset.y, transform.position.z);
 
-            Vector3 currentPosition = Vector3.Lerp(transform.position, target, dumping * Time.deltaTime);
+            Vector3 currentPosition = Vector3.Lerp(transform.position, _target, dumping * Time.deltaTime);
 
             transform.position = currentPosition;
         }
@@ -53,12 +53,12 @@ public class MainCamera : MonoBehaviour
     
     public void FocusOnPlayer(bool playerIsLeft)
     {
-        player = LinkManager.instance.PlayerObject.transform;
+        _player = LinkManager.instance.PlayerObject.transform;
 
-        lastX = Mathf.RoundToInt(player.position.x);
+        _lastX = Mathf.RoundToInt(_player.position.x);
 
         transform.position = playerIsLeft
-            ? new Vector3(player.position.x - offset.x, player.position.y - offset.y, transform.position.z)
-            : new Vector3(player.position.x + offset.x, player.position.y + offset.y, transform.position.z);
+            ? new Vector3(_player.position.x - offset.x, _player.position.y - offset.y, transform.position.z)
+            : new Vector3(_player.position.x + offset.x, _player.position.y + offset.y, transform.position.z);
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
-    public GameObject Music;
+    [SerializeField] private GameObject Music;
     
     private void Start() 
     {

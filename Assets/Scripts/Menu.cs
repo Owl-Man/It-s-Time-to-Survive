@@ -8,22 +8,15 @@ public class Menu : MonoBehaviour
     [Header ("References")]
 
     [SerializeField] private FPSController fpsCntrl;
-
     [SerializeField] private SoundController Music;
-
     [SerializeField] private EffectsController effectsCntrl; 
 
     [Header ("GameObjects")]
 
-    public GameObject SettingsPanel;
-
-    public GameObject SettingsButton;
-
-    public GameObject[] galochka;
-
-    public GameObject MusicOnButton, MusicOffButton;
-
-    public GameObject EffectsOnObject, EffectsOffObject;
+    [SerializeField] private GameObject SettingsPanel, SettingsButton;
+    [SerializeField] private GameObject[] galochka;
+    [SerializeField] private GameObject MusicOnButton, MusicOffButton;
+    [SerializeField] private GameObject EffectsOnObject, EffectsOffObject;
 
     private void Start() 
     {

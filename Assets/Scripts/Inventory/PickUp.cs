@@ -2,49 +2,49 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    private InventorySystem inventory;
+    [SerializeField] private GameObject slotButton; // item in slot
+    
+    private InventorySystem _inventory;
+    
+    private GameObject _child;
 
-    public GameObject slotButton; // item in slot
+    private Item _item;
 
-    private GameObject child;
+    private bool _isPickedUp;
 
-    private Item item;
-
-    private bool isPickedUp = false;
-
-    private void Start() => inventory = LinkManager.instance.inventory;
+    private void Start() => _inventory = LinkManager.instance.inventory;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isPickedUp == false && other.CompareTag("Player"))
+        if (_isPickedUp == false && other.CompareTag("Player"))
         {
-            isPickedUp = true;
+            _isPickedUp = true;
 
             //Прокрутка для нахождения уже существующего предмета такого же типа и не превыщающим макс кол-во в одном слоте
 
-            for (int a = 0; a < inventory.slots.Length; a++)
+            for (int a = 0; a < _inventory.slots.Length; a++)
             {
-                inventory.slotScripts[a].GetChild();
-                child = inventory.slotScripts[a].Child;
+                _inventory.slotScripts[a].GetChild();
+                _child = _inventory.slotScripts[a].Child;
 
-                if (child != null)
-                    item = child.GetComponent<Item>();
+                if (_child != null)
+                    _item = _child.GetComponent<Item>();
 
-                if (child != null && slotButton.GetComponent<Item>().item == item.item
-                && inventory.slotScripts[a].CountOfItems + 1 <= item.MaxStackCountInSlot) 
+                if (_child != null && slotButton.GetComponent<Item>().item == _item.item
+                && _inventory.slotScripts[a].CountOfItems + 1 <= _item.MaxStackCountInSlot) 
                 {
-                    inventory.AddItem(a, gameObject);
+                    _inventory.AddItem(a, gameObject);
                     return;
                 }
             }
             
             //Если такого не было найдено, то предмет заберется в ближайщий свободный слот
             
-            for (int i = 0; i < inventory.slots.Length; i++)
+            for (int i = 0; i < _inventory.slots.Length; i++)
             {
-                if (inventory.isFull[i] == false)
+                if (_inventory.isFull[i] == false)
                 {
-					inventory.AddNewItem(i, slotButton, gameObject);
+					_inventory.AddNewItem(i, slotButton, gameObject);
                     break;
                 }
             }

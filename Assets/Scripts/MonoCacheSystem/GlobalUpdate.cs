@@ -4,9 +4,9 @@ public class GlobalUpdate : MonoBehaviour
 {
     private void Update() 
     {
-        for (int i = 0; i < MonoCache.allUpdate.Count; i++) 
+        for (int i = 0; i < MonoCache.AllUpdate.Count; i++) 
         {
-            MonoCache.allUpdate[i].Tick();
+            MonoCache.AllUpdate[i].Tick();
         }
     }
 }

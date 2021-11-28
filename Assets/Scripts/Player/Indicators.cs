@@ -2,118 +2,121 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Indicators : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private Image[] Lives;
-    [SerializeField] private Sprite fullLive, emptyLive;
-
-    [SerializeField] private Image[] Satiety;
-    [SerializeField] private Sprite fullSatiety, emptySatiety;
-
-    [SerializeField] private float HungeringSpeed;
-
-    [SerializeField] private Animator animator;
-
-    [SerializeField] private GameObject GameOverPanel;
-    [SerializeField] private GameObject Pockets;
-
-    public int health;
-    [SerializeField] private int numberOfLives;
-
-    public int satiety;
-    [SerializeField] private int numberOfSatiety;
-
-
-    private bool isSatietyDying;
-
-    private void Start() 
+    public class Indicators : MonoBehaviour
     {
-        UpdateAllValues();
-        StartCoroutine(Hungering());
-    }
+        [SerializeField] private Image[] Lives;
+        [SerializeField] private Sprite fullLive, emptyLive;
 
-    public void UpdateAllValues()
-    {
-        HealthDiagnostic();
-        SatietyDiagnostic();
-    }
+        [SerializeField] private Image[] Satiety;
+        [SerializeField] private Sprite fullSatiety, emptySatiety;
 
-    public void HealthDiagnostic() 
-    {
-        if (health > numberOfLives)
+        [SerializeField] private float HungeringSpeed;
+
+        [SerializeField] private Animator animator;
+
+        [SerializeField] private GameObject GameOverPanel;
+        [SerializeField] private GameObject Pockets;
+
+        public int health;
+        [SerializeField] private int numberOfLives;
+
+        public int satiety;
+        [SerializeField] private int numberOfSatiety;
+
+
+        private bool _isSatietyDying;
+
+        private void Start() 
         {
-            health = numberOfLives;
+            UpdateAllValues();
+            StartCoroutine(Hungering());
         }
 
-        for (int i = 0; i < Lives.Length; i++)
+        public void UpdateAllValues()
         {
-            Lives[i].sprite = i < health ? fullLive : emptyLive;
-            Lives[i].enabled = i < numberOfLives;
+            HealthDiagnostic();
+            SatietyDiagnostic();
         }
 
-        if (health <= 0)
+        public void HealthDiagnostic() 
         {
-            StartCoroutine(DiePlayer());
+            if (health > numberOfLives)
+            {
+                health = numberOfLives;
+            }
+
+            for (int i = 0; i < Lives.Length; i++)
+            {
+                Lives[i].sprite = i < health ? fullLive : emptyLive;
+                Lives[i].enabled = i < numberOfLives;
+            }
+
+            if (health <= 0)
+            {
+                StartCoroutine(DiePlayer());
+            }
+
+            if (health < 0) 
+            {
+                health = 0;
+            }
         }
 
-        if (health < 0) 
+        public void SatietyDiagnostic() 
         {
-            health = 0;
-        }
-    }
+            if (satiety > numberOfSatiety) 
+            {
+                satiety = numberOfSatiety;
+            }
 
-    public void SatietyDiagnostic() 
-    {
-        if (satiety > numberOfSatiety) 
-        {
-            satiety = numberOfSatiety;
+            for (int i = 0; i < Satiety.Length; i++)
+            {
+                Satiety[i].sprite = i < satiety ? fullSatiety : emptySatiety;
+                Satiety[i].enabled = i < numberOfSatiety;
+            }
+
+            if (satiety <= 0 && _isSatietyDying == false) 
+            {
+                _isSatietyDying = true;
+                StartCoroutine(SatietyDying());
+            }
+            else if (satiety > 0)
+            {
+                _isSatietyDying = false;
+                StopCoroutine(SatietyDying());
+            }
+
+            if (satiety < 0) 
+            {
+                satiety = 0;
+            }
         }
 
-        for (int i = 0; i < Satiety.Length; i++)
+        private IEnumerator SatietyDying()
         {
-            Satiety[i].sprite = i < satiety ? fullSatiety : emptySatiety;
-            Satiety[i].enabled = i < numberOfSatiety;
-        }
-
-        if (satiety <= 0 && isSatietyDying == false) 
-        {
-            isSatietyDying = true;
+            yield return new WaitForSeconds(3.5f);
+            health--;
+            HealthDiagnostic();
             StartCoroutine(SatietyDying());
         }
-        else if (satiety > 0)
+
+        private IEnumerator Hungering() 
         {
-            isSatietyDying = false;
-            StopCoroutine(SatietyDying());
+            yield return new WaitForSeconds(HungeringSpeed);
+            satiety--;
+            SatietyDiagnostic();
+            StartCoroutine(Hungering());
         }
 
-        if (satiety < 0) 
+        private IEnumerator DiePlayer() 
         {
-            satiety = 0;
+            animator.SetBool("isDead", true);
+            yield return new WaitForSeconds(1);
+            GameOverPanel.SetActive(true);
+            Pockets.SetActive(false);
+            gameObject.SetActive(false);
         }
-    }
-
-    IEnumerator SatietyDying()
-    {
-        yield return new WaitForSeconds(3.5f);
-        health--;
-        HealthDiagnostic();
-        StartCoroutine(SatietyDying());
-    }
-
-    IEnumerator Hungering() 
-    {
-        yield return new WaitForSeconds(HungeringSpeed);
-        satiety--;
-        SatietyDiagnostic();
-        StartCoroutine(Hungering());
-    }
-
-    IEnumerator DiePlayer() 
-    {
-        animator.SetBool("isDead", true);
-        yield return new WaitForSeconds(1);
-        GameOverPanel.SetActive(true);
-        Pockets.SetActive(false);
-        gameObject.SetActive(false);
     }
 }
