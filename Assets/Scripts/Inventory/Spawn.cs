@@ -13,7 +13,7 @@ public class Spawn : MonoBehaviour
         float randX = Random.Range(-2.7f, 2.7f);
         float randY = Random.Range(2f, 3.2f);
 
-        Vector2 playerPos = new Vector2(_player.x + randX, _player.y + randY);
-        Instantiate(item, playerPos, Quaternion.identity);
+        Vector2 spawnPos = new Vector2(_player.x + randX, _player.y + randY);
+        Instantiate(item, spawnPos, Quaternion.identity);
     }
 }
