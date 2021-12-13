@@ -94,7 +94,7 @@ namespace Player
             if (state) 
             {
                 inventory.AttackButton.SetActive(true);
-                _slotScript = inventory.slotScripts[PlayerPrefs.GetInt("IdSlotThatUsed")];
+                _slotScript = inventory.slotScripts[inventory.idSlotThatUsed];
                 _slotScript.GetChild();
                 weaponScript = _slotScript.Child.GetComponent<WeaponItem>();
 

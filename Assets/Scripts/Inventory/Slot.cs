@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    private PlayerController player;
-    private InventorySystem inventory;
-    private ButtonsController buttons_controller;
+    private PlayerController _player;
+    private InventorySystem _inventory;
+    private ButtonsController _buttonsController;
 
     public int i;
-    public int CountOfItems = 0;
+    public int CountOfItems;
 
     [Header("Slot states")]
 
-    public bool isSlotUse = false;
+    public bool isSlotUse;
     public bool isSlotChest;
-    public bool isSlotHaveItem = false; // for transport SlotTo
+    public bool isSlotHaveItem; // for transport SlotTo
 
     [Header("Other")]
     
@@ -28,11 +28,11 @@ public class Slot : MonoBehaviour
 
     private void Start()
     {
-        player = LinkManager.instance.playerController;
+        _player = LinkManager.instance.playerController;
 
-        inventory = LinkManager.instance.inventory;
+        _inventory = LinkManager.instance.inventory;
 
-        buttons_controller = inventory.buttonsCntrl;
+        _buttonsController = _inventory.buttonsCntrl;
 
         UpdateItemsCountField();
     }
@@ -45,28 +45,28 @@ public class Slot : MonoBehaviour
         {
             child.GetComponent<Spawn>().SpawnDroppedItem();
 
-            if (PlayerPrefs.GetInt("IdSlotThatUsed") == i) MainChangeSlotUsingState(false);
+            if (_inventory.idSlotThatUsed == i) MainChangeSlotUsingState(false);
 
             isSlotHaveItem = false;
-            inventory.isFull[i] = false;
+            _inventory.isFull[i] = false;
 
             RemoveItems(1);
         }
     }
 
-    void OnSlotUseButtonClick()  //Нажатие на кнопку слота
+    public void OnSlotUseButtonClick()  //Нажатие на кнопку слота
     {
-        if (isSlotUse == false && PlayerPrefs.GetInt("isAnySlotUsed") == 0) //Если слот до этого не был выделен
+        if (!isSlotUse && !_inventory.isAnySlotUsed) //Если слот до этого не был выделен
         {
             MainChangeSlotUsingState(true);
             return;
         }
-        else if (isSlotUse == true)
+        else if (isSlotUse)
         {
             MainChangeSlotUsingState(false);
         }
 
-        if (PlayerPrefs.GetInt("isAnySlotUsed") == 1 && PlayerPrefs.GetInt("IdSlotThatUsed") != i) //Если выделен другой слот
+        if (_inventory.isAnySlotUsed && _inventory.idSlotThatUsed != i) //Если выделен другой слот
         {
             GetChild();
 
@@ -74,14 +74,14 @@ public class Slot : MonoBehaviour
 
             else isSlotHaveItem = false;
 
-            if (isSlotHaveItem == true)
+            if (isSlotHaveItem)
             {
-                inventory.IsSelectSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), false); //Отменяет выделение слота, который был выделен
+                _inventory.IsSelectSlot(_inventory.idSlotThatUsed, false); //Отменяет выделение слота, который был выделен
                 MainChangeSlotUsingState(true); //Выделяет этот слот
             }
             else
             {
-                inventory.TransportItemToOtherSlot(PlayerPrefs.GetInt("IdSlotThatUsed"), i);
+                _inventory.TransportItemToOtherSlot(_inventory.idSlotThatUsed, i);
             }
         }
     }
@@ -90,7 +90,7 @@ public class Slot : MonoBehaviour
     {
         GetChild();
 
-        isSelectSlot(state);
+        IsSelectSlot(state);
 
         if (Child == null) return;
 
@@ -101,50 +101,52 @@ public class Slot : MonoBehaviour
 
     public void BringItemState(bool state)
     {
-        if (isSlotChest == true) state = false;
+        if (isSlotChest) state = false;
 
         GetChild();
 
         if (Child.CompareTag("Food"))
         {
-            inventory.FoodUseButton.SetActive(state);
+            _inventory.FoodUseButton.SetActive(state);
 
-            if (state == true) inventory.InsertDescriptionFieldsFood(Child.gameObject); //Передача описания обьекта в панель типа "еда"
+            if (state) 
+                _inventory.InsertDescriptionFieldsFood(Child.gameObject); //Передача описания обьекта в панель типа "еда"
         }
 
         if (Child.CompareTag("Weapon") || Child.CompareTag("Bow"))
         {
-            inventory.AttackButton.SetActive(state);
-            player.BringWeaponState(state);
+            _inventory.AttackButton.SetActive(state);
+            _player.BringWeaponState(state);
 
-            if (state == true) inventory.InsertDescriptionFieldsWeapon(Child.gameObject); //Передача описания обьекта в панель типа "оружие"
+            if (state) 
+                _inventory.InsertDescriptionFieldsWeapon(Child.gameObject); //Передача описания обьекта в панель типа "оружие"
         }
     }
-    private void isSelectSlot(bool state) //Выделение слота
+    private void IsSelectSlot(bool state) //Выделение слота
     {
         UseSlotHighLightning.SetActive(state);
         isSlotUse = state;
 
-        if (state == true)
+        if (state)
         {
-            PlayerPrefs.SetInt("isAnySlotUsed", 1);
-            PlayerPrefs.SetInt("IdSlotThatUsed", i);
+            _inventory.isAnySlotUsed = true;
+            _inventory.idSlotThatUsed = i;
         }
         else
         {
-            PlayerPrefs.SetInt("isAnySlotUsed", 0);
-            inventory.FoodUseButton.SetActive(false);
-            inventory.AttackButton.SetActive(false);
+            _inventory.isAnySlotUsed = false;
+            _inventory.FoodUseButton.SetActive(false);
+            _inventory.AttackButton.SetActive(false);
         }
 
-        buttons_controller.IsOnItemButtonClick(state);
+        _buttonsController.IsOnItemButtonClick(state);
     }
 
     public void OnFoodUseButtonClick()
     {
         foreach (Transform child in transform)
         {
-            if (child.GetComponent<Item>().isItemSelected == true)
+            if (child.GetComponent<Item>().isItemSelected)
             {
                 MainChangeSlotUsingState(false);
 
@@ -164,8 +166,8 @@ public class Slot : MonoBehaviour
         {
             if (CountOfItems == 0)
             {
-                inventory.isFull[i] = false;
-                GameObject.Destroy(child.gameObject);
+                _inventory.isFull[i] = false;
+                Destroy(child.gameObject);
             }
         }
 

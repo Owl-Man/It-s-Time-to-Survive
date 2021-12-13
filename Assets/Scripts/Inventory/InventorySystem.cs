@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Serialization;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -35,7 +36,8 @@ public class InventorySystem : MonoBehaviour
     public GameObject[] slots;
     public Slot[] slotScripts; //Список закешированных ссылок на компоненты слотов
 
-    private void Awake() => PlayerPrefs.SetInt("isAnySlotUsed", 0);
+    public int idSlotThatUsed;
+    public bool isAnySlotUsed;
 
     public void InsertDescriptionFieldsWeapon(GameObject child) //Передача описания обьекта в панель типа "оружие"
     {
