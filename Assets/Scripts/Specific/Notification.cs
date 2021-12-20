@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.Notifications.Android;
 
@@ -16,14 +14,14 @@ public class Notification : MonoBehaviour
         if (PlayerPrefs.GetInt("isChannelCreated") != 1) CreateNotificationChannel();
     }
 
-    void OnApplicationPause (bool pauseStatus) 
+    private void OnApplicationPause (bool pauseStatus) 
     {
         _isPaused = pauseStatus;
 
         if (_isPaused) TrySendNotification();
     }
 
-    void OnApplicationQuit () => TrySendNotification();
+    private void OnApplicationQuit () => TrySendNotification();
 
     public void TrySendNotification()
     {
@@ -54,7 +52,7 @@ public class Notification : MonoBehaviour
         notification.Text = NotificationText;
         notification.LargeIcon = "icon_0";
         notification.SmallIcon = "icon_1";
-        _timeForNotification = UnityEngine.Random.Range(550, 2600);
+        _timeForNotification = Random.Range(550, 2600);
         notification.FireTime = System.DateTime.Now.AddMinutes(_timeForNotification);
 
         AndroidNotificationCenter.SendNotification(notification, "channel_id");

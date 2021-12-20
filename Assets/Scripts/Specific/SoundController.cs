@@ -7,7 +7,7 @@ public class SoundController : MonoBehaviour
     private void Start() 
     {
         if (PlayerPrefs.GetInt("Music") == 0) UpdateMusicState(false);
-        if (PlayerPrefs.GetInt("Music") == 1) UpdateMusicState(true);
+        else if (PlayerPrefs.GetInt("Music") == 1) UpdateMusicState(true);
     }
 
     public void UpdateMusicState(bool state) => Music.SetActive(state);

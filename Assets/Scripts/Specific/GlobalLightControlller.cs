@@ -1,6 +1,4 @@
 using UnityEngine;
-
-using System;
 using System.Collections;
 using Player;
 
@@ -14,6 +12,7 @@ public class GlobalLightControlller : MonoBehaviour
     [SerializeField] private float timeDayComing;
     [SerializeField] private float DefaultNightTime, NightTime;
     [SerializeField] private float DefaultDayTime, DayTime;
+    
     private float cof = 0.01f; //Коеффициент
 
     private bool _isDay = true;
@@ -32,7 +31,7 @@ public class GlobalLightControlller : MonoBehaviour
     {
         yield return new WaitForSeconds(timeDayComing);
 
-        if (light.intensity > 0.15f && _isDay == true) //Уменьшается свет, наступает ночь
+        if (light.intensity > 0.15f && _isDay) //Уменьшается свет, наступает ночь
         {
             light.intensity -= cof;
             DayTime = DefaultDayTime;
@@ -48,7 +47,7 @@ public class GlobalLightControlller : MonoBehaviour
             values.ChangeDaysValue(1);
         } 
 
-        if (light.intensity < 0.9f && _isDay == false) // Увеличивается свет, наступает день
+        if (light.intensity < 0.9f && !_isDay) // Увеличивается свет, наступает день
         {
             light.intensity += cof;
             NightTime = DefaultNightTime;
@@ -60,9 +59,10 @@ public class GlobalLightControlller : MonoBehaviour
         {
             DayTime--;
         }
-
-        if (light.intensity >= 0.9f && _isDay == false && DayTime == 0) _isDay = true; //День прошел, переключает режим на переход в ночь
-
+        
+        //День прошел, переключает режим на переход в ночь
+        if (light.intensity >= 0.9f && !_isDay && DayTime == 0) _isDay = true;
+        
         StartCoroutine(LightController());
     }
 

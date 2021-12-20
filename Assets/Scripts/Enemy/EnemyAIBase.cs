@@ -74,9 +74,7 @@ public abstract class EnemyAIBase : MonoCache
             }
 
             if (_chill) Chill();
-
             else if (_angry) Angry();
-
             else if (_goBack) GoBack();
 
             if (_health <= 0 && isDying == false) StartCoroutine(Dead());

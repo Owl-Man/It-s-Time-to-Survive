@@ -12,10 +12,10 @@ public class FirstEnter : MonoBehaviour
             return;
         }
 
-        if (PlayerPrefs.GetInt("isntAfterIntroEnter") != 1) StabilizitionValues();
+        if (PlayerPrefs.GetInt("isntAfterIntroEnter") != 1) StabilizationValues();
     }
 
-    private void StabilizitionValues() 
+    private void StabilizationValues() 
     {
         PlayerPrefs.SetInt("Kills", 0);
         PlayerPrefs.SetInt("Days", 1);

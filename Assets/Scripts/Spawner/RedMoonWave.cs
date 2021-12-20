@@ -13,7 +13,7 @@ public class RedMoonWave : SpawnBase
         {
             yield return new WaitForSeconds(time);
 
-            Wave(UnityEngine.Random.Range(3, 20));
+            Wave(Random.Range(3, 20));
 
             StartCoroutine(Spawner());
         }
@@ -23,7 +23,7 @@ public class RedMoonWave : SpawnBase
     {
         for (int i = 0; i <= count; i++)
         {
-            Spawn(points[UnityEngine.Random.Range(1, points.Length)]);
+            Spawn(points[Random.Range(1, points.Length)]);
         }
     }
 }
