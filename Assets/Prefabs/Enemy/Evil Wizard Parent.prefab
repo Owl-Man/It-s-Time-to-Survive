@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 46.417995, y: -2.9056427, z: -109.48368}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3488133763657520533}
   - {fileID: 3488133762897368724}
@@ -59,6 +60,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.09, y: 2.09, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3488133763657520533}
   m_RootOrder: 0
@@ -141,6 +143,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.35, y: -0.72435737, z: 148.96469}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6750184038666304455}
   m_RootOrder: 1
@@ -177,6 +180,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -18.617996, y: 0.105642796, z: 109.48368}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2691168813288022961}
   - {fileID: 4353228975719272537}
@@ -310,7 +314,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!95 &3488133763657520532
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -323,6 +327,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -339,16 +344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45aa2ad5594b654fa9d8165f4ac981b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
-  health: 4
-  startTimeBtwAttack: 4
-  GiveEXP: 0
   isDying: 0
   SpriteFlipBool: 0
   EnemyObject: {fileID: 16002058992910223}
   AngryEmotion: {fileID: 2240859086228577359}
   LoseTargetEmotion: {fileID: 5690993441834152935}
-  rayDistance: 1.5
   stoppingDistance: 5
   speed: 4
   angrySpeed: 5
@@ -356,15 +356,12 @@ MonoBehaviour:
   point: {fileID: 3488133762897368724}
   collider: {fileID: 3488133763657520617}
   animator: {fileID: 3488133763657520532}
-  player: {fileID: 0}
   sprite: {fileID: 3488133763657520534}
-  rb: {fileID: 3488133763657520616}
   EnemyData: {fileID: 11400000, guid: 56173e9a069bde33ca663cfcf4442e95, type: 2}
-  values: {fileID: 0}
   DeathAnimationKey: Death
   HitAnimationKey: WizardHurt
   AttackAnimationKey: Attack
-  IdleAnimationKey: idle
+  IdleAnimationKey: Idle
   Magic: {fileID: 0}
 --- !u!1 &5690993441834152935
 GameObject:
@@ -393,6 +390,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.08999893, y: 2.0900004, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3488133763657520533}
   m_RootOrder: 1

@@ -1,3 +1,5 @@
+using Instruments;
+using Inventory;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -8,7 +10,7 @@ public class Chest : MonoBehaviour
 	
 	private InventorySystem _inventory;
 	
-	private void Start() => _inventory = LinkManager.instance.inventory;
+	private void Start() => _inventory = LinkManager.Instance.inventory;
 
     private void OnTriggerEnter2D(Collider2D other) 
 	{

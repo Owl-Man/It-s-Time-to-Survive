@@ -1,4 +1,5 @@
 using System.Collections;
+using Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,11 @@ namespace Player
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private InventorySystem inventory;
         [SerializeField] private BoxCollider2D rightHit, leftHit;
+        
+        private static readonly int IsRun = Animator.StringToHash("isRun");
+        private static readonly int IsDead = Animator.StringToHash("isDead");
+        private static readonly int IsSwordEquip = Animator.StringToHash("isSwordEquip");
+        private static readonly int IsBowEquip = Animator.StringToHash("isBowEquip");
 
         private void Start() => Time.timeScale = 1f;
 
@@ -35,11 +41,11 @@ namespace Player
         {
             if (_moveInput.x == 0)
             {
-                animator.SetBool("isRun", false);
+                animator.SetBool(IsRun, false);
             }
             else if (_moveInput.x > 0)
             {
-                animator.SetBool("isRun", true);
+                animator.SetBool(IsRun, true);
                 sprite.flipX = false;
 
                 rightHit.enabled = true;
@@ -47,7 +53,7 @@ namespace Player
             }
             else if (_moveInput.x < 0)
             {
-                animator.SetBool("isRun", true);
+                animator.SetBool(IsRun, true);
                 sprite.flipX = true;
 
                 rightHit.enabled = false;
@@ -65,7 +71,7 @@ namespace Player
 
         public void OnAttackButtonClick()
         {
-            if (animator.GetBool("isDead")) return;
+            if (animator.GetBool(IsDead)) return;
 
             if (_isAttacking) return;
         
@@ -89,7 +95,7 @@ namespace Player
 
         public void BringWeaponState(bool state) 
         {
-            if (animator.GetBool("isDead")) return;
+            if (animator.GetBool(IsDead)) return;
         
             if (state) 
             {
@@ -104,22 +110,22 @@ namespace Player
             {
                 inventory.AttackButton.SetActive(false);
 
-                animator.SetBool("isSwordEquip", false);
-                animator.SetBool("isBowEquip", false);
+                animator.SetBool(IsSwordEquip, false);
+                animator.SetBool(IsBowEquip, false);
 
                 return;
             }
 
             if (_slotScript.Child.CompareTag("Weapon"))
             {
-                animator.SetBool("isSwordEquip", state);
-                animator.SetBool("isBowEquip", !state);
+                animator.SetBool(IsSwordEquip, state);
+                animator.SetBool(IsBowEquip, !state);
             }
 
             if (_slotScript.Child.CompareTag("Bow"))
             {
-                animator.SetBool("isBowEquip", state);
-                animator.SetBool("isSwordEquip", !state);
+                animator.SetBool(IsBowEquip, state);
+                animator.SetBool(IsSwordEquip, !state);
             }
         }
 

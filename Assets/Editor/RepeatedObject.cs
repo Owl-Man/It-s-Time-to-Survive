@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 
 [ExecuteAlways]
@@ -7,7 +6,7 @@ public class RepeatedObject : MonoBehaviour
 {
     public Vector3 Offset = Vector3.forward; 
 
-    [Min(1)] public int Count = 1;
+    [Min(1)] public int count = 1;
 
     private void Start()
     {
@@ -25,19 +24,19 @@ public class RepeatedObject : MonoBehaviour
 
     private void CorrectChildCount()
     {
-        Count = Mathf.Clamp(Count, 1, 1000);
+        count = Mathf.Clamp(count, 1, 1000);
         
-        if (transform.childCount < Count)
+        if (transform.childCount < count)
         {
-            for (int i = transform.childCount; i < Count; i++)
+            for (int i = transform.childCount; i < count; i++)
             {
                 Transform instantiate = Instantiate(transform.GetChild(0), transform);
                 instantiate.Translate(Offset * i);
             }
         }
-        else if (Count < transform.childCount)
+        else if (count < transform.childCount)
         {
-            for (int i = transform.childCount-1; i >= Count; i--)
+            for (int i = transform.childCount-1; i >= count; i--)
             {
                 DestroyImmediate(transform.GetChild(i).gameObject);
             }

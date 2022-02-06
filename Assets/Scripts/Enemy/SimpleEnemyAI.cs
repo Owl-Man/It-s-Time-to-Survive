@@ -1,1 +1,5 @@
-public sealed class SimpleEnemyAI : EnemyAIBase { } //Base Enemy
+namespace EnemySystem
+{ 
+    //Base Enemy
+    public sealed class SimpleEnemyAI : EnemyAIBase { }
+}

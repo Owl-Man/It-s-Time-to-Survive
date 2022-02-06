@@ -1,3 +1,4 @@
+using Instruments;
 using UnityEngine;
 
 public class Spawn : MonoBehaviour
@@ -8,7 +9,7 @@ public class Spawn : MonoBehaviour
 
     public void SpawnDroppedItem()
     {
-        _player = LinkManager.instance.PlayerObject.transform.position;
+        _player = LinkManager.Instance.playerObject.transform.position;
 
         float randX = Random.Range(-2.7f, 2.7f);
         float randY = Random.Range(2f, 3.2f);

@@ -1,29 +1,32 @@
 using System.Collections;
 using UnityEngine;
 
-public class RedMoonWave : SpawnBase
+namespace Spawner
 {
-    public Transform[] points;
-
-    public void RedMoonStart() => StartCoroutine(Spawner());
-
-    private IEnumerator Spawner()
+    public class RedMoonWave : SpawnBase
     {
-        if (PlayerPrefs.GetInt("isRedMoonDay") == 1)
+        public Transform[] points;
+
+        public void RedMoonStart() => StartCoroutine(Spawner());
+
+        private IEnumerator Spawner()
         {
-            yield return new WaitForSeconds(time);
+            if (PlayerPrefs.GetInt("isRedMoonDay") == 1)
+            {
+                yield return new WaitForSeconds(time);
 
-            Wave(Random.Range(3, 20));
+                Wave(Random.Range(3, 20));
 
-            StartCoroutine(Spawner());
+                StartCoroutine(Spawner());
+            }
         }
-    }
 
-    private void Wave(int count) 
-    {
-        for (int i = 0; i <= count; i++)
+        private void Wave(int count) 
         {
-            Spawn(points[Random.Range(1, points.Length)]);
+            for (int i = 0; i <= count; i++)
+            {
+                Spawn(points[Random.Range(1, points.Length)]);
+            }
         }
     }
 }

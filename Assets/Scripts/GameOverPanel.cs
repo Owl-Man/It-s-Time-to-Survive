@@ -1,3 +1,4 @@
+using Instruments;
 using Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class GameOverPanel : MonoBehaviour
 
     private void Start()
     {
-        values = LinkManager.instance.values;
+        values = LinkManager.Instance.values;
         SyncPlayerValues();
     }
 

@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class GlobalUpdate : MonoBehaviour
+namespace MonoCacheSystem
 {
-    private void Update() 
+    public class GlobalUpdate : MonoBehaviour
     {
-        for (int i = 0; i < MonoCache.AllUpdate.Count; i++) 
+        private void Update() 
         {
-            MonoCache.AllUpdate[i].Tick();
+            for (int i = 0; i < MonoCache.AllUpdate.Count; i++) 
+            {
+                MonoCache.AllUpdate[i].Tick();
+            }
         }
     }
 }

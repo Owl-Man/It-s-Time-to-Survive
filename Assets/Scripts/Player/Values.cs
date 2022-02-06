@@ -1,3 +1,5 @@
+using Instruments;
+using Spawner;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +22,7 @@ namespace Player
 
         private void Start()
         {
-            redMoon = LinkManager.instance.redMoonWave;
+            redMoon = LinkManager.Instance.redMoonWave;
             SyncValues();
         }
 

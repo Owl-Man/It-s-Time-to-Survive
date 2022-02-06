@@ -1,14 +1,20 @@
+using Instruments;
 using UnityEngine;
 
-public abstract class MagicanAIBase : EnemyAIBase
+namespace EnemySystem
 {
-    [HideInInspector] public GameObject Magic;
-
-    public override void AttackPlayer() 
+    public abstract class MagicanAIBase : EnemyAIBase
     {
-        base.AttackPlayer();
-        Magic.SetActive(true);
-    }
+        [HideInInspector] public GameObject Magic;
+    
+        private void Start() => Magic = LinkManager.Instance.darkMagicPlayer;
 
-    public override void BeforeDie() => Magic.SetActive(false);
+        public override void AttackPlayer() 
+        {
+            base.AttackPlayer();
+            Magic.SetActive(true);
+        }
+
+        public override void BeforeDie() => Magic.SetActive(false);
+    }
 }

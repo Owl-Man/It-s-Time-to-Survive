@@ -1,4 +1,7 @@
-public interface IBossEnemy
+namespace EnemySystem
 {
-    public void BeforeDie();
+    public interface IBossEnemy
+    {
+        public void BeforeDie();
+    }
 }

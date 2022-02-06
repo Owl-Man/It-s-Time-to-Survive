@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Inventory;
 using UnityEngine.Serialization;
 
 public class InventorySystem : MonoBehaviour

@@ -1,12 +1,13 @@
-public sealed class ArchonAI : MagicanAIBase, IBossEnemy
+namespace EnemySystem
 {
-    public BossFightSystem bossFight;
-
-    private void Start() => Magic = LinkManager.instance.DarkMagicPlayer;
-
-    public override void BeforeDie() 
+    public sealed class ArchonAI : MagicanAIBase, IBossEnemy
     {
-        Magic.SetActive(false);
-        if (bossFight != null) bossFight.Victory();
+        public BossFightSystem bossFight;
+
+        public override void BeforeDie() 
+        {
+            Magic.SetActive(false);
+            if (bossFight != null) bossFight.Victory();
+        }
     }
 }

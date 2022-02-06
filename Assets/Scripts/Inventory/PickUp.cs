@@ -1,3 +1,5 @@
+using Instruments;
+using Inventory;
 using UnityEngine;
 
 public class PickUp : MonoBehaviour
@@ -12,7 +14,7 @@ public class PickUp : MonoBehaviour
 
     private bool _isPickedUp;
 
-    private void Start() => _inventory = LinkManager.instance.inventory;
+    private void Start() => _inventory = LinkManager.Instance.inventory;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

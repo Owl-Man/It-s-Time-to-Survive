@@ -1,4 +1,9 @@
-public sealed class EvilWizardAI : MagicanAIBase
+using Instruments;
+
+namespace EnemySystem
 {
-	private void Start() => Magic = LinkManager.instance.FireBurningPlayer;
+	public sealed class EvilWizardAI : MagicanAIBase
+	{
+		private void Start() => Magic = LinkManager.Instance.fireBurningPlayer;
+	}
 }

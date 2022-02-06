@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+namespace Inventory
 {
-	public int id;
-	public bool isItemSelected;
-	public string item;
+	public class Item : MonoBehaviour
+	{
+		public int id;
+		public bool isItemSelected;
+		public string item;
 	
-	public int MaxStackCountInSlot;
+		public int MaxStackCountInSlot;
+	}
 }

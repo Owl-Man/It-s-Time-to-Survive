@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Instruments;
+using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
@@ -53,7 +54,7 @@ public class MainCamera : MonoBehaviour
     
     public void FocusOnPlayer(bool playerIsLeft)
     {
-        _player = LinkManager.instance.PlayerObject.transform;
+        _player = LinkManager.Instance.playerObject.transform;
 
         _lastX = Mathf.RoundToInt(_player.position.x);
 
