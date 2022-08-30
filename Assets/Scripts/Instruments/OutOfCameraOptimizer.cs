@@ -1,23 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Instruments
 {
     public class OutOfCameraOptimizer : MonoBehaviour
     {
-        [SerializeField] private ObjectID[] objectsIds;
+        [SerializeField] private List<GameObject> objects;
         [SerializeField] private Animator[] animators;
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void Start()
         {
-            for (int i = 0; i < objectsIds.Length; i++)
+            for (int i = 0; i < animators.Length; i++)
             {
-                if (other.gameObject.GetComponent<ObjectID>().id == objectsIds[i].id)
+                animators[i].enabled = false;
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            for (int i = 0; i < objects.Count; i++)
+            {
+                if (objects[i] == other)
                 {
                     animators[i].enabled = true;
-                    print("yeah");
-                    return;
                 }
-                else
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            for (int i = 0; i < objects.Count; i++)
+            {
+                if (objects[i] == other)
                 {
                     animators[i].enabled = false;
                 }

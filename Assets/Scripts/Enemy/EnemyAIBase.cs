@@ -1,11 +1,11 @@
 using System.Collections;
 using Instruments;
-using MonoCacheSystem;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace EnemySystem
 {
-    public abstract class EnemyAIBase : MonoCache
+    public abstract class EnemyAIBase : NightCache, INightRun
     {
         [Header("Values")]
         private int _health;
@@ -58,7 +58,7 @@ namespace EnemySystem
             collider.enabled = true;
         }
 
-        public override void OnTick()
+        public void Run()
         {
             if (isDying == false)
             {
