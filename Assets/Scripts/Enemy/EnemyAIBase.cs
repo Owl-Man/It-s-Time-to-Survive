@@ -192,6 +192,8 @@ namespace EnemySystem
 
             collider.enabled = false;
 
+            if (_link == null) _link = LinkManager.Instance;
+
             _link.values.ChangesKillsValue(1);
 
             _link.values.ChangeEXPValue(EnemyData.EXP);
